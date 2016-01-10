@@ -31,8 +31,8 @@ public class First extends HttpServlet {
 	 */
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-    	// Set refresh, autoload time as 5 seconds
-    	response.setIntHeader("Refresh", 5);
+    	// Set refresh, autoload time as 30 seconds
+    	response.setIntHeader("Refresh", 30);
 
     	// Set response content type
     	response.setContentType("text/html");
