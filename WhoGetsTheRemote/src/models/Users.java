@@ -13,6 +13,7 @@ import javax.persistence.Table;
 @Table
 public class Users implements Serializable
 {
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column
