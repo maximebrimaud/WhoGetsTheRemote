@@ -13,7 +13,6 @@ import javax.persistence.Table;
 @Table
 public class Film implements Serializable
 {
-	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column
