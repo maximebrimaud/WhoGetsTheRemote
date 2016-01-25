@@ -1,0 +1,16 @@
+CREATE TABLE Film
+(
+    idFilm 		INT PRIMARY KEY NOT NULL,
+    nomFilm 	VARCHAR(100),
+    anneeFilm 	DATE
+);
+
+SET CURRENT SCHEMA  APP
+
+ALTER TABLE Film
+ADD directorFilm VARCHAR(100)
+
+
+insert into film (idFilm,nomFilm,directorFilm) values(1,'Gladiator','Ridley Scott')
+
+select * from film

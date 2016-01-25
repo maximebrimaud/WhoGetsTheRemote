@@ -33,12 +33,8 @@ public class UpdateNomFilm extends HttpServlet
 	{ 
 		res.setContentType("text/html"); 
 		PrintWriter out = res.getWriter(); 
-		PrintWriter pwinsert = res.getWriter(); 
-		//  PrintWriter pwdelete = res.getWriter(); 
 
 		Connection con = null; 
-		PreparedStatement ps = null; 
-		ResultSet rs = null; 
 		Statement st = null; 
 
 
@@ -55,15 +51,32 @@ public class UpdateNomFilm extends HttpServlet
 		
 		out.println("<table> "); 
 		out.println("<tr>"); 
-		out.println("<td> Nom </td>"); 
-		out.println("<td> Description </td>"); 
+		out.println("<td> Nom </td>");
+		out.println("<td> <input type=" + "text" + "></td>");
+		out.println("</tr>"); 
+		
+		out.println("<tr>");
+		out.println("<td> Description </td>");
+		out.println("</tr>"); 
+		
+		out.println("<tr>");
 		out.println("<td> Director </td>"); 
+		out.println("</tr>"); 
+		
+		out.println("<tr>");
 		out.println("<td> Date </td>"); 
+		out.println("</tr>"); 
+		
+		out.println("<tr>");
 		out.println("<td> Rating </td>");
 		out.println("</tr>"); 
 
+		out.println("<tr>");
+		out.println("<td> <button type= submit > Submit </button></td>");
+		out.println("</tr>"); 
 
-		String nom = req.getParameter("name"); 
+
+		String nom = req.getParameter("nomFilm"); 
 		String des = req.getParameter("description"); 
 		String dir = req.getParameter("director"); 
 		String date = req.getParameter("date"); 
@@ -105,11 +118,11 @@ public class UpdateNomFilm extends HttpServlet
 		    
 		    String nom = req.getParameter("name"); 
 			String date = req.getParameter("date"); 
-			String dir = req.getParameter("director"); 
+			//String dir = req.getParameter("director"); 
 			
-			
+			String dir = "Ridley Scott";
 
-			stmt.executeUpdate("update film set name="+ nom + " where director=" + dir +" and date=" + date);
+			stmt.executeUpdate("update film set name="+ nom + " where director=" + dir );
 
 			con.commit();
 			
