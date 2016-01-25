@@ -1,0 +1,10 @@
+Syntax error, insert ";" to complete BlockStatementsCREATE TABLE Users(
+    id          INT PRIMARY KEY NOT NULL,
+    lastName 	VARCHAR(250),
+    firstName 	VARCHAR(250),
+    username VARCHAR(250),
+    password VARCHAR(250),
+    email VARCHAR(250),    
+    creationDate DATE
+);
+//SET CURRENT SCHEMA  APP//ALTER TABLE Users//ADD directorFilm VARCHAR(100)//insert into Users (id,lastName,firstName,username,password,email,creationDate) values(1,'Mouannes','Mike','user','password','mike_mouannes@hotmail.com', getdate())//select * from Users

@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -15,7 +16,9 @@ public class Users implements Serializable
 {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@SequenceGenerator(name="UserId", sequenceName="UserIdSequence", allocationSize=1)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator ="UserId")
+	
 	@Column
 	private int id;
 	@Column

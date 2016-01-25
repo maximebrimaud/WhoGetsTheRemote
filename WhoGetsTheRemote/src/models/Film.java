@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -15,7 +16,8 @@ public class Film implements Serializable
 {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@SequenceGenerator(name="FilmId", sequenceName="FilmIdSequence", allocationSize=1)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator ="FilmId")
 	@Column
 	private int id;
 	@Column
