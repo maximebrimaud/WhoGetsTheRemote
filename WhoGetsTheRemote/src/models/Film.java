@@ -13,8 +13,7 @@ import javax.persistence.Table;
 @Entity
 @Table
 public class Film implements Serializable
-{
-	
+{	
 	@Id
 	@SequenceGenerator(name="FilmId", sequenceName="FilmIdSequence", allocationSize=1)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator ="FilmId")

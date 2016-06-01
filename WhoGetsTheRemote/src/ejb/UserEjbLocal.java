@@ -3,17 +3,17 @@ package ejb;
 import java.util.List;
 
 import javax.ejb.Local;
-import models.Users;
+import models.User;
 
 @Local
 public interface UserEjbLocal 
 {
-	Users createUser(String firstName, String lastName, String username, String password, String email,
+	User createUser(String firstName, String lastName, String username, String password, String email,
 			String creationDate);
 
-    void edit(Users utilisateur);
+    void edit(User utilisateur);
 
-    void remove(Users utilisateur);
+    void remove(User utilisateur);
 
-    List<Users> findAll();
+    List<User> findAll();
 }

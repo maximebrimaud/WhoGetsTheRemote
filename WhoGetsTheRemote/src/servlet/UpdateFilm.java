@@ -24,7 +24,6 @@ public class UpdateFilm extends HttpServlet {
       String up = "nameMustChange";
       stmt.executeUpdate("UPDATE Film SET nomFilm = " + up + "where idFilm = 1");
       
-
       con.commit();
       out.println("Update successful!");
     }

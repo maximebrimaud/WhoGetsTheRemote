@@ -7,7 +7,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import models.Users;
+import models.User;
 
 /**
  * Session Bean implementation class UserEjb
@@ -19,11 +19,10 @@ public class UserEjb implements UserEjbLocal {
 	@PersistenceContext
 	 private EntityManager em;
 	
-	@Override
-	public Users createUser(String firstName, String lastName, String username, String password, String email,
-			String creationDate)
+	//@Override
+	public User createUser(String firstName, String lastName, String username, String password, String email, String creationDate)
 	{
-		Users utilisateur = new Users();
+		User utilisateur = new User();
 		
 		int id = utilisateur.hashCode();
 		
@@ -40,20 +39,20 @@ public class UserEjb implements UserEjbLocal {
 		return utilisateur;
 	}
 
-	@Override
-	public void edit(Users utilisateur) {
+	//@Override
+	public void edit(User utilisateur) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
-	public void remove(Users utilisateur) {
+	//@Override
+	public void remove(User utilisateur) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
-	public List<Users> findAll() {
+	//@Override
+	public List<User> findAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}

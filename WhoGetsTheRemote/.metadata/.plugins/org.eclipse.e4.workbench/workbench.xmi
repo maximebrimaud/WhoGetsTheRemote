@@ -3,14 +3,15 @@
   <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;workbench>&#xD;&#xA;&lt;mruList>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;org.eclipse.ui.DefaultTextEditor&quot; name=&quot;sql create film&quot; tooltip=&quot;C:\Users\Mike\Documents\Uni Dauphine\Master 2\Conception et developpement\Projet\WhoGetsTheRemote\WhoGetsTheRemote\sql create film&quot;>&#xD;&#xA;&lt;persistable uri=&quot;file:/C:/Users/Mike/Documents/Uni%20Dauphine/Master%202/Conception%20et%20developpement/Projet/WhoGetsTheRemote/WhoGetsTheRemote/sql%20create%20film&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;org.eclipse.wst.xml.ui.internal.tabletree.XMLMultiPageEditorPart&quot; name=&quot;.project&quot; tooltip=&quot;C:\Users\Mike\Documents\Uni Dauphine\Master 2\Conception et developpement\Projet\WhoGetsTheRemote\WhoGetsTheRemote\.project&quot;>&#xD;&#xA;&lt;persistable uri=&quot;file:/C:/Users/Mike/Documents/Uni%20Dauphine/Master%202/Conception%20et%20developpement/Projet/WhoGetsTheRemote/WhoGetsTheRemote/.project&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;org.eclipse.wst.xml.ui.internal.tabletree.XMLMultiPageEditorPart&quot; name=&quot;.classpath&quot; tooltip=&quot;C:\Users\Mike\Documents\Uni Dauphine\Master 2\Conception et developpement\Projet\WhoGetsTheRemote\WhoGetsTheRemote\.classpath&quot;>&#xD;&#xA;&lt;persistable uri=&quot;file:/C:/Users/Mike/Documents/Uni%20Dauphine/Master%202/Conception%20et%20developpement/Projet/WhoGetsTheRemote/WhoGetsTheRemote/.classpath&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;/mruList>&#xD;&#xA;&lt;/workbench>"/>
   <tags>activeSchemeId:org.eclipse.ui.defaultAcceleratorConfiguration</tags>
   <tags>ModelMigrationProcessor.001</tags>
-  <children xsi:type="basic:TrimmedWindow" xmi:id="_gzz_EMOeEeW5uuRideTTUA" elementId="IDEWindow" contributorURI="platform:/plugin/org.eclipse.platform" selectedElement="_iH5dIsOeEeW5uuRideTTUA" label="%trimmedwindow.label.eclipseSDK" x="953" y="0" width="974" height="1047">
+  <children xsi:type="basic:TrimmedWindow" xmi:id="_gzz_EMOeEeW5uuRideTTUA" elementId="IDEWindow" contributorURI="platform:/plugin/org.eclipse.platform" selectedElement="_iH5dIsOeEeW5uuRideTTUA" label="%trimmedwindow.label.eclipseSDK" x="355" y="-14" width="974" height="1003">
     <persistedState key="coolBarVisible" value="true"/>
     <persistedState key="perspectiveBarVisible" value="true"/>
     <persistedState key="isRestored" value="true"/>
     <persistedState key="show_in_time" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;show_in_time/>"/>
     <persistedState key="workingSets" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;workingSets/>"/>
-    <persistedState key="aggregateWorkingSetId"/>
+    <persistedState key="aggregateWorkingSetId" value="Aggregate for window 1460469808038"/>
     <tags>topLevel</tags>
+    <tags>shellMaximized</tags>
     <children xsi:type="basic:PartSashContainer" xmi:id="_iH5dIsOeEeW5uuRideTTUA" selectedElement="_iH6EMMOeEeW5uuRideTTUA" horizontal="true">
       <children xsi:type="advanced:PerspectiveStack" xmi:id="_iH6EMMOeEeW5uuRideTTUA" elementId="org.eclipse.ui.ide.perspectivestack" containerData="7500" selectedElement="_jTHTEMOeEeW5uuRideTTUA">
         <children xsi:type="advanced:Perspective" xmi:id="_jTHTEMOeEeW5uuRideTTUA" elementId="org.eclipse.jst.j2ee.J2EEPerspective" selectedElement="_jTHTEcOeEeW5uuRideTTUA" label="Java EE" iconURI="platform:/plugin/org.eclipse.jst.j2ee.ui/icons/full/cview16/j2ee_perspective.gif">
@@ -132,7 +133,7 @@
       </children>
     </sharedElements>
     <sharedElements xsi:type="basic:Part" xmi:id="_jMnCcMOeEeW5uuRideTTUA" elementId="org.eclipse.ui.navigator.ProjectExplorer" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView" label="Project Explorer" iconURI="platform:/plugin/org.eclipse.ui.navigator.resources/icons/full/eview16/resource_persp.gif" tooltip="" closeable="true">
-      <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;view CommonNavigator.LINKING_ENABLED=&quot;0&quot; org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets=&quot;0&quot;/>"/>
+      <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;view CommonNavigator.LINKING_ENABLED=&quot;0&quot; currentWorkingSetName=&quot;Aggregate for window 1460469808038&quot; org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets=&quot;0&quot;/>"/>
       <tags>View</tags>
       <tags>categoryTag:General</tags>
       <tags>active</tags>
@@ -226,7 +227,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_isTxwMOeEeW5uuRideTTUA" elementId="org.eclipse.ui.workbench.file">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_is2kUMOeEeW5uuRideTTUA" elementId="print" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" enabled="false" command="_g3WbTcOeEeW5uuRideTTUA"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_T9gAtwC3EeaCy_7gOY_BOw" elementId="print" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" command="_g3WbTcOeEeW5uuRideTTUA"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_isUY0MOeEeW5uuRideTTUA" elementId="additions" toBeRendered="false">
         <tags>toolbarSeparator</tags>
@@ -256,7 +257,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_isUY1MOeEeW5uuRideTTUA" elementId="org.eclipse.ui.workbench.navigate">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_is4ZgMOeEeW5uuRideTTUA" elementId="org.eclipse.ui.window.pinEditor" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" type="Check" command="_g3V0MsOeEeW5uuRideTTUA"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_T9pxuQC3EeaCy_7gOY_BOw" elementId="org.eclipse.ui.window.pinEditor" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" type="Check" command="_g3V0MsOeEeW5uuRideTTUA"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_isUY1cOeEeW5uuRideTTUA" elementId="group.editor" toBeRendered="false">
         <tags>toolbarSeparator</tags>
@@ -2533,6 +2534,14 @@
   <commands xmi:id="_iG-QEsOeEeW5uuRideTTUA" elementId="AUTOGEN:::variableViewActions/org.eclipse.wst.jsdt.debug.ui.variableview.show.this" commandName="Show 'this' variable" description="Show or hide the this variable" category="_g3Gjq8OeEeW5uuRideTTUA"/>
   <commands xmi:id="_iG-3IMOeEeW5uuRideTTUA" elementId="AUTOGEN:::variableViewActions/org.eclipse.wst.jsdt.debug.ui.variableview.show.prototypes" commandName="Show proto variables" description="Show or hide proto variables" category="_g3Gjq8OeEeW5uuRideTTUA"/>
   <commands xmi:id="_iG-3IcOeEeW5uuRideTTUA" elementId="AUTOGEN:::org.eclipse.ui.articles.action.contribution.view/org.eclipse.wst.wsi.ui.internal.actions.actionDelegates.ValidateWSIProfileActionDelegate" commandName="WS-I Profile Validator" description="Validate WS-I Message Log File" category="_g3Gjq8OeEeW5uuRideTTUA"/>
+  <commands xmi:id="_R3XaogC3EeaCy_7gOY_BOw" elementId="oracle.eclipse.tools.glassfish.commands.OpenUrlCommand" commandName="OpenUrlCommand" category="_g3Gjq8OeEeW5uuRideTTUA">
+    <parameters xmi:id="_R3XaowC3EeaCy_7gOY_BOw" elementId="oracle.eclipse.tools.glassfish.commands.urlParam" name="url" optional="false"/>
+  </commands>
+  <commands xmi:id="_R3XapAC3EeaCy_7gOY_BOw" elementId="oracle.eclipse.tools.glassfish.commands.UpdateCenterCommand" commandName="GlassFish Update Center" description="GlassFish Update Center" category="_g3Gjq8OeEeW5uuRideTTUA"/>
+  <commands xmi:id="_R3XapQC3EeaCy_7gOY_BOw" elementId="oracle.eclipse.tools.glassfish.commands.OpenDomainHomeCommand" commandName="OpenDomainHomeCommand" category="_g3Gjq8OeEeW5uuRideTTUA"/>
+  <commands xmi:id="_R3XapgC3EeaCy_7gOY_BOw" elementId="oracle.eclipse.tools.glassfish.commands.ViewAdminConsoleCommand" commandName="View Admin Console" description="View Admin Console" category="_g3Gjq8OeEeW5uuRideTTUA"/>
+  <commands xmi:id="_R3XapwC3EeaCy_7gOY_BOw" elementId="oracle.eclipse.tools.glassfish.commands.ViewLogCommand" commandName="View Log File" description="View Log File" category="_g3Gjq8OeEeW5uuRideTTUA"/>
+  <commands xmi:id="_R3XaqAC3EeaCy_7gOY_BOw" elementId="oracle.eclipse.tools.glassfish.commands.OpenServerHomeCommand" commandName="OpenServerHomeCommand" category="_g3Gjq8OeEeW5uuRideTTUA"/>
   <addons xmi:id="_gzz_FsOeEeW5uuRideTTUA" elementId="org.eclipse.e4.core.commands.service" contributorURI="platform:/plugin/org.eclipse.platform" contributionURI="bundleclass://org.eclipse.e4.core.commands/org.eclipse.e4.core.commands.CommandServiceAddon"/>
   <addons xmi:id="_gzz_F8OeEeW5uuRideTTUA" elementId="org.eclipse.e4.ui.contexts.service" contributorURI="platform:/plugin/org.eclipse.platform" contributionURI="bundleclass://org.eclipse.e4.ui.services/org.eclipse.e4.ui.services.ContextServiceAddon"/>
   <addons xmi:id="_gzz_GMOeEeW5uuRideTTUA" elementId="org.eclipse.e4.ui.bindings.service" contributorURI="platform:/plugin/org.eclipse.platform" contributionURI="bundleclass://org.eclipse.e4.ui.bindings/org.eclipse.e4.ui.bindings.BindingServiceAddon"/>
@@ -2593,4 +2602,5 @@
   <categories xmi:id="_g3GjqsOeEeW5uuRideTTUA" elementId="org.eclipse.oomph.commands" name="Oomph"/>
   <categories xmi:id="_g3Gjq8OeEeW5uuRideTTUA" elementId="org.eclipse.core.commands.categories.autogenerated" name="Uncategorized" description="Commands that were either auto-generated or have no category"/>
   <categories xmi:id="_g3GjrMOeEeW5uuRideTTUA" elementId="org.eclipse.wst.jsdt.ui.category.refactoring" name="Refactor - JavaScript" description="JavaScript Refactoring Actions"/>
+  <categories xmi:id="_R3XaoQC3EeaCy_7gOY_BOw" elementId="oracle.eclipse.tools.glassfish.commands.category" name="glassfish-commands"/>
 </application:Application>
