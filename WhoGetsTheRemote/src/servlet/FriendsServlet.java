@@ -1,0 +1,119 @@
+//package servlet;
+//
+//import java.io.IOException;
+//import java.sql.*;
+//
+//import javax.annotation.Resource;
+//import javax.servlet.ServletException;
+//import javax.servlet.annotation.WebServlet;
+//import javax.servlet.http.HttpServlet;
+//import javax.servlet.http.HttpServletRequest;
+//import javax.servlet.http.HttpServletResponse;
+//import javax.sql.*;
+//
+///**
+// * Servlet implementation class FriendsServlet
+// */
+//@WebServlet("/FriendsServlet")
+//public class FriendsServlet extends HttpServlet {
+//	private static final long serialVersionUID = 1L;
+//    
+//	@Resource private DataSource myDataSource;
+//	
+//    public FriendsServlet() 
+//    {
+//        super();
+//    }  
+//
+//	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+//	{		
+//		System.out.println("i am in do GET Login");
+//		response.getWriter().append("Served at: ").append(request.getContextPath());
+//		System.out.println("i am out of do GET Login");				 
+//	}
+//
+//	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+//	{							
+//		try 
+//		{
+//			//getting Request data
+//			String idUser = request.getParameter("idUser");
+//	        System.out.println("i am in do POST Friends, IdUser: " + idUser);
+//	        
+//	        //Setting up database connection
+//	        Connection myConnection = myDataSource.getConnection("APP","APP");			
+//	        System.out.println("i am in do POST Login, Got Connection!");
+//			
+//	        //Statement myStatement =	myConnection.createStatement();
+//	        PreparedStatement myStatement = myConnection.prepareStatement("SELECT * from USERS WHERE USERNAME = '" + user + "' AND PASSWORD_USER = '" + pass + "' ");
+//			 System.out.println("i am in do POST Login, Got Statement!");
+//
+//			 //Authentication
+//			ResultSet myResultSet = myStatement.executeQuery();
+//			 System.out.println("i am in do POST Login, Executed Statement!");
+//			//ResultSet myResultSet = myStatement.executeQuery("SELECT * from Users WHERE Username = \"" + user+ "\" AND Password = \"" + pass + "\" ");
+//			
+//			if (myResultSet.next()) 
+//			{				
+//				int id = myResultSet.getInt("ID_USER");
+//				String nom = myResultSet.getString("NOM_USER");
+//				String prenom = myResultSet.getString("PRENOM_USER");
+//				String sexe = myResultSet.getString("SEXE");
+//				String username = myResultSet.getString("USERNAME");
+//				String password = myResultSet.getString("PASSWORD_USER");
+//				String email =  myResultSet.getString("EMAIL_USER");
+//				String Bday =  myResultSet.getString("DATE_OF_BIRTH");
+//				String CreationDate =  myResultSet.getString("USER_CREATION_DATE");
+//				User currentUser = new User(id,prenom,nom,username,password,email,CreationDate);
+//				String fullName = prenom+ " " +nom;
+//				request.setAttribute("user", fullName);
+//				request.setAttribute("currentUser", currentUser);	
+//				
+//				//Liste des nouveaux films
+//				PreparedStatement statementNewFilms = myConnection.prepareStatement("SELECT * FROM FILM ORDER BY FILM_CREATION_DATE FETCH FIRST 8 ROWS ONLY");
+//				ResultSet newMoviesResult = statementNewFilms.executeQuery();
+//				List<Film> listF = new ArrayList<Film>();
+//				while (newMoviesResult.next()) 
+//				{
+//					int idFilm = newMoviesResult.getInt("ID_FILM");
+//					String nomFilm = newMoviesResult.getString("NOM_FILM");
+//					String descriptionFilm = newMoviesResult.getString("DESCRIPTION_FILM");
+//					String dateReleased = newMoviesResult.getString("DATE_RELEASED");
+//					int notationFilm = Integer.parseInt(newMoviesResult.getString("NOTATION_FILM"));
+//					String trailer = newMoviesResult.getString("TRAILER_FILM_LINK");
+//					String filmLink =  newMoviesResult.getString("FILM_LINK");
+//					String image =  newMoviesResult.getString("IMAGE_FILM");
+//					Film currentFilm = new Film(idFilm,nomFilm,descriptionFilm,dateReleased,notationFilm,trailer,filmLink,image) ;
+//					listF.add(currentFilm);
+//					
+//					int i = 0;
+//					i++;
+//					System.out.println("Film " + i + " : " + nomFilm);
+//				}   
+//				request.setAttribute("listHits", listF);
+//				
+//				//Liste des People you may know
+//				
+//				request.getRequestDispatcher("/Home.jsp").forward(request, response);
+//				System.out.println("Correct login credentials, with username: " + username + " and userId: " + id + " and sexe: " + sexe);
+//            } 
+//            else 
+//            {
+//            	request.setAttribute("loginMessage", "Invalid Username and Password combination!");
+//                request.getRequestDispatcher("/LoginPage.jsp").forward(request, response);
+//            	System.out.println("Incorrect login credentials");
+//            }
+//			
+//			myConnection.close();
+//			System.out.println("i am out of do POST Login");
+//		} 		
+//		catch (SQLException e) 
+//		{
+//			System.out.println(e.getMessage());
+//			e.printStackTrace();
+//		}
+//		
+//	}
+//
+//}
+//

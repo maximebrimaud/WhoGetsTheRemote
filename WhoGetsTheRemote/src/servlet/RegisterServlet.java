@@ -96,20 +96,24 @@ public class RegisterServlet extends HttpServlet {
 					int id = myResultSet2.getInt("ID_USER");
 					String nom = myResultSet2.getString("NOM_USER");
 					String prenom = myResultSet2.getString("PRENOM_USER");
-					String sexe2 = myResultSet2.getString("SEXE");
-					String username = myResultSet2.getString("USERNAME");
-					String password = myResultSet2.getString("PASSWORD_USER");
-					String email2 =  myResultSet2.getString("EMAIL_USER");
+					String sexee = myResultSet2.getString("SEXE");
+					String usernamee = myResultSet2.getString("USERNAME");
+					String passwordd = myResultSet2.getString("PASSWORD_USER");
+					String emaill =  myResultSet2.getString("EMAIL_USER");
 					String Bday =  myResultSet2.getString("DATE_OF_BIRTH");
-					String CreationDate =  myResultSet2.getString("USER_CREATION_DATE");
-					User currentUser = new User(id,prenom,nom,username,password,email,CreationDate) ;
+					String creationDatee =  myResultSet2.getString("USER_CREATION_DATE");
+					String modificationDatee =  myResultSet2.getString("USER_MODIFICATION_DATE");
+					String addresss =  myResultSet2.getString("ADDRESS_USER");
+					String imagee =  myResultSet2.getString("IMAGE_USER");
+					User currentUser = new User(id,prenom,nom,usernamee,passwordd,emaill,Bday, sexee, addresss, imagee, modificationDatee, creationDatee);
+					
 					String fullName = prenom+ " " +nom;
 				
 				
 					request.setAttribute("user", fullName);		
 					request.setAttribute("CurrentUser", currentUser);
 					request.getRequestDispatcher("/Home.jsp").forward(request, response);
-					System.out.println("Correct login credentials, with username: " + username + " and userId: " + id + " and sexe: " + sexe2);
+					System.out.println("Correct login credentials, with username: " + usernamee + " and userId: " + id + " and sexe: " + sexee);
 				}
             } 
             else 

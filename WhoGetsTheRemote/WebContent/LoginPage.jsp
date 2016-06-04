@@ -3,7 +3,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title>Login</title>
+		<title>WGTR - Log In or Sign Up</title>
 		<link href="Bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 		<script type="text/javascript" src="Bootstrap/js/bootstrap.min.js"></script>
 		<%-- vvvvv Cover Styiling vvvvv --%>

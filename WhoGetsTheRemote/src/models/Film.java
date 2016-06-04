@@ -1,7 +1,10 @@
 package models;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
+import javax.enterprise.context.SessionScoped;
+import javax.inject.Named;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,6 +15,8 @@ import javax.persistence.Table;
 
 @Entity
 @Table
+@SessionScoped
+@Named
 public class Film implements Serializable
 {	
 	@Id
@@ -24,23 +29,32 @@ public class Film implements Serializable
 	@Column
 	private String description;
 	@Column
-	private String director;
-	@Column
 	private String date;
 	@Column
-	private int idmbRating;
+	private int notationFilm;
+	@Column
+	private String trailerFilm;
+	@Column
+	private String filmLink;
+	@Column
+	private String imageFilm;
 	
+	//private ArrayList<Film> listeHits = new ArrayList();
 	//********* Constructor
-	public Film() {}
+	public Film() {
+		super();
+	}
 	
-	public Film(int id, String name, String description, String director, String date, int idmbRating) {
+	public Film(int id, String name, String description, String date,int notationFilm, String trailer, String filmLink, String image){
 		super();
 		this.id = id;
 		this.name = name;
 		this.description = description;
-		this.director = director;
 		this.date = date;
-		this.idmbRating = idmbRating;
+		this.notationFilm = notationFilm;
+		this.trailerFilm = trailer;
+		this.filmLink = filmLink;
+		this.imageFilm = image;
 	}
 	
 	//********* Getters and Setters
@@ -62,22 +76,24 @@ public class Film implements Serializable
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public String getDirector() {
-		return director;
-	}
-	public void setDirector(String director) {
-		this.director = director;
-	}
+
 	public String getDate() {
 		return date;
 	}
 	public void setDate(String date) {
 		this.date = date;
 	}
-	public int getIdmbRating() {
-		return idmbRating;
+	public int getNotationFilm() {
+		return notationFilm;
 	}
-	public void setIdmbRating(int idmbRating) {
-		this.idmbRating = idmbRating;
+	public void setIdmbRating(int notationFilm) {
+		this.notationFilm = notationFilm;
 	}
+
+//	public ArrayList<Film> getListeHits() {
+//		return listeHits;
+//	}
+//	public void setListeHits(ArrayList<Film> liste) {
+//		this.listeHits = liste;
+//	}
 }
