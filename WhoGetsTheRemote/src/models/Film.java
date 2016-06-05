@@ -29,7 +29,7 @@ public class Film implements Serializable
 	@Column
 	private String description;
 	@Column
-	private String date;
+	private String dateReleased;
 	@Column
 	private int notationFilm;
 	@Column
@@ -38,26 +38,50 @@ public class Film implements Serializable
 	private String filmLink;
 	@Column
 	private String imageFilm;
+	@Column
+	private String creationDate;
+	@Column
+	private String modificationDate;
+	@Column
+	private int viewers;
 	
 	//private ArrayList<Film> listeHits = new ArrayList();
 	//********* Constructor
 	public Film() {
 		super();
 	}
-	
-	public Film(int id, String name, String description, String date,int notationFilm, String trailer, String filmLink, String image){
+
+	public Film(int id, String name, String description, String dateeleased, int notationFilm, String trailerFilm,
+			String filmLink, String imageFilm, String creationDate, String modificationDate) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.description = description;
-		this.date = date;
+		this.dateReleased = dateeleased;
 		this.notationFilm = notationFilm;
-		this.trailerFilm = trailer;
+		this.trailerFilm = trailerFilm;
 		this.filmLink = filmLink;
-		this.imageFilm = image;
+		this.imageFilm = imageFilm;
+		this.creationDate = creationDate;
+		this.modificationDate = modificationDate;
 	}
 	
-	//********* Getters and Setters
+	public Film(int id, String name, String description, String dateeleased, int notationFilm, String trailerFilm,
+			String filmLink, String imageFilm, String creationDate, String modificationDate, int viewers) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.description = description;
+		this.dateReleased = dateeleased;
+		this.notationFilm = notationFilm;
+		this.trailerFilm = trailerFilm;
+		this.filmLink = filmLink;
+		this.imageFilm = imageFilm;
+		this.creationDate = creationDate;
+		this.modificationDate = modificationDate;
+		this.viewers = viewers;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -76,24 +100,47 @@ public class Film implements Serializable
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
-	public String getDate() {
-		return date;
+	public String getDateReleased() {
+		return dateReleased;
 	}
-	public void setDate(String date) {
-		this.date = date;
+	public void setDateReleased(String dateReleased) {
+		this.dateReleased = dateReleased;
 	}
 	public int getNotationFilm() {
 		return notationFilm;
 	}
-	public void setIdmbRating(int notationFilm) {
+	public void setNotationFilm(int notationFilm) {
 		this.notationFilm = notationFilm;
 	}
+	public String getTrailerFilm() {
+		return trailerFilm;
+	}
+	public void setTrailerFilm(String trailerFilm) {
+		this.trailerFilm = trailerFilm;
+	}
+	public String getFilmLink() {
+		return filmLink;
+	}
+	public void setFilmLink(String filmLink) {
+		this.filmLink = filmLink;
+	}
+	public String getImageFilm() {
+		return imageFilm;
+	}
+	public void setImageFilm(String imageFilm) {
+		this.imageFilm = imageFilm;
+	}
+	public String getCreationDate() {
+		return creationDate;
+	}
+	public void setCreationDate(String creationDate) {
+		this.creationDate = creationDate;
+	}
+	public String getModificationDate() {
+		return modificationDate;
+	}
+	public void setModificationDate(String modificationDate) {
+		this.modificationDate = modificationDate;
+	}
 
-//	public ArrayList<Film> getListeHits() {
-//		return listeHits;
-//	}
-//	public void setListeHits(ArrayList<Film> liste) {
-//		this.listeHits = liste;
-//	}
 }
