@@ -26,7 +26,7 @@ import javafx.scene.control.Alert;
 import models.Film;
 import models.FilmHits;
 import models.Friend;
-import models.GlobalFunctions;
+//import models.GlobalFunctions;
 import models.User;
 
 @WebServlet("/LoginServlet")
@@ -71,6 +71,7 @@ public class LoginServlet extends HttpServlet {
 			
 			if (myResultSet.next()) 
 			{				
+				System.out.println("i am in do POST Login, in the Result set");
 				int id = myResultSet.getInt("ID_USER");
 				String nom = myResultSet.getString("NOM_USER");
 				String prenom = myResultSet.getString("PRENOM_USER");
@@ -91,8 +92,10 @@ public class LoginServlet extends HttpServlet {
 													+ "(SELECT u1.ID_USER, u1.NOM_USER, u1.PRENOM_USER, u1.EMAIL_USER, u1.DATE_OF_BIRTH, u1.SEXE, u1.USERNAME, u1.PASSWORD_USER, u1.ADDRESS_USER, u1.IMAGE_USER, u1.USER_CREATION_DATE, u1.USER_MODIFICATION_DATE  FROM FRIENDS f1 inner join USERS u1 on f1.ID_USER_ONE = u1.ID_USER WHERE f1.ID_USER_TWO = " + id + ")");
 				ResultSet newFriendsResult = statementFriends.executeQuery();
 				List<Friend> friendsInCommon = new ArrayList<Friend>();
+				System.out.println("i am in do POST Login, preparing friends in commun");
 				while(newFriendsResult.next())
 				{
+					System.out.println("i am in do POST Login, executed friends in commun");
 					Friend friendd = new Friend();
 					//Getting all the rows
 					int idFriend = newFriendsResult.getInt("ID_USER");
@@ -139,7 +142,9 @@ public class LoginServlet extends HttpServlet {
 					String trailer = newMoviesResult.getString("TRAILER_FILM_LINK");
 					String filmLink =  newMoviesResult.getString("FILM_LINK");
 					String image =  newMoviesResult.getString("IMAGE_FILM");
-					Film currentFilm = new Film(idFilm,nomFilm,descriptionFilm,dateReleased,notationFilm,trailer,filmLink,image) ;
+					String creationDate =  newMoviesResult.getString("FILM_MODIFICATION_DATE");
+					String modificationDate =  newMoviesResult.getString("FILM_CREATION_DATE");
+					Film currentFilm = new Film(idFilm,nomFilm,descriptionFilm,dateReleased,notationFilm,trailer,filmLink,image,creationDate, modificationDate) ;
 					listF.add(currentFilm);
 					
 					int i = 0;
@@ -154,8 +159,10 @@ public class LoginServlet extends HttpServlet {
 				session = request.getSession();
 				session.setAttribute("userLogged", currentUser);
 				session.setAttribute("listHits", listF);
-						
+				System.out.println("redirecting to home");
 				request.getRequestDispatcher("/Home.jsp").forward(request, response);
+				
+				System.out.println("redirected to home");
 			} 
             else 
             {

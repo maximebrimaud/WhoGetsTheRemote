@@ -3,151 +3,305 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title>WGTR - Log In or Sign Up</title>
-		<link href="Bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-		<script type="text/javascript" src="Bootstrap/js/bootstrap.min.js"></script>
+		<title>Login</title>
+		<script src="MyBootstrap/jquery-1.12.4.min.js" type="text/javascript" ></script>
+		
+		<link href="MyBootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" /> 
+		<script type="text/javascript" src="MyBootstrap/js/bootstrap.min.js"></script> 
+		
+		<!-- <link href="Bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+		<link href="Bootstrap/dist/css/bootstrap.css" rel="stylesheet" type="text/css" />
+		<link href="Bootstrap/dist/css/bootstrap-theme.css" rel="stylesheet" type="text/css" />
+		<link href="Bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
+		<script type="text/javascript" src="Bootstrap/dist/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="Bootstrap/dist/js/bootstrap.js"></script> -->
+		
+		
+		
 		<%-- vvvvv Cover Styiling vvvvv --%>
-	  	<link href="Bootstrap/css/ie10-viewport-bug-workaround.css" rel="stylesheet">	    
-	    <link href="Bootstrap/css/cover.css" rel="stylesheet">	
-	    <script src="Bootstrap/js/ie-emulation-modes-warning.js"></script>
+	  	<link href="MyBootstrap/css/ie10-viewport-bug-workaround.css" rel="stylesheet">	    
+	    <link href="MyBootstrap/css/cover.css" rel="stylesheet">		   
+	    <script src="MyBootstrap/js/ie-emulation-modes-warning.js"></script> 	    
 	</head>
 	<body>
 		
- 	<div class="site-wrapper">
+ 	<!-- <div class="site-wrapper" > -->
 
 		<div id = "SiteInnerWraper" class="site-wrapper-inner">
-			<div class="cover-container" style="width: 70%;">
-			  	<div class="masthead clearfix" style="width: 70%; background-color: #333;">
-					<div class="inner">
-					  <h3 class="masthead-brand" style="font-size: -webkit-xxx-large; color:rgb(67, 144, 226);">Who Gets The Remote</h3>
-					  <nav>
-						<ul class="nav masthead-nav">
-						  <li class="active"><a href="#">Home</a></li>
-						  <li><a href="#">Features</a></li>
-						  <li><a href="#">Contact</a></li>
-						</ul>
-					  </nav>
-					</div>
-			  	</div>
-				
-				
-				<div class="container"> 
-					<table>
-						<tr>
-							<td style="width: 60%">
-								<div class="inner cover" >
-									<h1 class="cover-heading">Cover your page.</h1>
-									<p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
-									<p class="lead">
-									<button type="button" onclick="scrollToLogin()" class="btn btn-default">Sign in</button>				
-									<!-- <input type="button" onclick="scrollToLogin()" value="Login" class="btn btn-default"> -->
-									<button type="button" onclick="scrollToSignup()" class="btn btn-default">Register</button>				 				  
-									</p>
-								  </div>
-							</td>
-							<td style="width: 40%;" >
-							  	<div id = "LoginInnerContainer" class="inner cover">	
-								  	 <h1 class="cover-heading">Login</h1>	
-										<form role="form" action="LoginServlet" method="post">
-											<div class="form-group">
-												<label for="exampleInputEmail1">Email address</label>
-												<!-- <input type="email" class="form-control" name="username" id="exampleInputEmail1" placeholder="Enter email"> -->
-												<input type="text" class="form-control" name="LoginUsername" id="exampleInputEmail1" placeholder="Enter email">
-											</div> 
-											<div class="form-group">
-												<label for="exampleInputPassword1">Password</label>
-												<input type="password" class="form-control" name="LoginPassword" id="exampleInputPassword1" placeholder="Password">
-											</div>					
-											<div style="color: red;">
-												${loginMessage}
-											</div>							
-											<button type="submit" class="btn btn-default">Login</button>
-										</form>		
-								  </div>
-								  
-							  	<div id = "SignupInnerContainer" class="inner cover" style=" display: none;">	
-							  	 	<h1 class="cover-heading">Register</h1>	
-									<form role="form" action="RegisterServlet" method="post">
-										<div class="form-group">
-											<label for="FirstName">First Name</label>							
-											<input type="text" class="form-control" name="FirstName" id="FirstName" placeholder="First Name">
-										</div>
-										<div class="form-group">
-											<label for="LastName">Last Name</label>							
-											<input type="text" class="form-control" name="LastName" id="LastName" placeholder="Last Name">
-										</div>
-										<div class="form-group">
-											<label for="email">Email address</label>
-											<input type="email" class="form-control" name="email" id="email" placeholder="Email">							
-										</div> 
-										<div class="form-group">
-											<label for="DateOfBirth">Date of Birth</label>
-											<!-- <input type="text" class="form-control" name="DateOfBirth" id="DateOfBirth" placeholder="Date Of Birth"> -->
-											<div class="container" style="width: 100%;">
-											    <div class="row">
-											      <!--  <div class='col-sm-6'>
-											            <div class="form-group">-->
-											                <div class='input-group date' id='datetimepicker1'>
-											                    <input type='text' name="dateOfBirth" id="dateOfBirth" class="form-control" />
-											                    <span class="input-group-addon">
-											                        <span class="glyphicon glyphicon-calendar"></span>
-											                    </span>
-											                </div>
-											            <!-- </div>
-											        </div>-->
-											        <script type="text/javascript">
-											            $(function () {
-											                $('#datetimepicker1').datetimepicker();
-											            });
-											        </script>
-											    </div>
-											</div>												
-										</div>
-										<div class="form-group">
-											<label for="Sexe">Gender</label>
-											<select name="Sexe" id="Sexe" class="form-control">
-											    <option value="M">Male</option>
-											    <option value="F">Female</option>							    
-											</select>																										
-										</div>
-										<div class="form-group">
-											<label for="Username">Username</label>							
-											<input type="text" class="form-control" name="Username" id="Username" placeholder="Username">
-										</div>
-										<div class="form-group">
-											<label for="password">Password</label>
-											<input type="password" class="form-control" name="password" id="password" placeholder="Password">
-										</div>	
-										<div class="form-group">
-											<label for="Address">Address</label>							
-											<input type="text" class="form-control" name="Address" id="Address" placeholder="Address">
-										</div class="form-group">				
-										<div style="color: red;">
-											${RegisterMessage}
-										</div>							
-										<button type="submit" class="btn btn-default">Submit</button>
-									</form>		
-							  	</div>								  								
-							</td>
-						</tr>
-					</table>
-				</div>
-				
-			  
-			  	<div class="mastfoot" style="width: 70%; background-color: #333;">
-					<div class="inner">
-					  <p>Cover template for <a href="http://getbootstrap.com">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
-					</div>
-			  	</div>
-			</div>
-		</div>	   							
-	</div>	
+			<div class="cover-container" style="width: 80%;">
+			<table>
+				<tr>
+					<td>
+						<div class="masthead clearfix" style="width: 70%; background-color: #333;">
+							<div class="inner">
+							  <h3 class="masthead-brand" style="font-size: -webkit-xxx-large; color:rgb(67, 144, 226);">Who Gets The Remote</h3>
+							  <nav>
+								<ul class="nav masthead-nav">
+								  <li class="active"><a href="#">Home</a></li>
+								  <li><a href="#">Features</a></li>
+								  <li><a href="#">Contact</a></li>
+								</ul>
+							  </nav>
+							</div>
+					  	</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<!-- <div class="container">  -->
+							<table>
+								<tr>
+									<td style="width: 40%">
+										<div class="inner cover" >
+											<h1 class="cover-heading">Don't wait anymore!</h1>
+											<p class="lead">Sign in, or Register if you don't have an account yet, and start enjoying movie nights with your friends.</p>
+											<p class="lead">
+											<button type="button" onclick="scrollToLogin()" class="btn btn-default">Sign in</button>				
+											<!-- <input type="button" onclick="scrollToLogin()" value="Login" class="btn btn-default"> -->
+											<button type="button" onclick="scrollToSignup()" class="btn btn-default">Register</button>				 				  
+											</p>
+										  </div>
+									</td>
+									<td style="width: 60%;" >
+									  	<div id = "LoginInnerContainer" class="inner cover" >	
+										  	 <h1 class="cover-heading">Login</h1>	
+												<form role="form" action="LoginServlet" onsubmit="return checkLoginInputs()" method="post">											
+													<div class="form-group">
+														<label for="exampleInputEmail1">Email address</label>
+														<!-- <input type="email" class="form-control" name="username" id="exampleInputEmail1" placeholder="Enter email"> -->
+														<input type="text" class="form-control" name="LoginUsername" id="LoginUsername" placeholder="Enter email">
+														<label id="LoginUserValidator" style="color: red; font-weight:normal;"></label>
+													</div> 
+													<div class="form-group">
+														<label for="exampleInputPassword1">Password</label>
+														<input type="password" class="form-control" name="LoginPassword" id="LoginPassword" placeholder="Password">
+														<label id="LoginPassValidator" style="color: red; font-weight:normal;"></label>
+													</div>				
+													
+													<div style="color: red;">
+														${loginMessage}
+													</div>							
+													<button type="submit" class="btn btn-default">Login</button>
+												</form>		
+										  </div>
+										  
+									  	<div id = "SignupInnerContainer" class="inner cover" style=" display: none;">	
+									  	 	<h1 class="cover-heading">Register</h1>	
+											<form role="form" action="RegisterServlet" onsubmit="return CheckRegisterInputs()" method="post">
+											<table>
+														<tr>
+															<td width="50%" style="padding-right: 5px;">
+																<div class="form-group">
+																	<label for="FirstName">First Name</label>							
+																	<input type="text" class="form-control" name="FirstName" id="FirstName" placeholder="First Name"> 																		
+																	<label id="FirstNameValidator" style="color: red; font-weight:normal;"></label>												
+																</div>
+															</td>
+															<td style="padding-left: 5px;">
+																<div class="form-group">
+																	<label for="LastName">Last Name</label>							
+																	<input type="text" class="form-control" name="LastName" id="LastName" placeholder="Last Name">
+																	<label id="LastNameValidator" style="color: red; font-weight:normal;"></label>
+																</div>
+															</td>
+														</tr>
+														<tr>
+															<td colspan="2" >
+																<div class="form-group">
+																	<label for="email">Email address</label>
+																	<input type="email" class="form-control" name="email" id="email" placeholder="Email">
+																	<label id="EmailValidator" style="color: red; font-weight:normal;"></label>							
+																</div> 
+															</td>
+														</tr>
+														<tr>
+															<td>																																																																								
+																<div class="form-group" style="padding-right: 5px;">
+																	<label for="DateOfBirth">Date of Birth</label>
+																	
+																	<!-- <div class="form-group">																	
+																	<select name="DOBYear" id="DOBYear" class="form-control">
+																	    <option value="2016">2016</option>
+																	    <option value="F">Female</option>							    
+																	</select>	
+																																									
+																	</div> -->
+																	
+																	
+																	
+																	<!-- <input type="text" class="form-control" name="DateOfBirth" id="DateOfBirth" placeholder="Date Of Birth"> -->
+																	<div class="container" style="width: 100%;">
+																	    <div class="row">
+																	      <!--  <div class='col-sm-6'>
+																	            <div class="form-group">-->
+																	                <div class='input-group date' id='datetimepicker1'>
+																	                    <input type='text' name="dateOfBirth" id="dateOfBirth" class="form-control" />
+																	                    <span class="input-group-addon">
+																	                        <span class="glyphicon glyphicon-calendar"></span>
+																	                    </span>
+																	                </div>
+																	            <!-- </div>
+																	        </div>-->
+																	        <script type="text/javascript">
+																	            $(function () {
+																	                $('#datetimepicker1').datetimepicker();
+																	            });
+																	        </script>
+																	    </div>
+																	</div>	
+																	<label id="DOBValidator" style="color: red; font-weight:normal;"></label>											
+																</div>
+																
+																
+																
+																
+															</td>
+															<td style="padding-left: 5px;">
+																<div class="form-group">
+																	<label for="Sexe">Gender</label>
+																	<select name="Sexe" id="Sexe" class="form-control">
+																	    <option value="M">Male</option>
+																	    <option value="F">Female</option>							    
+																	</select>	
+																	<label id="SexeValidator" style="color: red; font-weight:normal;"></label>																									
+																</div>
+															</td>
+														</tr>
+														<tr>
+															<td >
+																<div class="form-group">
+																	<label for="Username">Username</label>							
+																	<input type="text" class="form-control" name="Username" id="Username" placeholder="Username">
+																	<label id="UsernameValidator" style="color: red; font-weight:normal;"></label>
+																</div>
+															</td>
+														</tr>
+														<tr>												
+															<td>
+																<div class="form-group" style="padding-right: 5px;">
+																	<label for="password">Password</label>
+																	<input type="password" class="form-control" name="password" id="password" placeholder="Password">
+																	<label id="PassValidator" style="color: red; font-weight:normal;"></label>
+																</div>
+															</td>
+															<td>
+																<div class="form-group" style="padding-left: 5px;">
+																	<label for="password">Confirm Password</label>
+																	<input type="password" class="form-control" name="confirmPass" id="confirmPass" placeholder="confirm Pass">
+																	<label id="ConfPassValidator" style="color: red; font-weight:normal;"></label>
+																</div>
+															</td>
+														</tr>
+														<tr>
+															<td colspan="2">
+																<div class="form-group">
+																	<label for="Address">Address</label>							
+																	<input type="text" class="form-control" name="Address" id="Address" placeholder="Address">
+																	<label id="AddressValidator" style="color: red; font-weight:normal;"></label>
+																</div class="form-group">
+															</td>
+														</tr>
+													</table>
+													
+													
+												
+												<!-- <div class="form-group">
+													<label for="FirstName">First Name</label>							
+													<input type="text" class="form-control" name="FirstName" id="FirstName" placeholder="First Name"> 
+												</div>
+												<div class="form-group">
+													<label for="LastName">Last Name</label>							
+													<input type="text" class="form-control" name="LastName" id="LastName" placeholder="Last Name">
+												</div>
+												<div class="form-group">
+													<label for="email">Email address</label>
+													<input type="email" class="form-control" name="email" id="email" placeholder="Email">							
+												</div> 
+												<div class="form-group">
+													<label for="DateOfBirth">Date of Birth</label>
+													<input type="text" class="form-control" name="DateOfBirth" id="DateOfBirth" placeholder="Date Of Birth">
+													<div class="container" style="width: 100%;">
+													    <div class="row">
+													       <div class='col-sm-6'>
+													            <div class="form-group">
+													                <div class='input-group date' id='datetimepicker1'>
+													                    <input type='text' name="dateOfBirth" id="dateOfBirth" class="form-control" />
+													                    <span class="input-group-addon">
+													                        <span class="glyphicon glyphicon-calendar"></span>
+													                    </span>
+													                </div>
+													            </div>
+													        </div>
+													        <script type="text/javascript">
+													            $(function () {
+													                $('#datetimepicker1').datetimepicker();
+													            });
+													        </script>
+													    </div>
+													</div>												
+												</div>
+												<div class="form-group">
+													<label for="Sexe">Gender</label>
+													<select name="Sexe" id="Sexe" class="form-control">
+													    <option value="M">Male</option>
+													    <option value="F">Female</option>							    
+													</select>																										
+												</div>
+												<div class="form-group">
+													<label for="Username">Username</label>							
+													<input type="text" class="form-control" name="Username" id="Username" placeholder="Username">
+												</div>
+												<div class="form-group">
+													<label for="password">Password</label>
+													<input type="password" class="form-control" name="password" id="password" placeholder="Password">
+												</div>	
+												<div class="form-group">
+													<label for="password">Confirm Password</label>
+													<input type="password" class="form-control" name="confirmPass" id="confirmPass" placeholder="confirm Pass">
+												</div>	
+												<div class="form-group">
+													<label for="Address">Address</label>							
+													<input type="text" class="form-control" name="Address" id="Address" placeholder="Address">
+												</div class="form-group"> -->				
+												<div style="color: red;">
+													${RegisterMessage}
+												</div>		
+												<div style="color: red;">
+													<label id="RegistrationValidator" style="color: red; font-weight:normal;"></label>
+												</div>					
+												<button type="submit" class="btn btn-default">Submit</button>
+											</form>		
+									  	</div>								  								
+									</td>
+								</tr>
+							</table>
+						<!-- </div> -->					
+					</td>
+				</tr>
+				<tr>
+					<td>
+					 	<div class="mastfoot" style="width: 70%; background-color: #333;">
+							<div class="inner">
+							  <p>Cover template for <a href="http://getbootstrap.com">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+							</div>
+						</div>  		
+					</td>
+				</tr>
+			</table>
+			  	
+								
+					  
+			 	</div>
+			
+		</div>	
+		 							
+	<!-- </div> -->	
 	 
 		
-	<script>window.jQuery || document.write('<script src="Bootstrap/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="Bootstrap/js/bootstrap.min.js"></script>
+	<script>window.jQuery || document.write('<script src="MyBootstrap/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="MyBootstrap/js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="Bootstrap/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="MyBootstrap/js/ie10-viewport-bug-workaround.js"></script>
     
     
     <script type="text/javascript">
@@ -170,6 +324,148 @@
 	    toHideDiv.style.display = 'none';
     	//alert('in scroll signup');
     	console.log("in scroll signup");
+    }
+    
+    function CheckRegisterInputs()
+    {      
+      	var RegistrationValidator = document.getElementById('RegistrationValidator');
+      	
+      	var FirstNameValidator = document.getElementById('FirstNameValidator'); 
+      	var LastNameValidator = document.getElementById('LastNameValidator');
+      	var EmailValidator = document.getElementById('EmailValidator');
+      	var DOBValidator = document.getElementById('DOBValidator');
+      	var SexeValidator = document.getElementById('SexeValidator'); 
+      	var UsernameValidator = document.getElementById('UsernameValidator');
+      	var PassValidator = document.getElementById('PassValidator');
+      	var ConfPassValidator = document.getElementById('ConfPassValidator');
+      	var AddressValidator = document.getElementById('AddressValidator');
+      	
+    	var FirstName = document.getElementById('FirstName').value;
+    	var LastName = document.getElementById('LastName').value;
+    	var email = document.getElementById('email').value;
+    	var dateOfBirth = document.getElementById('dateOfBirth').value;
+    	var Sexe = document.getElementById('Sexe').value;
+    	var Username = document.getElementById('Username').value;
+    	var password = document.getElementById('password').value;
+    	var confirmPass = document.getElementById('confirmPass').value;
+    	var Address = document.getElementById('Address').value;
+    	
+    	RegistrationValidator.innerHTML  ="";
+    	FirstNameValidator.innerHTML  ="";
+    	LastNameValidator.innerHTML  ="";
+    	EmailValidator.innerHTML  ="";
+    	DOBValidator.innerHTML  ="";
+    	SexeValidator.innerHTML  ="";
+    	UsernameValidator.innerHTML  ="";
+    	PassValidator.innerHTML  ="";
+    	ConfPassValidator.innerHTML  ="";
+    	AddressValidator.innerHTML  ="";
+    	
+    	var valid = true;
+    	console.log("starting validating ....." );
+    	if (FirstName.trim()=="")
+    	{
+    		FirstNameValidator.innerHTML  ="*";
+    		valid = false;
+    		console.log("fn valid= false");
+    	}
+    	if (LastName.trim()=="")
+    	{
+    		LastNameValidator.innerHTML  ="*";
+    		valid = false;
+    		console.log("ln valid= false");
+    	}
+    	if (email.trim()=="")
+    	{
+    		EmailValidator.innerHTML  ="*";
+    		valid = false;
+    		console.log("email valid= false");
+    	}
+    	if (dateOfBirth.trim()=="")
+    	{
+    		DOBValidator.innerHTML  ="*";
+    		valid = false;
+    		console.log("dob valid= false");
+    	}
+    	if (Sexe.trim()=="")
+    	{
+    		SexeValidator.innerHTML  ="*";
+    		valid = false;
+    		console.log("sexe valid= false");
+    	}
+    	if (Username.trim()=="")
+    	{
+    		UsernameValidator.innerHTML  ="*";
+    		valid = false;
+    		console.log("username valid= false");
+    	}
+    	if (password.trim()=="")
+    	{
+    		PassValidator.innerHTML  ="*";
+    		valid = false;
+    		console.log("pass valid= false");
+    	}
+    	if (confirmPass.trim()=="")
+    	{
+    		ConfPassValidator.innerHTML  ="*";
+    		valid = false;
+    		console.log("conf pass valid= false");
+    	}
+    	if (Address.trim()=="")
+    	{
+    		AddressValidator.innerHTML  ="*";
+    		valid = false;
+    		console.log("address valid= false");
+    	}
+    	
+    	console.log("done validating");
+    	
+    	if (valid == false)
+    	{
+    		console.log("final valid =" + valid);
+    		return false;    		
+    	}    	
+    	else	
+    	{
+    		return true;
+    	}
+    }
+    
+    function checkLoginInputs()
+    {
+	    LoginPassValidator
+	    LoginUserValidator
+	    
+	    var LoginPassValidator = document.getElementById('LoginPassValidator');
+      	var LoginUserValidator = document.getElementById('LoginUserValidator');
+      	
+    	var LoginPass = document.getElementById('LoginPassword').value;
+	    var LoginUser = document.getElementById('LoginUsername').value;
+	    
+	    var valid = true;
+	    
+	    if (LoginPass.trim()=="")
+    	{
+    		LoginPassValidator.innerHTML  ="*";
+    		valid = false;
+    		console.log("LoginPass valid= false");
+    	}
+    	if (LoginUser.trim()=="")
+    	{
+    		LoginUserValidator.innerHTML  ="*";
+    		valid = false;
+    		console.log("LoginUser valid= false");
+    	}
+	    
+	    if (valid == false)
+    	{
+    		console.log("final valid =" + valid);
+    		return false;    		
+    	}    	
+    	else	
+    	{
+    		return true;
+    	}
     }
     </script>
 	</body>
