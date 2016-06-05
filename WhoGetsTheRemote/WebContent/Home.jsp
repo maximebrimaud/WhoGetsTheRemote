@@ -1,8 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%-- <%@taglib prefix="c" uri="http:java.sun.com/jsp/jstl.core" %> --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page import="java.io.*,java.util.*,javax.servlet.*" %>
+<%
+	if (session.getAttribute("sessionId") == null || session.getAttribute("sessionId").equals("")){
+		response.sendRedirect("LoginPage.jsp");
+	}
+%>
+
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -36,7 +42,7 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-left">
-            <li><a href="#">Movies</a></li>
+            <li><a href="MoviesPage.jsp">Movies</a></li>
             <li><a href="FriendsPage.jsp">Friends</a></li>
             <li><a href="#">Events</a></li>
           </ul>
@@ -45,7 +51,7 @@
 <!--           </form> -->
 		   <ul class="nav navbar-nav navbar-right">
             <li><a href="#">${userLogged.getFullName()}</a></li>
-            <li><a href="#">LogOut</a></li>
+            <li><a href="LogoutPage.jsp">LogOut</a></li>
           </ul>
         </div>
       </div>
