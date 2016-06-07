@@ -5,6 +5,7 @@
 <%@ page import="java.io.*,java.util.*,javax.servlet.*" %>
 <%
 	if (session.getAttribute("sessionId") == null || session.getAttribute("sessionId").equals("")){
+		System.out.println("not logged in!");
 		response.sendRedirect("LoginPage.jsp");
 	}
 %>

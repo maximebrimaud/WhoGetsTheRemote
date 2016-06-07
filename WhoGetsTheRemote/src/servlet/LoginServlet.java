@@ -157,6 +157,7 @@ public class LoginServlet extends HttpServlet {
 				//Creer un httpsession pour mettre l'objet user
 				HttpSession session;
 				session = request.getSession();
+				session.setAttribute("sessionId", currentUser.getId());
 				session.setAttribute("userLogged", currentUser);
 				session.setAttribute("listHits", listF);
 				System.out.println("redirecting to home");
