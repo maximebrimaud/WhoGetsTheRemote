@@ -5,6 +5,7 @@
 <%@ page import="java.io.*,java.util.*,javax.servlet.*" %>
 <%
 	if (session.getAttribute("sessionId") == null || session.getAttribute("sessionId").equals("")){
+		System.out.println("not logged in!");
 		response.sendRedirect("LoginPage.jsp");
 	}
 %>
@@ -50,7 +51,7 @@
 <!--             <input type="text" class="form-control" placeholder="Search..."> -->
 <!--           </form> -->
 		   <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">${userLogged.getFullName()}</a></li>
+            <li><a href="UserProfile.jsp">${userLogged.getFullName()}</a></li>
             <li><a href="LogoutPage.jsp">LogOut</a></li>
           </ul>
         </div>

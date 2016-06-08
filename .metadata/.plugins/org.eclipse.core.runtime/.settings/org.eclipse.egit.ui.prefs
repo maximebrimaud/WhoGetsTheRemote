@@ -1,0 +1,2 @@
+commit_dialog_history_messages=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<messages>\r\n<message>Login servlet et login page</message>\r\n<message>Session, modifying the models (user, film), adding a model (Friend),&\#x0A;FriendsPage</message>\r\n<message>Creating the master page and adding new bootstrap files  </message>\r\n</messages>
+eclipse.preferences.version=1

@@ -1,0 +1,98 @@
+package models;
+
+import java.util.ArrayList;
+
+import javax.enterprise.context.SessionScoped;
+import javax.inject.Named;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+@Entity
+@Table
+@SessionScoped
+@Named
+public class Film 
+{	
+	@Id
+	@SequenceGenerator(name="FilmId", sequenceName="FilmIdSequence", allocationSize=1)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator ="FilmId")
+	@Column
+	private int id;
+	@Column
+	private String name;
+	@Column
+	private String description;
+	@Column
+	private String date;
+	@Column
+	private int notationFilm;
+	@Column
+	private String trailerFilm;
+	@Column
+	private String filmLink;
+	@Column
+	private String imageFilm;
+	
+	private ArrayList<Film> listeHits = new ArrayList();
+	//********* Constructor
+	public Film() {
+		super();
+	}
+	
+	public Film(int id, String name, String description, String date,int notationFilm, String trailer, String filmLink, String image){
+		super();
+		this.id = id;
+		this.name = name;
+		this.description = description;
+		this.date = date;
+		this.notationFilm = notationFilm;
+		this.trailerFilm = trailer;
+		this.filmLink = filmLink;
+		this.imageFilm = image;
+	}
+	
+	//********* Getters and Setters
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String getDate() {
+		return date;
+	}
+	public void setDate(String date) {
+		this.date = date;
+	}
+	public int getNotationFilm() {
+		return notationFilm;
+	}
+	public void setIdmbRating(int notationFilm) {
+		this.notationFilm = notationFilm;
+	}
+
+	public ArrayList<Film> getListeHits() {
+		return listeHits;
+	}
+	public void setListeHits(ArrayList<Film> liste) {
+		this.listeHits = liste;
+	}
+}

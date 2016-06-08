@@ -9,5 +9,7 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="lib" path="C:/Users/Daniel/Documents/Dauphine - Master 2/Conception et Developpement/Eclipse Mars/New GlassFish/glassfish4/glassfish/lib/javaee.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Daniel/Documents/Dauphine - Master 2/Conception et Developpement/Eclipse Mars/javax.inject-1.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
