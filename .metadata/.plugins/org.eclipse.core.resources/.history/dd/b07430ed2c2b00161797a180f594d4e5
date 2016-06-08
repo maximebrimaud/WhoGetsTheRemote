@@ -1,0 +1,146 @@
+package models;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+
+import javax.enterprise.context.SessionScoped;
+import javax.inject.Named;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+@Entity
+@Table
+@SessionScoped
+@Named
+public class Film implements Serializable
+{	
+	@Id
+	@SequenceGenerator(name="FilmId", sequenceName="FilmIdSequence", allocationSize=1)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator ="FilmId")
+	@Column
+	private int id;
+	@Column
+	private String name;
+	@Column
+	private String description;
+	@Column
+	private String dateeleased;
+	@Column
+	private int notationFilm;
+	@Column
+	private String trailerFilm;
+	@Column
+	private String filmLink;
+	@Column
+	private String imageFilm;
+	@Column
+	private String creationDate;
+	@Column
+	private String modificationDate;
+	@Column
+	private int viewers;
+	
+	//private ArrayList<Film> listeHits = new ArrayList();
+	//********* Constructor
+	public Film() {
+		super();
+	}
+
+	public Film(int id, String name, String description, String dateeleased, int notationFilm, String trailerFilm,
+			String filmLink, String imageFilm, String creationDate, String modificationDate) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.description = description;
+		this.dateeleased = dateeleased;
+		this.notationFilm = notationFilm;
+		this.trailerFilm = trailerFilm;
+		this.filmLink = filmLink;
+		this.imageFilm = imageFilm;
+		this.creationDate = creationDate;
+		this.modificationDate = modificationDate;
+	}
+	
+	public Film(int id, String name, String description, String dateeleased, int notationFilm, String trailerFilm,
+			String filmLink, String imageFilm, String creationDate, String modificationDate, int viewers) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.description = description;
+		this.dateeleased = dateeleased;
+		this.notationFilm = notationFilm;
+		this.trailerFilm = trailerFilm;
+		this.filmLink = filmLink;
+		this.imageFilm = imageFilm;
+		this.creationDate = creationDate;
+		this.modificationDate = modificationDate;
+		this.viewers = viewers;
+	}
+
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	public String getDateeleased() {
+		return dateeleased;
+	}
+	public void setDateeleased(String dateeleased) {
+		this.dateeleased = dateeleased;
+	}
+	public int getNotationFilm() {
+		return notationFilm;
+	}
+	public void setNotationFilm(int notationFilm) {
+		this.notationFilm = notationFilm;
+	}
+	public String getTrailerFilm() {
+		return trailerFilm;
+	}
+	public void setTrailerFilm(String trailerFilm) {
+		this.trailerFilm = trailerFilm;
+	}
+	public String getFilmLink() {
+		return filmLink;
+	}
+	public void setFilmLink(String filmLink) {
+		this.filmLink = filmLink;
+	}
+	public String getImageFilm() {
+		return imageFilm;
+	}
+	public void setImageFilm(String imageFilm) {
+		this.imageFilm = imageFilm;
+	}
+	public String getCreationDate() {
+		return creationDate;
+	}
+	public void setCreationDate(String creationDate) {
+		this.creationDate = creationDate;
+	}
+	public String getModificationDate() {
+		return modificationDate;
+	}
+	public void setModificationDate(String modificationDate) {
+		this.modificationDate = modificationDate;
+	}
+
+}

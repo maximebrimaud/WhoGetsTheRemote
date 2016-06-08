@@ -1,0 +1,9 @@
+package servlet;
+
+public class LogoutServlet {
+	
+	if (session.getAttribute("sessionId") == null || session.getAttribute("sessionId").equals("")){
+		response.sendRedirect("LoginPage.jsp");
+	}
+	
+}
