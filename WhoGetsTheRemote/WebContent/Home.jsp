@@ -45,7 +45,7 @@
           <ul class="nav navbar-nav navbar-left">
             <li><a href="MoviesPage.jsp">Movies</a></li>
             <li><a href="FriendsPage.jsp">Friends</a></li>
-            <li><a href="#">Events</a></li>
+            <li><a href="EventsPage.jsp">Events</a></li>
           </ul>
 <!--           <form class="navbar-form navbar-right"> -->
 <!--             <input type="text" class="form-control" placeholder="Search..."> -->
