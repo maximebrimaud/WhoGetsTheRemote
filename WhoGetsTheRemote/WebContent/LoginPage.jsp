@@ -15,8 +15,8 @@
 	    <link href="Bootstrap/css/cover.css" rel="stylesheet">	
 	    <script src="Bootstrap/js/ie-emulation-modes-warning.js"></script>
 	</head>
+	
 	<body>
-		
  	<div class="site-wrapper">
 
 		<div id = "SiteInnerWraper" class="site-wrapper-inner">
