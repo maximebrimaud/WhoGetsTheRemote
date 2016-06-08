@@ -7,6 +7,21 @@
 <%
 	session.setAttribute("sessionId","");
 %>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<title>WGTR - Log In or Sign Up</title>
+		<link href="Bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+		<script type="text/javascript" src="Bootstrap/js/bootstrap.min.js"></script>
+		<%-- vvvvv Cover Styiling vvvvv --%>
+	  	<link href="Bootstrap/css/ie10-viewport-bug-workaround.css" rel="stylesheet">	    
+	    <link href="Bootstrap/css/cover.css" rel="stylesheet">	
+	    <script src="Bootstrap/js/ie-emulation-modes-warning.js"></script>
+	</head>
+	
+	<body>
+ 	<div class="site-wrapper">
+
 
 <html lang="en">
   <head>
