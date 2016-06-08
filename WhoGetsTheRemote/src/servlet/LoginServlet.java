@@ -141,15 +141,10 @@ public class LoginServlet extends HttpServlet {
 					String trailer = newMoviesResult.getString("TRAILER_FILM_LINK");
 					String filmLink =  newMoviesResult.getString("FILM_LINK");
 					String image =  newMoviesResult.getString("IMAGE_FILM");
-<<<<<<< HEAD
 					String creationDate =  newMoviesResult.getString("FILM_CREATION_DATE");
 					String modificationDate =  newMoviesResult.getString("FILM_MODIFICATION_DATE");
 					Film currentFilm = new Film(idFilm,nomFilm,descriptionFilm,dateReleased,notationFilm,trailer,filmLink,image,creationDate,modificationDate) ;
-=======
-					String creationDate =  newMoviesResult.getString("FILM_MODIFICATION_DATE");
-					String modificationDate =  newMoviesResult.getString("FILM_CREATION_DATE");
-					Film currentFilm = new Film(idFilm,nomFilm,descriptionFilm,dateReleased,notationFilm,trailer,filmLink,image,creationDate, modificationDate) ;
->>>>>>> 9a47f02a7189081124faf74f8b5ab8f2d33de17d
+
 					listF.add(currentFilm);
 					
 					int i = 0;
@@ -164,12 +159,8 @@ public class LoginServlet extends HttpServlet {
 				session = request.getSession();
 				session.setAttribute("sessionId", currentUser.getId());
 				session.setAttribute("userLogged", currentUser);
-				session.setAttribute("listHits", listF);
-<<<<<<< HEAD
-				session.setAttribute("sessionId", currentUser.getId());			
-=======
+				session.setAttribute("listHits", listF);		
 				System.out.println("redirecting to home");
->>>>>>> 9a47f02a7189081124faf74f8b5ab8f2d33de17d
 				request.getRequestDispatcher("/Home.jsp").forward(request, response);
 				
 				System.out.println("redirected to home");
