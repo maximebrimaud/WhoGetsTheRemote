@@ -14,7 +14,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <link rel="icon" href="Bootstrap/favicon.ico">
+    <link rel="icon" href="Bootstrap/docs/favicon.ico">
 
     <title>WGTR - Login Page</title>
 
@@ -22,23 +22,23 @@
     <link href="Bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <link href="Bootstrap/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <link href="Bootstrap/docs/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="dashboard.css" rel="stylesheet">
+    <link href="Bootstrap/docs/examples/dashboard/dashboard.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="Bootstrap/assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="Bootstrap/assets/js/ie-emulation-modes-warning.js"></script>
-    	<script src="MyBootstrap/jquery-1.12.4.min.js" type="text/javascript" ></script>
-		
-		<link href="MyBootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" /> 
-		<script type="text/javascript" src="MyBootstrap/js/bootstrap.min.js"></script> 
-		
-		<%-- vvvvv Cover Styiling vvvvv --%>
-	  	<link href="MyBootstrap/css/ie10-viewport-bug-workaround.css" rel="stylesheet">	    
-	    <link href="MyBootstrap/css/cover.css" rel="stylesheet">		   
-	    <script src="MyBootstrap/js/ie-emulation-modes-warning.js"></script> 
+    <script src="Bootstrap/docs/assets/js/ie-emulation-modes-warning.js"></script>
+   	<script src="MyBootstrap/jquery-1.12.4.min.js" type="text/javascript" ></script>
+	
+	<link href="MyBootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" /> 
+	<script type="text/javascript" src="MyBootstrap/js/bootstrap.min.js"></script> 
+	
+	<%-- vvvvv Cover Styiling vvvvv --%>
+  	<link href="MyBootstrap/css/ie10-viewport-bug-workaround.css" rel="stylesheet">	    
+    <link href="MyBootstrap/css/cover.css" rel="stylesheet">		   
+    <script src="MyBootstrap/js/ie-emulation-modes-warning.js"></script> 
 	    	
   </head>
 
@@ -63,7 +63,7 @@
     <div class="container-fluid" style="padding-top: 50px;">
       <div class="row">
         <div class="col-sm-10 col-sm-offset-3 col-md-10 col-md-offset-1 main">
-          	</br>
+          	<br/>
        		<table>
 				<tr>
 					<td style="width: 40%">
@@ -228,7 +228,7 @@
 													<label for="Address">Address</label>							
 													<input type="text" class="form-control" name="Address" id="Address" placeholder="Address">
 													<label id="AddressValidator" style="color: red; font-weight:normal;"></label>
-												</div class="form-group">
+												</div>
 											</td>
 										</tr>
 									</table>
@@ -330,9 +330,9 @@
     <script>window.jQuery || document.write('<script src="Bootstrap/assets/js/vendor/jquery.min.js"><\/script>')</script>
     <script src="Bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-    <script src="Bootstrap/assets/js/vendor/holder.min.js"></script>
+    <script src="Bootstrap/docs/assets/js/vendor/holder.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="Bootstrap/assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="Bootstrap/docs/assets/js/ie10-viewport-bug-workaround.js"></script>
     
     
     

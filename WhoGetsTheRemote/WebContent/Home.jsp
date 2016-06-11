@@ -69,7 +69,7 @@
 <!--           </ul> -->
 <!--         </div> -->
         <div class="col-sm-10 col-sm-offset-3 col-md-10 col-md-offset-1 main">
-          </br>
+          <br/>
           <h1 class="page-header">New Movies</h1>
           <div class="row placeholders">
 		  	<c:forEach items="${listHits}" var="item">

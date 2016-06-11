@@ -16,7 +16,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <link rel="icon" href="Bootstrap/favicon.ico">
+    <link rel="icon" href="Bootstrap/docs/favicon.ico">
 
     <title>WGTR - Home Page</title>
 
@@ -24,14 +24,14 @@
     <link href="Bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <link href="Bootstrap/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <link href="Bootstrap/docs/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="dashboard.css" rel="stylesheet">
+    <link href="Bootstrap/docs/examples/dashboard/dashboard.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="Bootstrap/assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="Bootstrap/assets/js/ie-emulation-modes-warning.js"></script>
+    <script src="Bootstrap/docs/assets/js/ie-emulation-modes-warning.js"></script>
   </head>
 
   <body>
@@ -60,74 +60,71 @@
 
     <div class="container-fluid">
       <div class="row">
-<!--         <div class="col-sm-3 col-md-2 sidebar"> -->
-<!--           <ul class="nav nav-sidebar"> -->
-<!--             <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li> -->
-<!--             <li><a href="#">Reports</a></li> -->
-<!--             <li><a href="#">Analytics</a></li> -->
-<!--             <li><a href="#">Export</a></li> -->
-<!--           </ul> -->
-<!--         </div> -->
         <div class="col-sm-10 col-sm-offset-3 col-md-10 col-md-offset-1 main">
-	        </br>
+	        <br/>
 	        <h1 class="page-header">${User.username}</h1>                                      
-	        <div class="row placeholders">
-	          	<div class='col-xs-6 col-sm-1 placeholder'>	    <!-- width=25% align="left" -->    		
-	          		<img class="img-circle" alt="Profile Picture" width="130" height="130" class="img-responsive" src="img/Profiles/mike.jpg">
-	          	</div>
-	         
-			  	<c:forEach items="${listHits}" var="item">
-			  		<div class='col-xs-6 col-sm-3 placeholder'>
-				        <div align='center'>
-				        	<img src='data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==' width='190' height='190' class='img-responsive' alt='Generic placeholder thumbnail'>
-						</div>
-				        <h4 align='center'>${item.name}</h4>
-				        <div align='center'>
-				        	<span class='text-muted'>${item.name}</span>
-				        </div>
-			        </div>
-			  	</c:forEach>
-          </div>  
+	        
+	        
+	        <!-- <div class="row placeholders">
+	          	<div class='col-xs-6 col-sm-2 '>	       		
+	          		<img class="img-circle" alt="Profile Picture" width="130" height="130" class="img-responsive" src="img/Profiles/mike.jpg">	          		       		
+	          	</div>   
+	          	<div class='col-xs-6 col-sm-10 '>	       		
+	          		<img class="img-circle" alt="Profile Picture" width="130" height="130" class="img-responsive" src="img/Profiles/mike.jpg">	          		       		
+	          	</div>  	          		          	      			
+          	</div>   -->
+          	
+          	
           
-          <h2 class="page-header">People you may know</h2>
-          <div class="row placeholders">
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <div align="center">
-              	<img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="130" height="130" class="img-responsive" alt="Generic placeholder thumbnail">
-              </div>
-              <h4 align="center">Label</h4>
-              <div align="center">
-              	<span class="text-muted">10 friends in common</span>
-              </div>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <div align="center">
-              	<img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="130" height="130" class="img-responsive" alt="Generic placeholder thumbnail">
-              </div>
-              <h4 align="center">Label</h4>
-              <div align="center">
-              	<span class="text-muted">8 friends in common</span>
-              </div>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <div align="center">
-              	<img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="130" height="130" class="img-responsive" alt="Generic placeholder thumbnail">
-              </div>
-              <h4 align="center">Label</h4>
-              <div align="center">
-              	<span class="text-muted">6 friends in common</span>
-              </div>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <div align="center">
-              	<img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="130" height="130" class="img-responsive" alt="Generic placeholder thumbnail">
-              </div>
-              <h4 align="center">Label</h4>
-              <div align="center">
-              	<span class="text-muted">4 friends in common</span>
-              </div>
-            </div>
-          </div>
+		        
+        	<div class="container-fluid">
+      			<div class="row">
+        			<div class="col-sm-10 col-sm-offset-3 col-md-10 col-md-offset-1 main">		       
+	        			<div class="row placeholders">				  	
+					  		
+					  		<div class='col-xs-6 col-sm-3 placeholder'>
+						        <div align='center'>
+						        	<img src='data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==' width='190' height='190' class='img-responsive' alt='Generic placeholder thumbnail'>
+								</div>
+						        <h4 align='center'>${userLogged.getFullName()}</h4>
+					        </div>
+					       
+					        <div class='col-xs-6 col-sm-7  placeholder' style="padding-top: 45px;">
+					        						       
+								<div class="row">
+									  <div class="col-xs-12 col-md-4" style="text-decoration: underline;">Email:</div>
+									  <div class="col-xs-6 col-md-8" style="text-align: left;">${userLogged.getEmail()}</div>
+								</div>
+								<div class="row">
+									  <div class="col-xs-12 col-md-4" style="text-decoration: underline;">Date of Birth:</div>
+									  <div class="col-xs-6 col-md-8" style="text-align: left;">${userLogged.getDob()}</div>
+								</div>
+								<div class="row">
+									  <div class="col-xs-12 col-md-4" style="text-decoration: underline;">Sexe:</div>									 
+									  <div class="col-xs-6 col-md-8" style="text-align: left;">${userLogged.getDob()}</div>
+								</div>
+								
+								
+								
+								
+								<!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
+								<div class="row">
+									  <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+									  <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+									  <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+								</div>
+								
+								<!-- Columns are always 50% wide, on mobile and desktop -->
+								<div class="row">
+									  <div class="col-xs-6">.col-xs-6</div>
+									  <div class="col-xs-6">.col-xs-6</div>
+								</div>						        
+					        </div>
+					       				  
+			          	</div>
+		          	</div>
+		      	</div>
+	    	</div>          	                   
         </div>
       </div>
     </div>
@@ -139,18 +136,8 @@
     <script>window.jQuery || document.write('<script src="Bootstrap/assets/js/vendor/jquery.min.js"><\/script>')</script>
     <script src="Bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-    <script src="Bootstrap/assets/js/vendor/holder.min.js"></script>
+    <script src="Bootstrap/docs/assets/js/vendor/holder.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="Bootstrap/assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="Bootstrap/docs/assets/js/ie10-viewport-bug-workaround.js"></script>
   </body>
 </html>
-
-
-	
-	strap/assets/js/ie10-viewport-bug-workaround.js"></script>
-  </body>
-</html>
-
-
-	
-	
