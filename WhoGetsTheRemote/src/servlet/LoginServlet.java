@@ -26,14 +26,14 @@ import javafx.scene.control.Alert;
 import models.Film;
 import models.FilmHits;
 import models.Friend;
-//import models.GlobalFunctions;
+import models.GlobalFunctions;
 import models.User;
 
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
-	@Resource private DataSource myDataSource;
+	@Resource private DataSource myDataSource; 
 	
     public LoginServlet() 
     {
@@ -140,7 +140,7 @@ public class LoginServlet extends HttpServlet {
 					int notationFilm = Integer.parseInt(newMoviesResult.getString("NOTATION_FILM"));
 					String trailer = newMoviesResult.getString("TRAILER_FILM_LINK");
 					String filmLink =  newMoviesResult.getString("FILM_LINK");
-					String image =  newMoviesResult.getString("IMAGE_FILM");
+					String image =  newMoviesResult.getString("FILM_IMAGE");
 					String creationDate =  newMoviesResult.getString("FILM_CREATION_DATE");
 					String modificationDate =  newMoviesResult.getString("FILM_MODIFICATION_DATE");
 					Film currentFilm = new Film(idFilm,nomFilm,descriptionFilm,dateReleased,notationFilm,trailer,filmLink,image,creationDate,modificationDate) ;
@@ -159,6 +159,17 @@ public class LoginServlet extends HttpServlet {
 				session = request.getSession();
 				session.setAttribute("sessionId", currentUser.getId());
 				session.setAttribute("userLogged", currentUser);
+				System.out.println("username is: " + usernamee);
+				if (usernamee == "Admin" || usernamee.equals("Admin"))
+				{
+					System.out.println("setting value for servlet");
+					session.setAttribute("UserType", "Admin");
+				}
+				else
+				{
+					session.setAttribute("UserType", "User");
+				}
+				System.out.println("value set.. redirecting to home");
 				session.setAttribute("listHits", listF);		
 				System.out.println("redirecting to home");
 				request.getRequestDispatcher("/Home.jsp").forward(request, response);
@@ -177,10 +188,12 @@ public class LoginServlet extends HttpServlet {
 		} 		
 		catch (SQLException e) 
 		{
+			request.setAttribute("loginMessage", "Error in connection!");
+            request.getRequestDispatcher("/LoginPage.jsp").forward(request, response);
+        	System.out.println("Error in connection!");
 			System.out.println(e.getMessage());
 			e.printStackTrace();
-		}
-		
+		}		
 	}
 
 }

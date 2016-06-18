@@ -20,15 +20,7 @@
     <!-- Bootstrap core CSS -->
     <link href="Bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <link href="Bootstrap/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="dashboard.css" rel="stylesheet">
-
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="Bootstrap/assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="Bootstrap/assets/js/ie-emulation-modes-warning.js"></script>
+ 
   </head>
 
   <body>
@@ -40,7 +32,7 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-left">
-            <li><a href="MoviesPage.jsp">Movies</a></li>
+            <li><a href="${pageContext.request.contextPath}/Movies">Movies</a></li>
             <li><a href="FriendsPage.jsp">Friends</a></li>
             <li><a href="#">Events</a></li>
           </ul>

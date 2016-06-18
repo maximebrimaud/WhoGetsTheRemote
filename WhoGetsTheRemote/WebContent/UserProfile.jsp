@@ -10,28 +10,39 @@
 	}
 %>
 
+
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <link rel="icon" href="Bootstrap/docs/favicon.ico">
+    <link rel="icon" href="logo.png">
 
     <title>WGTR - Home Page</title>
 
     <!-- Bootstrap core CSS -->
     <link href="Bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <link href="Bootstrap/docs/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+   <!--  <link href="Bootstrap/docs/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
-    <link href="Bootstrap/docs/examples/dashboard/dashboard.css" rel="stylesheet">
+    <link href="dashboard.css" rel="stylesheet">
 
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="Bootstrap/assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="Bootstrap/docs/assets/js/ie-emulation-modes-warning.js"></script>
+    <script src="Bootstrap/docs/assets/js/ie-emulation-modes-warning.js"></script> -->
+    
+    
+    <!-- ---------------------------------------------- -->
+    <!-- 
+    <script src="MyBootstrap/jquery-1.12.4.min.js" type="text/javascript" ></script>
+	
+	<link href="MyBootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" /> 
+	<script type="text/javascript" src="MyBootstrap/js/bootstrap.min.js"></script> 
+	
+	
+  	<link href="MyBootstrap/css/ie10-viewport-bug-workaround.css" rel="stylesheet">	    
+    <link href="MyBootstrap/css/cover.css" rel="stylesheet">		   
+    <script src="MyBootstrap/js/ie-emulation-modes-warning.js"></script> 
+     -->
   </head>
 
   <body>
@@ -43,13 +54,10 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-left">
-            <li><a href="MoviesPage.jsp">Movies</a></li>
+            <li><a href="${pageContext.request.contextPath}/Movies">Movies</a></li>
             <li><a href="FriendsPage.jsp">Friends</a></li>
             <li><a href="#">Events</a></li>
           </ul>
-<!--           <form class="navbar-form navbar-right"> -->
-<!--             <input type="text" class="form-control" placeholder="Search..."> -->
-<!--           </form> -->
 		   <ul class="nav navbar-nav navbar-right">
             <li><a href="#">${userLogged.getFullName()}</a></li>
             <li><a href="LogoutPage.jsp">LogOut</a></li>
@@ -62,65 +70,107 @@
       <div class="row">
         <div class="col-sm-10 col-sm-offset-3 col-md-10 col-md-offset-1 main">
 	        <br/>
-	        <h1 class="page-header">${User.username}</h1>                                      
-	        
-	        
-	        <!-- <div class="row placeholders">
-	          	<div class='col-xs-6 col-sm-2 '>	       		
-	          		<img class="img-circle" alt="Profile Picture" width="130" height="130" class="img-responsive" src="img/Profiles/mike.jpg">	          		       		
-	          	</div>   
-	          	<div class='col-xs-6 col-sm-10 '>	       		
-	          		<img class="img-circle" alt="Profile Picture" width="130" height="130" class="img-responsive" src="img/Profiles/mike.jpg">	          		       		
-	          	</div>  	          		          	      			
-          	</div>   -->
-          	
-          	
-          
-		        
+	        <h1 class="page-header">${userLogged.getFullName()} - ${userLogged.getUsername()}</h1>                                      	        
         	<div class="container-fluid">
       			<div class="row">
         			<div class="col-sm-10 col-sm-offset-3 col-md-10 col-md-offset-1 main">		       
 	        			<div class="row placeholders">				  	
 					  		
-					  		<div class='col-xs-6 col-sm-3 placeholder'>
-						        <div align='center'>
-						        	<img src='data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==' width='190' height='190' class='img-responsive' alt='Generic placeholder thumbnail'>
+					  		<div class='col-xs-6 col-sm-3 col-md-3 placeholder'>
+						        <div align='center'>						        	
+						        	<img src='${userLogged.getImage()}' width='190' height='190' class='img-responsive' alt='Unable to load image!'>							       
 								</div>
-						        <h4 align='center'>${userLogged.getFullName()}</h4>
+						        <h4 align='center'>${userLogged.getFullName()}</h4>   
 					        </div>
-					       
-					        <div class='col-xs-6 col-sm-7  placeholder' style="padding-top: 45px;">
-					        						       
-								<div class="row">
-									  <div class="col-xs-12 col-md-4" style="text-decoration: underline;">Email:</div>
-									  <div class="col-xs-6 col-md-8" style="text-align: left;">${userLogged.getEmail()}</div>
-								</div>
-								<div class="row">
-									  <div class="col-xs-12 col-md-4" style="text-decoration: underline;">Date of Birth:</div>
-									  <div class="col-xs-6 col-md-8" style="text-align: left;">${userLogged.getDob()}</div>
-								</div>
-								<div class="row">
-									  <div class="col-xs-12 col-md-4" style="text-decoration: underline;">Sexe:</div>									 
-									  <div class="col-xs-6 col-md-8" style="text-align: left;">${userLogged.getDob()}</div>
-								</div>
-								
-								
-								
-								
-								<!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
-								<div class="row">
-									  <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
-									  <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
-									  <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
-								</div>
-								
-								<!-- Columns are always 50% wide, on mobile and desktop -->
-								<div class="row">
-									  <div class="col-xs-6">.col-xs-6</div>
-									  <div class="col-xs-6">.col-xs-6</div>
-								</div>						        
-					        </div>
-					       				  
+					       <form role="form" action="UpdateUser" onsubmit="return ValidateInputs()" method="post">  
+					      		 <input name="userId" id="userId" style="display: none;" value="${userLogged.getId()}"/>
+						        <div class='col-xs-6 col-sm-9 col-md-9 placeholder' style="padding-top: 45px;">
+						        					 	       
+									<div class="row">
+										  <div class="col-xs-12 col-sm-3 col-md-3" style="text-decoration: underline; text-align: right;  font-size: large;  font-weight: bold;  ">Email :</div> <!--  padding-right: 0px; -->
+										  <div id="ViewModeEmail" class="col-xs-6 " style="text-align: left;  font-size: large; ">
+										  		${userLogged.getEmail()}
+									  		</div>
+									  		<div id="EditModeEmail" class="col-xs-6" style="text-align: left; display: none;  font-size: large; ">
+										  		<input id="UserEmail" type="text" style="color: black;" name="UserEmail" value="${userLogged.getEmail()}"  />		
+										  		<label id="EmailValidator" style="color: red; font-weight:normal;"></label>
+								  		   </div>
+									</div>
+									<div class="row">
+										  <div class="col-xs-12 col-sm-5 col-md-3" style="text-decoration: underline;  font-weight: bold; font-size: large; text-align: right;">Date of Birth :</div><!--  padding-right: 0px; -->
+										  <div id="ViewModeDOB" class="col-xs-6 " style="text-align: left; font-size: large; ">
+										  		${userLogged.getDob()}
+										    	
+										  </div>
+										  <div id="EditModeDOB" class="col-xs-6" style="text-align: left; display: none; font-size: large; ">
+										  		<input id="UserDOB" type="text" name="UserDOB" style="color: black;" class="myDateFormat" value="${userLogged.getDob()}" />	
+										  		<label id="DOBValidator" style="color: red; font-weight:normal;"></label>
+								  		   </div>
+										
+									</div>
+									<div class="row">
+										  <div class="col-xs-12 col-sm-3 col-md-3" style="text-decoration: underline; font-weight: bold; text-align: right; font-size: large; ">Sexe :</div>	<!--  padding-right: 0px; -->								 
+										  <div id="ViewModeSexe" class="col-xs-6 " style="text-align: left; font-size: large; ">
+										  		${userLogged.getSexe()}
+										  		 <%--  <input id="UserSexe" type="text" name="UserSexe" value="${userLogged.getSexe()}"  style="display: none;"/> --%>
+								  		   </div>
+								  		   <div id="EditModeSexe" class="col-xs-6 " style="text-align: left; display: none; font-size: large; ">
+								  		   		<select name="Sexe" id="Sexe" value="F"  class="form-control">
+													    <option value="M">Male</option>
+													    <option value="F">Female</option>							    
+												</select>	
+												<label id="SexeValidator" style="color: red; font-weight:normal;"></label>
+								  		   </div>
+									</div>
+									<div class="row">
+										  <div class="col-xs-12 col-sm-3 col-md-3" style="text-decoration: underline;  font-size: large; font-weight: bold;  text-align: right;">Address :</div>	<!--  padding-right: 0px; -->								 
+										  <div  id="ViewModeAddress"  class="col-xs-6 " style="text-align: left; font-size: large; ">
+										  		${userLogged.getAddress()}										    	
+										  </div>
+										  <div  id="EditModeAddress"  class="col-xs-6 " style="text-align: left; display: none; font-size: large; ">
+										  		<input id="UserAddress" type="text" style="color: black;" name="UserAddress" value="${userLogged.getAddress()}"/>
+										  		<label id="AddressValidator" style="color: red; font-weight:normal;"></label>
+										  </div>
+									</div>
+									
+									<div class="row">
+										  <div id="EditModePasslbl" class="col-xs-12 col-sm-3 col-md-3" style="text-decoration: underline; display: none;   font-size: large; font-weight: bold;  text-align: right;">Password :</div>	<!--  padding-right: 0px; -->								 										 
+										  <div  id="EditModePass"  class="col-xs-6 " style="text-align: left; display: none; font-size: large; ">
+										  		<input id="UserPass" type="password" style="color: black;" name="UserPass" value="${userLogged.getPassword()}"/>
+										  		<label id="PassValidator" style="color: red; font-weight:normal;"></label>
+										  </div> 
+									</div>
+									
+									
+									<div id="divChangePic" class="row" style="display: none;">
+										  <div class="col-xs-12 col-sm-3 col-md-3" style="text-align: left; font-size: large; text-align: right; " >
+												<label  style="text-decoration: underline; font-weight: bold;  font-size: large;  ">Change Picture :</label>  
+										  </div>
+										  <div class="col-xs-12 col-sm-8 "  style=" font-size: large; " >
+										  ${userLogged.getImage()}
+										  		<input name="PictureBrowse" id="PictureBrowse" type="file" name="PictureBrowse" />
+										  		<!-- <label id="PicValidator" style="color: red; font-weight:normal;"></label> -->
+										  </div>								 									  
+									</div>
+									
+									<div class="row">									 
+										  <div class="col-xs-12 col-sm-3 col-md-4" style=" font-size: large; text-align: right; " >
+										  		<input id="btnEditUser" type="button" onclick="ChangeToEditMode()" name="btnEditUser" value="Edit Profile" />
+										  		<input id="btnCancelEdit" type="button" onclick="ChangeToViewMode()" name="btnCancelEdit" value="Cancel" style="display: none;"/>										  														  											  	
+										  </div>								 									  
+										  <div class="col-xs-12 col-sm-3 col-md-4" style=" font-size: large; text-align: left; "  >
+										  		<input id="btnSavePicture" type="submit" name="btnSavePicture" value="Save Changes" style="display: none;" />
+										  		     <!-- <input id="btnSavePicture" type="button" name="btnSavePicture" onclick="return ValidateInputs()"  value="Save Changes" style="display: none;" /> -->
+										  </div>
+									</div>	
+									<div class="row">									 
+										  <div class="col-xs-12 col-sm-3 col-md-4" style=" font-size: large; text-align: right; color: red; " >
+										  					${UpdateMessage}							  														  											  	
+										  </div>								 									  
+									
+									</div>				        
+						        </div>
+				       		</form>		  
 			          	</div>
 		          	</div>
 		      	</div>
@@ -133,11 +183,264 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="Bootstrap/assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script>window.jQuery || document.write('<script src="Bootstrap/docs/assets/js/vendor/jquery.min.js"><\/script>')</script>
     <script src="Bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
     <script src="Bootstrap/docs/assets/js/vendor/holder.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="Bootstrap/docs/assets/js/ie10-viewport-bug-workaround.js"></script>
+    
+    <script>
+		var temp = '${userLogged.getSexe()}';
+		var mySelect = document.getElementById('Sexe');
+		
+		for(var i, j = 0; i = mySelect.options[j]; j++) {
+		    if(i.value == temp) {
+		        mySelect.selectedIndex = j;
+		        break;
+		    }
+		}		
+
+	</script>
+    
+    <script type="text/javascript">
+    
+    	function ValidateInputs()
+    	{
+    		var valide = true;
+    		
+    		var email =  document.getElementById("UserEmail").value.trim();
+    		var dob = document.getElementById("UserDOB").value.trim();
+    		var ddlSexe = document.getElementById('Sexe');
+			var sexe = ddlSexe.options[ddlSexe.selectedIndex].value;    		
+    		var addresse = document.getElementById("UserAddress").value.trim();
+    		var pass = document.getElementById("UserPass").value.trim();
+    	
+    		if (email =="" || email == null)
+    		{
+    			valide = false;
+    			EmailValidator.innerHTML = "* Mandatory Field";
+    		}
+    		else    		
+    		{
+    			EmailValidator.innerHTML = "";
+    		}
+    		if (pass =="" || pass == null)
+    		{
+    			valide = false;
+    			PassValidator.innerHTML = "* Mandatory Field";
+    		}
+    		else
+    		{
+    			PassValidator.innerHTML = "";
+    		}
+    		if (dob =="" || dob == null)
+    		{
+    			valide = false;
+    			DOBValidator.innerHTML = "* Mandatory Field";
+    		}
+    		else
+    		{
+    			DOBValidator.innerHTML = "";
+    		}    		
+    		if (sexe =="" || sexe == null)
+    		{
+    			valide = false;
+    			SexeValidator.innerHTML = "* Mandatory Field";
+    		}
+    		else
+    		{
+    			SexeValidator.innerHTML = "";
+    		}
+    		if (addresse =="" || addresse == null)
+    		{
+    			valide = false;
+    			AddressValidator.innerHTML = "* Mandatory Field";
+    		}
+    		else
+    		{
+    			AddressValidator.innerHTML = "";
+    		}
+    		
+    		
+    		var resultDOB = validateDOB();
+    		if (resultDOB == false)
+    		{
+    			valide = false;
+    		}
+    		
+    		return valide;
+    	}
+        
+    
+    	function validateDOB()
+    	{
+	   		console.log("starting validating ....." );
+	   		var UserDOB = document.getElementById("UserDOB");     		
+		    var value = UserDOB.value;
+		    var DOBValidator = document.getElementById("DOBValidator");     				   
+		    			  
+		  	DOBValidator.innerHTML = "";			  
+
+	     	var regEx2 = /^\d{4}-\d{2}-\d{2}$/;
+		    DOBValidator.innerHTML = "";
+		    if (value == null || value == "" )
+		    {
+		      	console.log("DOB null" );
+			    DOBValidator.innerHTML = "* Mandatory Field";
+			    return false; 
+		    }
+			if(!regEx2.test(value))
+			{
+			    console.log("DOB format not valide" );
+			    DOBValidator.innerHTML = "* Invalid date of birth format (yyyy-mm-dd)";
+			    return false;  // Invalid format
+		    }
+		      
+			var d;
+			if(!((d = new Date(value))|0))
+		    {
+				DOBValidator.innerHTML = "* Invalid date of birth (yyyy-mm-dd)";
+			    console.log("DOB not valide" );
+			    return false; 
+			}
+			 
+			console.log("Comparing '"+ d.toISOString().slice(0,10) + "' with: '" + value + "'" );	
+			console.log("comparaison result : " + (d.toISOString().slice(0,10) == value))
+			 
+			if(d.toISOString().slice(0,10) == value)
+			{			  
+				console.log("DOB valid");	
+				return true;
+			}
+			else
+			{
+			  	DOBValidator.innerHTML = "* Invalid date of birth format (yyyy-mm-dd)";
+			    console.log("DOB not valide (yyyy-mm-dd)" );
+				return false; 
+			}		
+		}
+    
+    	function ChangeToEditMode()
+    	{
+    		var ViewEmail = document.getElementById("ViewModeEmail");    		    	
+    		ViewEmail.style.display = "none";
+    		var ViewDOB = document.getElementById("ViewModeDOB");    		    	
+    		ViewDOB.style.display = "none";
+    		var ViewSexe = document.getElementById("ViewModeSexe");    		    	
+    		ViewSexe.style.display = "none";
+    		var ViewAddress = document.getElementById("ViewModeAddress");    		    	
+    		ViewAddress.style.display = "none";    		    	    		    	
+    		    		    	
+    		
+    		var EditEmail = document.getElementById("EditModeEmail");    		    	
+    		EditEmail.style.display = "block";
+   			var UserEmail = document.getElementById("UserEmail");    	
+    		UserEmail.value= '${userLogged.getEmail()}';
+    		
+    		var EditDOB = document.getElementById("EditModeDOB");    		    	
+    		EditDOB.style.display = "block";
+    		var UserDOB = document.getElementById("UserDOB");    	
+    		UserDOB.value= '${userLogged.getDob()}';
+    		
+    		var EditSexe = document.getElementById("EditModeSexe");    		    	
+    		EditSexe.style.display = "block";
+    		var temp = '${userLogged.getSexe()}';
+			var mySelect = document.getElementById('Sexe');			
+			for(var i, j = 0; i = mySelect.options[j]; j++) {
+			    if(i.value == temp) {
+			        mySelect.selectedIndex = j;
+			        break;
+			    }
+			}
+    		
+    		var EditAddress = document.getElementById("EditModeAddress");    		    	
+    		EditAddress.style.display = "block";
+    		var UserAddress = document.getElementById("UserAddress");    	
+    		UserAddress.value= '${userLogged.getAddress()}'; 
+    		
+    		var EditPass = document.getElementById("EditModePass");    		    	
+    		EditPass.style.display = "block";
+    		var UserPass = document.getElementById("UserPass");    	
+    		UserPass.value= '${userLogged.getPassword()}'; 
+    		
+    		var EditModePasslbl = document.getElementById("EditModePasslbl");    		    	
+    		EditModePasslbl.style.display = "block";
+    		
+    		
+
+    		
+    		var divChangePic = document.getElementById("divChangePic");    		    	
+    		divChangePic.style.display = "block";
+    		var btnCancelEdit = document.getElementById("btnCancelEdit");    		    	
+    		btnCancelEdit.style.display = "block";
+    		var btnSavePicture = document.getElementById("btnSavePicture");    		    	
+    		btnSavePicture.style.display = "block";
+    		var btnEditUser = document.getElementById("btnEditUser");    		    	
+    		btnEditUser.style.display = "none";    		    		    		      		   
+    	}    	    
+    	
+    	function ChangeToViewMode()
+    	{
+    		var ViewEmail = document.getElementById("ViewModeEmail");    		    	
+    		ViewEmail.style.display = "block";    		
+   			var ViewDOB = document.getElementById("ViewModeDOB");    		    	
+    		ViewDOB.style.display = "block";
+   			var ViewSexe = document.getElementById("ViewModeSexe");    		    	
+    		ViewSexe.style.display = "block";
+    		var ViewAddress = document.getElementById("ViewModeAddress");    		    	
+    		ViewAddress.style.display = "block";
+    		
+    		var EditEmail = document.getElementById("EditModeEmail");    		    	
+    		EditEmail.style.display = "none";
+    		var UserEmail = document.getElementById("UserEmail");    	
+    		UserEmail.value= '${userLogged.getEmail()}';
+    		
+    		
+    		var EditPass = document.getElementById("EditModePass");    		    	
+    		EditPass.style.display = "none";
+    		var UserPass = document.getElementById("UserPass");    	
+    		UserPass.value= '${userLogged.getPassword()}'; 
+    		
+    			var EditModePasslbl = document.getElementById("EditModePasslbl");    		    	
+    		EditModePasslbl.style.display = "none";
+    		
+		    var EditDOB = document.getElementById("EditModeDOB");    		    	
+    		EditDOB.style.display = "none";
+    		var UserDOB = document.getElementById("UserDOB");    	
+    		UserDOB.value= '${userLogged.getDob()}';
+    		
+    		var EditSexe = document.getElementById("EditModeSexe");    		    	
+    		EditSexe.style.display = "none";
+    		var temp = '${userLogged.getSexe()}';
+			var mySelect = document.getElementById('Sexe');			
+			for(var i, j = 0; i = mySelect.options[j]; j++) {
+			    if(i.value == temp) {
+			        mySelect.selectedIndex = j;
+			        break;
+			    }
+			}
+			
+    		var EditAddress = document.getElementById("EditModeAddress");    		    	
+    		EditAddress.style.display = "none";
+    		var UserAddress = document.getElementById("UserAddress");    	
+    		UserAddress.value= '${userLogged.getAddress()}';
+    		
+    		
+    		
+    	
+    		
+    		var divChangePic = document.getElementById("divChangePic");    		    	
+    		divChangePic.style.display = "none";
+    		var btnCancelEdit = document.getElementById("btnCancelEdit");    		    	
+    		btnCancelEdit.style.display = "none";
+    		var btnSavePicture = document.getElementById("btnSavePicture");    		    	
+    		btnSavePicture.style.display = "none";
+    		var btnEditUser = document.getElementById("btnEditUser");    		    	
+    		btnEditUser.style.display = "block"; 
+    		   
+    	}
+    
+    </script>
   </body>
 </html>

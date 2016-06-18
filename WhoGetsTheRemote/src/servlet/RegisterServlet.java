@@ -60,7 +60,7 @@ public class RegisterServlet extends HttpServlet {
 			String firstName = request.getParameter("FirstName");
 			String lastName = request.getParameter("LastName");
 			String email = request.getParameter("email");
-			String dateOfBirth = request.getParameter("dateOfBirth");
+			String dateOfBirth = request.getParameter("UserDOB"); 
 			String sexe = request.getParameter("Sexe");								
 			String user = request.getParameter("Username");
 	        String pass = request.getParameter("password");
@@ -80,7 +80,7 @@ public class RegisterServlet extends HttpServlet {
 	        
 	        PreparedStatement myStatement = myConnection.prepareStatement("INSERT INTO USERS (NOM_USER, PRENOM_USER, EMAIL_USER, DATE_OF_BIRTH, SEXE, USERNAME, PASSWORD_USER, ADDRESS_USER, USER_CREATION_DATE, USER_MODIFICATION_DATE) VALUES ('" +firstName+ "','"+ lastName + "','"+ email + "','"+ dateOfBirth + "','"+ sexe + "','"+ user + "','"+ pass + "','"+ address + "','" + s + "','" + s + "')");
 	        																				//"('" +firstName+ "','"+ lastName + "','"+ email + "','"+ dateOfBirth + "','"+ sexe + "','"+ user + "','"+ pass + "','"+ address + "','" + s + "')"
-	        System.out.println("i am in do POST Login, Got Statement!");
+	        System.out.println("i am in do POST Login, Got Statement! -> INSERT INTO USERS (NOM_USER, PRENOM_USER, EMAIL_USER, DATE_OF_BIRTH, SEXE, USERNAME, PASSWORD_USER, ADDRESS_USER, USER_CREATION_DATE, USER_MODIFICATION_DATE) VALUES ('" +firstName+ "','"+ lastName + "','"+ email + "','"+ dateOfBirth + "','"+ sexe + "','"+ user + "','"+ pass + "','"+ address + "','" + s + "','" + s + "')");
 			//Authentication
 			int myResultSet = myStatement.executeUpdate();  //executeQuery();
 			 System.out.println("i am in do POST Register, Executed Update Statement!");

@@ -8,6 +8,17 @@
 	session.setAttribute("sessionId","");
 %>
 
+<%-- <%
+	if (session.getAttribute("sessionId") != null || !session.getAttribute("sessionId").equals("")){
+		System.out.println("already logged in logged in! -> " + session.getAttribute("sessionId"));
+		response.sendRedirect("Home.jsp");
+	}
+	else
+	{
+		System.out.println("not logged in logged in! -> " + session.getAttribute("sessionId"));
+	}
+%> --%>
+
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -147,44 +158,9 @@
 										<tr>
 											<td>																																																																								
 												<div class="form-group" style="padding-right: 5px;">
-													<label for="DateOfBirth">Date of Birth</label>
-													
-													<!-- <div class="form-group">																	
-													<select name="DOBYear" id="DOBYear" class="form-control">
-													    <option value="2016">2016</option>
-													    <option value="F">Female</option>							    
-													</select>	
-																																					
-													</div> -->
-													
-													
-													
-													<!-- <input type="text" class="form-control" name="DateOfBirth" id="DateOfBirth" placeholder="Date Of Birth"> -->
-													<div class="container" style="width: 100%;">
-													    <div class="row">
-													      <!--  <div class='col-sm-6'>
-													            <div class="form-group">-->
-													                <div class='input-group date' id='datetimepicker1'>
-													                    <input type='text' name="dateOfBirth" id="dateOfBirth" class="form-control" />
-													                    <span class="input-group-addon">
-													                        <span class="glyphicon glyphicon-calendar"></span>
-													                    </span>
-													                </div>
-													            <!-- </div>
-													        </div>-->
-													        <script type="text/javascript">
-													            $(function () {
-													                $('#datetimepicker1').datetimepicker();
-													            });
-													        </script>
-													    </div>
-													</div>	
-													<label id="DOBValidator" style="color: red; font-weight:normal;"></label>											
-												</div>
-												
-												
-												
-												
+													<label for="UserDOB">Date of Birth</label>																									
+											  		<input type="text" class="form-control" name="UserDOB" id="UserDOB" placeholder="yyyy-mm-dd">	
+											  		<label id="DOBValidator" style="color: red; font-weight:normal;"></label>								  		  
 											</td>
 											<td style="padding-left: 5px;">
 												<div class="form-group">
@@ -343,9 +319,19 @@
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="MyBootstrap/js/ie10-viewport-bug-workaround.js"></script>
     
+    
+    <script type="text/javascript">
+    	document.getElementById("LoginUsername").focus();
+    	
+    	
+    </script>
+    
+    
+    
     <script type="text/javascript">
     function scrollToLogin()
     {     	
+    	document.getElementById("LoginUsername").focus();
     	var toShowDiv = document.getElementById('LoginInnerContainer');
 	    var toHideDiv = document.getElementById('SignupInnerContainer');
 	    //changing style
@@ -356,6 +342,7 @@
     
     function scrollToSignup()
     {
+    	document.getElementById("FirstName").focus();
 	    var toShowDiv = document.getElementById('SignupInnerContainer');
 	    var toHideDiv = document.getElementById('LoginInnerContainer');
 	    //changing style
@@ -367,6 +354,7 @@
     
     function CheckRegisterInputs()
     {      
+        console.log("checking inputs register ");
       	var RegistrationValidator = document.getElementById('RegistrationValidator');
       	
       	var FirstNameValidator = document.getElementById('FirstNameValidator'); 
@@ -378,17 +366,20 @@
       	var PassValidator = document.getElementById('PassValidator');
       	var ConfPassValidator = document.getElementById('ConfPassValidator');
       	var AddressValidator = document.getElementById('AddressValidator');
-      	
+      	console.log("got validators");
     	var FirstName = document.getElementById('FirstName').value;
     	var LastName = document.getElementById('LastName').value;
     	var email = document.getElementById('email').value;
-    	var dateOfBirth = document.getElementById('dateOfBirth').value;
+    	console.log("got values before date");
+    	var dateOfBirth = document.getElementById('UserDOB').value;
+    	console.log("got values after date");
     	var Sexe = document.getElementById('Sexe').value;
     	var Username = document.getElementById('Username').value;
     	var password = document.getElementById('password').value;
     	var confirmPass = document.getElementById('confirmPass').value;
     	var Address = document.getElementById('Address').value;
     	
+    	console.log("got values");
     	RegistrationValidator.innerHTML  ="";
     	FirstNameValidator.innerHTML  ="";
     	LastNameValidator.innerHTML  ="";
@@ -457,7 +448,14 @@
     		console.log("address valid= false");
     	}
     	
-    	console.log("done validating");
+    	var resultDOB = validateDOB();
+    	console.log("validateDOB=" + resultDOB);
+		if (resultDOB == false)
+		{
+			valid = false;
+		}
+    	
+    	console.log("done validating in main; Final Valid = " + valid);
     	
     	if (valid == false)
     	{
@@ -466,9 +464,58 @@
     	}    	
     	else	
     	{
+    	console.log("final valid =" + valid);
     		return true;
     	}
     }
+    
+    function validateDOB()
+	{
+   		console.log("starting validating ....." );
+   		var UserDOB = document.getElementById("UserDOB");     	
+	    var value = UserDOB.value;
+	    var DOBValidator = document.getElementById("DOBValidator");     				   
+	    			  
+	  	DOBValidator.innerHTML = "";			  
+
+     	var regEx2 = /^\d{4}-\d{2}-\d{2}$/;
+	    DOBValidator.innerHTML = "";
+	    if (value == null || value == "" )
+	    {
+	      	console.log("DOB null" );
+		    DOBValidator.innerHTML = "* Mandatory Field";
+		    return false; 
+	    }
+		if(!regEx2.test(value))
+		{
+		    console.log("DOB format not valide" );
+		    DOBValidator.innerHTML = "* Invalid date of birth format (yyyy-mm-dd)";
+		    return false;  // Invalid format
+	    }
+	      
+		var d;
+		if(!((d = new Date(value))|0))
+	    {
+			DOBValidator.innerHTML = "* Invalid date of birth (yyyy-mm-dd)";
+		    console.log("DOB not valide" );
+		    return false; 
+		}
+		 
+		console.log("Comparing '"+ d.toISOString().slice(0,10) + "' with: '" + value + "'" );	
+		console.log("comparaison result : " + (d.toISOString().slice(0,10) == value))
+		 
+		if(d.toISOString().slice(0,10) == value)
+		{			  
+			console.log("DOB valid");	
+			return true;
+		}
+		else
+		{
+		  	DOBValidator.innerHTML = "* Invalid date of birth format (yyyy-mm-dd)";
+		    console.log("DOB not valide (yyyy-mm-dd)" );
+			return false; 
+		}		
+	}
     
     function checkLoginInputs()
     {

@@ -3,6 +3,7 @@
 <%@ page import="java.io.*,java.util.*,javax.servlet.*" %>
 <%
 	session.setAttribute("sessionId","");
+	session.setAttribute("UserType","");
 	response.sendRedirect("LoginPage.jsp");
 %>
 <html>
