@@ -31,8 +31,7 @@
           <ul class="nav navbar-nav navbar-left">
             <li><a href="${pageContext.request.contextPath}/Movies">Movies</a></li>
             <li><a href="${pageContext.request.contextPath}/Friends">Friends</a></li>
-            <li><a href="${pageContext.request.contextPath}/Events">Events</a></li>
-            <li id="btnAdmin" style="display: none; "><a href="${pageContext.request.contextPath}/Admin">Administrator</a></li>
+            <li><a href="${pageContext.request.contextPath}/Events">Events</a></li>         
           </ul>
 		   <ul class="nav navbar-nav navbar-right">
             <li><a href="${pageContext.request.contextPath}/Profile">${userLogged.getFullName()}</a></li>
@@ -44,16 +43,52 @@
 
     <div class="container-fluid">
       <div class="row">
+      <div class="col-sm-10 col-sm-offset-3 col-md-10 col-md-offset-1 main">
+          <br/>
+          <h1 class="page-header">Friend Requests</h1>
+          <div class="row placeholders">
+		  	<c:forEach items="${FriendRequestList}" var="item">
+		  		<div class="col-xs-6 col-sm-3 placeholder">
+              <div align="center">
+              	<img class="img-circle" src="${item.getImage()}" width="130" height="130" class="img-responsive" alt="Generic placeholder thumbnail">
+              </div>
+              <h4 align='center'><a href="${pageContext.request.contextPath}/ManageFriends?friendId=${item.getId()}" >${item.getFullName()}</a></h4>               
+              <h4 align="center"></h4>
+              <div align="center">
+              	<span class="text-muted">${item.getUsername()}</span>
+              </div>
+            </div>
+		  	</c:forEach>
+          </div>  
+        </div>
+        <div class="col-sm-10 col-sm-offset-3 col-md-10 col-md-offset-1 main">
+          <br/>
+          <h1 class="page-header">Your Pending Requests</h1>
+          <div class="row placeholders">
+          	<c:forEach items="${friendsListPending}" var="item">
+		  		<div class="col-xs-6 col-sm-3 placeholder">
+              <div align="center">
+              	<img class="img-circle" src="${item.getImage()}" width="130" height="130" class="img-responsive" alt="Generic placeholder thumbnail">
+              </div>
+              <h4 align='center'><a href="${pageContext.request.contextPath}/ManageFriends?friendId=${item.getId()}" >${item.getFullName()}</a></h4>               
+              <h4 align="center"></h4>
+              <div align="center">
+              	<span class="text-muted">${item.getUsername()}</span>
+              </div>
+            </div>
+		  	</c:forEach>
+          </div>  
+        </div>
         <div class="col-sm-10 col-sm-offset-3 col-md-10 col-md-offset-1 main">
           <br/>
           <h1 class="page-header">Your Friends</h1>
           <div class="row placeholders">
-		  	<c:forEach items="${friendsList}" var="item">
+          	<c:forEach items="${friendsList}" var="item">
 		  		<div class="col-xs-6 col-sm-3 placeholder">
               <div align="center">
-              	<img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="130" height="130" class="img-responsive" alt="Generic placeholder thumbnail">
+              	<img class="img-circle" src="${item.getUserr().getImage()}" width="130" height="130" class="img-responsive" alt="Generic placeholder thumbnail">
               </div>
-              <h4 align='center'><a href="${pageContext.request.contextPath}/UpdateFilm?friendId=${item.getId()}" >${item.getFullName()}</a></h4>
+              <h4 align='center'><a href="${pageContext.request.contextPath}/ManageFriends?friendId=${item.getId()}" >${item.getFullName()}</a></h4>
               <h4 align="center"></h4>
               <div align="center">
               	<span class="text-muted">${item.getfriendsCommonNumber()} friends in common</span>
