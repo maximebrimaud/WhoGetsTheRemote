@@ -53,7 +53,8 @@
               <div align="center">
               	<img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="130" height="130" class="img-responsive" alt="Generic placeholder thumbnail">
               </div>
-              <h4 align="center">${item.getFullName()}</h4>
+              <h4 align='center'><a href="${pageContext.request.contextPath}/UpdateFilm?friendId=${item.getId()}" >${item.getFullName()}</a></h4>
+              <h4 align="center"></h4>
               <div align="center">
               	<span class="text-muted">${item.getfriendsCommonNumber()} friends in common</span>
               </div>

@@ -69,7 +69,7 @@
           </br>
           <h2 class="page-header">Movie Categories</h2>
           <div class="row placeholders">          	
-          	<form role="form" action="CreateFilmCategory" onsubmit="return ValidateInputs()" method="post">          	
+          	<form role="form" action="MovieCategories" onsubmit="return ValidateInputs()" method="post">          	
 	          	<div class="col-xs-6 col-sm-12 sidebar-offcanvas" id="sidebar">
 		          <div class="list-group">	          
 		          	<div align="center" class='col-xs-6 col-sm-5 placeholder'>
@@ -84,6 +84,9 @@
 		          		<input class="btn btn-primary" type="submit"  value="Create">
 		          		<label id="CategorieValidator" style="color: red; font-weight:normal;"></label>
 		          	</div>
+		          	<div class="col-xs-12 col-sm-3 col-md-4" style=" font-size: large; text-align: right; color: red; " >
+						${CreateMessage}							  														  											  	
+					</div>
 		          </div>
 		        </div>
           	</form>
@@ -142,11 +145,13 @@ function ValidateInputs()
 	 if (txtCategorieLibelle == null || txtCategorieLibelle == "")
 	 {
 	 	CategorieValidator.innerHTML = "* Mandatory Field";
+	 	return false;
 	 }
- 		else
- 		{
- 			CategorieValidator.innerHTML = "";
- 		}   
+	 else
+	 {
+		CategorieValidator.innerHTML = "";
+		return true;
+	 }   
 }
 
 </script>
