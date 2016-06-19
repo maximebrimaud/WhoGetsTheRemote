@@ -14,6 +14,8 @@ import javax.sql.DataSource;
 
 //import models.Counter;
 import models.Film;
+import models.Friend;
+import models.User;
 
 @WebServlet("/Home")
 public class HomeServlet extends HttpServlet {
@@ -69,8 +71,48 @@ public class HomeServlet extends HttpServlet {
 			
 			HttpSession session;
 			session = request.getSession();
-	        
-			//String idNotIn = String.valueOf(session.getAttribute("sessionId"));
+			String idNotIn = String.valueOf(session.getAttribute("sessionId"));
+			
+			String query = "select uu.* from USERS uu "
+					+ "WHERE uu.ID_USER NOT IN ( "
+					+ "(SELECT u.ID_USER "
+					+ "FROM FRIENDS f inner join USERS u on f.ID_USER_TWO = u.ID_USER WHERE f.ID_USER_ONE = " + idNotIn + " ) "
+					+ "UNION "
+					+ "SELECT u1.ID_USER "
+					+ "FROM FRIENDS f1 inner join USERS u1 on f1.ID_USER_ONE = u1.ID_USER WHERE f1.ID_USER_TWO = " + idNotIn + ") "
+					+ "FETCH FIRST 8 ROWS ONLY";
+			PreparedStatement statementFriends;
+			statementFriends = myConnection.prepareStatement(query);
+			ResultSet friendsResult = statementFriends.executeQuery();
+			
+			List<User> youMayKnowList = new ArrayList<User>();
+			System.out.println("i am in do GET HomeServlet, preparing friends list");
+			while(friendsResult.next())
+			{
+					
+				System.out.println("i am in do GET HomeServlet, executed list pymk ");
+				Friend someone = new Friend();
+				
+				int idFriend = friendsResult.getInt("ID_USER");
+				String nomFriend = friendsResult.getString("NOM_USER");
+				String prenomFriend = friendsResult.getString("PRENOM_USER");
+				String sexeFriend = friendsResult.getString("SEXE");
+				String usernameFriend = friendsResult.getString("USERNAME");
+				String passwordFriend = friendsResult.getString("PASSWORD_USER");
+				String emailFriend =  friendsResult.getString("EMAIL_USER");
+				String BdayFriend =  friendsResult.getString("DATE_OF_BIRTH");
+				String creationDateFriend =  friendsResult.getString("USER_CREATION_DATE");
+				String modificationDateFriend =  friendsResult.getString("USER_MODIFICATION_DATE");
+				String addressFriend =  friendsResult.getString("ADDRESS_USER");
+				String imageFriend =  friendsResult.getString("IMAGE_USER");
+				
+				someone.setId(idFriend);
+				someone.setFullName(prenomFriend + " " + nomFriend);
+				User currentUserSomeone = new User(idFriend,prenomFriend,nomFriend,usernameFriend,passwordFriend,emailFriend,BdayFriend, sexeFriend, addressFriend, imageFriend, modificationDateFriend, creationDateFriend);
+				youMayKnowList.add(currentUserSomeone);
+			}
+			
+			
 			//List<Counter> userCounter = new ArrayList<Counter>();
 			//userCounter = PeopleYouMayKnow(myConnection,idNotIn);
 			
@@ -79,7 +121,8 @@ public class HomeServlet extends HttpServlet {
 			//}
 			
 			//Creer un httpsession pour mettre la liste de fiilms hits
-			session.setAttribute("listHits", listF);		
+			session.setAttribute("listHits", listF);	
+			session.setAttribute("youMayKnow", youMayKnowList);	
 						
 			System.out.println("redirecting to home");
 			request.getRequestDispatcher("/Home.jsp").forward(request, response);

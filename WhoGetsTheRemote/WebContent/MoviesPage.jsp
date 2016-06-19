@@ -74,7 +74,11 @@
         </div>
       </div>
     </div>
-
+	
+    <br/><br/><br/>
+    <div style="background-color:black; color:white; clear:both; text-align:center; padding:5px; padding-top:5px"> 
+    	Who Gets The Remote - The Place for movie lovers
+    </div>
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
@@ -87,8 +91,7 @@
     <script src="Bootstrap/docs/assets/js/ie10-viewport-bug-workaround.js"></script>
    
     <script>
-	    console.log("doing on load script");
-	    var btnAdmin = document.getElementById("btnAdmin"); 
+	    console.log("doing on load script"); 
 		var btnCreateMovie = document.getElementById("btnCreateMovie"); 
 		var btnManageCategories = document.getElementById("btnManageCategories");    		    	
     		
@@ -98,13 +101,11 @@
 		
 		if (UserType == "Admin")
 		{
-			btnAdmin.style.display = "block";
 			btnCreateMovie.style.display = "block";
 			btnManageCategories.style.display = "block";
 		}
 		else
 		{
-			btnAdmin.style.display = "none";
 			btnManageCategories.style.display = "none";
 			btnCreateMovie.style.display = "none";
 		}
