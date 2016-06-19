@@ -55,9 +55,21 @@
 			        <h3 align='center'><span class='text-muted'>${friend.getUserr().getUsername()}</span></h3>		        
 	          	</div>
 	          	<div align='center' class='col-xs-6 col-sm-3 col-md-12  placeholder'>
-	          		<input style="background-color:activecaption;" id="btnAddFriend" type="submit" value="Add Friend">	          		
-	          		<input style="background-color:activecaption;" id="btnRemoveFriend" type="submit" value="Remove Friend">
-	          		<input style="background-color:activecaption;" id="btnRequestPending" onclick="return false;" type="button" value="Request Pending">	  
+	          		<input style="background-color:activecaption;" name="btnAddFriend" id="btnAddFriend" type="submit" value="Add Friend">	          		
+	          		<input style="background-color:activecaption;" name="btnRemoveFriend" id="btnRemoveFriend" type="submit" value="Remove Friend">
+	          		<input style="background-color:activecaption;"  name="btnRequestPending"id="btnRequestPending" onclick="return false;" type="button" value="Request Pending...">
+	          		
+	          		<div class='row'>
+			          	<div class='col-sm-6 col-md-6' align='right'>
+		          			<input style="background-color:activecaption;" name="btnConfirme" id="btnConfirme" type="submit" value="Confirme Request">	
+			          	</div>
+			          	
+			          	<div class='col-sm-6 col-md-6' align='left'>
+		          			<input style="background-color:activecaption;" name="btnIgnore" id="btnIgnore" type="submit" value="Ignore Request">
+			          	</div> 
+	          		</div>         		
+	          			  
+	          		${ModifyStateResult}	
 	          	</div>
 	          	<div align='center' class='col-xs-6 col-sm-3 col-md-12  placeholder'>			        
 	        	 	<h4 align='center'>Email: ${friend.getUserr().getEmail()}</h4> 
@@ -70,7 +82,7 @@
 	          </div>  
 	        </div>
 	        <div class="col-sm-10 col-sm-offset-3 col-md-10 col-md-offset-1 main">         
-	          <h1 class="page-header">Friends In Common</h1>
+	          <h1 class="page-header">Friends In Common (${friend.getfriendsCommonNumber()} Friends)</h1>
 	          <div class="row placeholders">
 			  	<c:forEach items="${friend.getListFriendsCommon()}" var="item">
 			  		<div class="col-xs-6 col-sm-3 placeholder">
@@ -148,8 +160,10 @@
     	var lblGender = document.getElementById('lblGender'); 
     	var btnRemoveFriend = document.getElementById('btnRemoveFriend'); 
     	var btnRequestPending = document.getElementById('btnRequestPending');
-    	var divFriendMovies = document.getElementById('divFriendMovies'); 
-    	 
+    	var divFriendMovies = document.getElementById('divFriendMovies');  
+    	var btnConfirme = document.getElementById('btnConfirme');
+    	var btnIgnore = document.getElementById('btnIgnore');
+	    
 	    if (isFriend == "Accepted")
 	    {
 	    	lblDOB.style.display = "block";
@@ -158,7 +172,10 @@
 	    	btnRemoveFriend.style.display = "block";
 			divFriendMovies.style.display = "block";
 			btnRequestPending.style.display = "none";
-			btnAddFriend.style.display = "none";			
+			btnAddFriend.style.display = "none";
+			
+			btnIgnore.style.display = "none";
+			btnConfirme.style.display = "none";			
 	    }
 	    else if (isFriend == "Pending")
 	    {
@@ -169,6 +186,23 @@
 	    	divFriendMovies.style.display = "none";
 			btnAddFriend.style.display = "none"; 
 			btnRequestPending.style.display = "block";
+			
+			btnIgnore.style.display = "none";
+			btnConfirme.style.display = "none";
+	    }
+	    else if (isFriend == "Confirme")
+	    {
+	    	lblDOB.style.display = "none";
+	    	lblAddress.style.display = "none";
+	    	lblGender.style.display = "none";
+	    	btnRemoveFriend.style.display = "none";
+	    	divFriendMovies.style.display = "none";
+			btnAddFriend.style.display = "none"; 
+			btnRequestPending.style.display = "none";
+			
+			
+			btnIgnore.style.display = "block";
+			btnConfirme.style.display = "block";
 	    }
 	    else 
 	    {
@@ -179,6 +213,9 @@
 	    	divFriendMovies.style.display = "none";
 			btnAddFriend.style.display = "block"; 
 			btnRequestPending.style.display = "none";
+			
+			btnIgnore.style.display = "none";
+			btnConfirme.style.display = "none";
 	    }	    
     </script>
   </body>
