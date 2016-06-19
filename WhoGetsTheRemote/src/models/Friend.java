@@ -17,6 +17,10 @@ public class Friend {
 	private int friendsCommonNumber;
 	@Column
 	private List<User> listFriendsCommon = new ArrayList<User>();
+	@Column
+	private List<Event> listEventsCommon = new ArrayList<Event>();
+	@Column
+	private List<Film> listMovies = new ArrayList<Film>();
 	
 	public Friend() {
 		super();
@@ -61,6 +65,18 @@ public class Friend {
 	public void setListFriendsCommon(List<User> frdsCommon) {
 		this.listFriendsCommon = frdsCommon;
 	}
+	public List<Film> getListMovies() {
+		return listMovies;
+	}
+	public void setListMovies(List<Film> movieList) {
+		this.listMovies = movieList;
+	}
+	public List<Event> getListEventsCommon() {
+		return listEventsCommon;
+	}
+	public void setListEventsCommon(List<Event> eventList) {
+		this.listEventsCommon = eventList;
+	}
+	
+	
 }
-
-

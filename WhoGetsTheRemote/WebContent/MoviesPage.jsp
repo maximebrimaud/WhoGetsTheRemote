@@ -52,7 +52,7 @@
           <h2 class="page-header">Search</h2>
           <ul class="nav nav-sidebar">	
           	<li id="btnCreateMovie" style="display: none;"><a href="${pageContext.request.contextPath}/CreateFilm">Create Movie</a></li> <!-- MoviesCreate.jsp    ////   CreateFilmData -->
-          	<li id="btnManageCategories" style="display: none;"><a href="${pageContext.request.contextPath}/CreateFilm">Manage Categories</a></li>             
+          	<li id="btnManageCategories" style="display: none;"><a href="${pageContext.request.contextPath}/MovieCategories">Manage Categories</a></li>             
             <li class="active"><a href="#" style="text-decoration: underline;">Overview<!-- <span class="sr-only">(current)</span> --></a></li>            
             <li><a href="#">Reports</a></li>
             <li><a href="#">Analytics</a></li>
@@ -93,7 +93,8 @@
     <script>
 	    console.log("doing on load script");
 	    var btnAdmin = document.getElementById("btnAdmin"); 
-		var btnCreateMovie = document.getElementById("btnCreateMovie");    		    	
+		var btnCreateMovie = document.getElementById("btnCreateMovie"); 
+		var btnManageCategories = document.getElementById("btnManageCategories");    		    	
     		
 		console.log("got btnAdmin");
 		var UserType = '<%= session.getAttribute("UserType") %>';
@@ -103,10 +104,12 @@
 		{
 			btnAdmin.style.display = "block";
 			btnCreateMovie.style.display = "block";
+			btnManageCategories.style.display = "block";
 		}
 		else
 		{
 			btnAdmin.style.display = "none";
+			btnManageCategories.style.display = "none";
 			btnCreateMovie.style.display = "none";
 		}
 	
