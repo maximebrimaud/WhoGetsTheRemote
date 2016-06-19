@@ -55,17 +55,17 @@
 			        <h3 align='center'><span class='text-muted'>${friend.getUserr().getUsername()}</span></h3>		        
 	          	</div>
 	          	<div align='center' class='col-xs-6 col-sm-3 col-md-12  placeholder'>
-	          		<input style="background-color:activecaption;" name="btnAddFriend" id="btnAddFriend" type="submit" value="Add Friend">	          		
-	          		<input style="background-color:activecaption;" name="btnRemoveFriend" id="btnRemoveFriend" type="submit" value="Remove Friend">
-	          		<input style="background-color:activecaption;"  name="btnRequestPending"id="btnRequestPending" onclick="return false;" type="button" value="Request Pending...">
+	          		<input class="btn btn-primary"  name="btnAddFriend" id="btnAddFriend" type="submit" value="Add Friend">	          		
+	          		<input class="btn btn-primary" name="btnRemoveFriend" id="btnRemoveFriend" type="submit" value="Remove Friend">
+	          		<input class="btn"  name="btnRequestPending"id="btnRequestPending" onclick="return false;" type="button" value="Request Pending...">
 	          		
 	          		<div class='row'>
 			          	<div class='col-sm-6 col-md-6' align='right'>
-		          			<input style="background-color:activecaption;" name="btnConfirme" id="btnConfirme" type="submit" value="Confirme Request">	
+		          			<input class="btn btn-primary" name="btnConfirme" id="btnConfirme" type="submit" value="Confirme Request">	
 			          	</div>
 			          	
 			          	<div class='col-sm-6 col-md-6' align='left'>
-		          			<input style="background-color:activecaption;" name="btnIgnore" id="btnIgnore" type="submit" value="Ignore Request">
+		          			<input class="btn " name="btnIgnore" id="btnIgnore" type="submit" value="Ignore Request">
 			          	</div> 
 	          		</div>         		
 	          			  
@@ -89,10 +89,7 @@
 		              <div align="center">
 		              	<img class="img-circle" src='${item.getImage()}' width="150" height="150" class="img-responsive" alt="Generic placeholder thumbnail">
 		              </div>
-		              <h4 align="center"><a href="${pageContext.request.contextPath}/AddFriend?friendId=${item.getId()}" >${item.fullName}</a></h4>
-		             <%--  <div align="center">
-		              	<span class="text-muted">${item.friendsCommonNumber} friends in common</span>
-		              </div> --%>
+		              <h4 align="center"><a href="${pageContext.request.contextPath}/ManageFriends?friendId=${item.getId()}" >${item.fullName}</a></h4>		       
 		            </div>
 			  	</c:forEach>
 	          </div>  

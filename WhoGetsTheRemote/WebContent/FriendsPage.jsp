@@ -45,6 +45,34 @@
       <div class="row">
       <div class="col-sm-10 col-sm-offset-3 col-md-10 col-md-offset-1 main">
           <br/>
+          <h1 class="page-header">Search for People</h1>
+         	<form role="form" action="Friends" method="post">
+	          <div class="row placeholders">			  	
+			  	<div class="col-xs-6 col-sm-12 placeholder">
+	              <div align="center">
+	              	<input id="SearchInput" class="form-control" name="SearchInput" placeholder="Search People">
+	             	<input type="submit" class="btn btn-primary" id="btnSearch" name="btnSearch" value="Search">	             	
+	              </div>	             
+	            </div>
+	          </div>
+          	</form>
+          <div class="row placeholders">
+		  	<c:forEach items="${SearchList}" var="item">
+		  		<div class="col-xs-6 col-sm-3 placeholder">
+              <div align="center">
+              	<img class="img-circle" src="${item.getImage()}" width="130" height="130" class="img-responsive" alt="Generic placeholder thumbnail">
+              </div>
+              <h4 align='center'><a href="${pageContext.request.contextPath}/ManageFriends?friendId=${item.getId()}" >${item.getFullName()}</a></h4>               
+              <h4 align="center"></h4>
+              <div align="center">
+              	<span class="text-muted">${item.getUsername()}</span>
+              </div>
+            </div>
+		  	</c:forEach>
+          </div>  
+        </div>
+      	<div class="col-sm-10 col-sm-offset-3 col-md-10 col-md-offset-1 main">
+          <br/>
           <h1 class="page-header">Friend Requests</h1>
           <div class="row placeholders">
 		  	<c:forEach items="${FriendRequestList}" var="item">

@@ -147,67 +147,6 @@ public class Film implements Serializable
 
 	}
 
- /* public Film(int id, String name, String description, String dateeleased, int notationFilm, String trailerFilm, String filmLink, int categorieId, String imageFilm, String creationDate, String modificationDate, String duration,int pgLevel,String director,String cast,String language, int viewers) 
-	{
-		super();
-		this.id = id;		
-		this.name = name;
-		this.description = description;
-		this.dateReleased = dateeleased;
-		this.notationFilm = notationFilm;
-		this.trailerFilm = trailerFilm;
-		this.filmLink = filmLink;
-		this.categorieId = categorieId;
-		this.imageFilm = imageFilm;
-		this.creationDate = creationDate;
-		this.modificationDate = modificationDate;
-		this.viewers = viewers;
-		this.duration = duration;
-		this.pgLevel = pgLevel;
-		this.director = director;
-		this.cast = cast;
-		this.language = language;
-	}*/
-
-	
-	/*
-	 *ViewModeTitle
-	 * ViewModeDirector
-	 * ViewModeLanguage
-	 * ViewModeCast
-	 * ViewModeReleaseDate
-	 * ViewModeCategorie
-	 * ViewModeDuration
-	 * ViewModePG
-	 * ViewModeDescription
-	 * ViewModeRating
-	 * divChangePic /// in edit mode only
-	 * ViewModeTrailer
-	 * ViewModeMovie
-	 * 
-	 * btnEditFilm /// in view mode only
-	 * 
-	 * btnCancelEdit /// in edit mode only
-	 * btnUpdateFilm /// in edit mode only
-	 */
-	
-	
-	/*
-	 *EditModeTitle
-	 * EditModeDirector
-	 * EditModeLanguage
-	 * EditModeCast
-	 * EditModeReleaseDate
-	 * EditModeCategorie
-	 * EditModeDuration
-	 * EditModePG
-	 * EditModeDescription
-	 * EditModeRating
-	 * divChangePic /// in edit mode only
-	 * EditModeTrailer
-	 * EditModeMovie
-	 * */
-	
 	
 	public int getId() {
 		return id;

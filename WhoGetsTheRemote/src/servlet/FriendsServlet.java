@@ -179,17 +179,67 @@ public class FriendsServlet extends HttpServlet {
 			myConnection.close();
 			System.out.println("i am out of do GET FriendsServlet");
 		} 		
-		catch (SQLException e) 
+		catch (Exception e) 
 		{
+			System.out.println("i am in catch ALL Exception POST FriendsServlet, Got Connection!");
+			request.setAttribute("loginMessage", "* Error in connection");
+			request.getRequestDispatcher("/LoginPage.jsp").forward(request, response);
 			System.out.println(e.getMessage());
 			e.printStackTrace();
-		}	
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
-	{			
-		System.out.println("i am in do POST");
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-		System.out.println("i am out of do POST");	
+	{					
+		try
+		{
+			
+		
+			String SearchInput = request.getParameter("SearchInput");
+			Connection myConnection = myDataSource.getConnection("APP","APP");
+			
+			
+			List<User> PeopleSearchList = new ArrayList<User>();
+			
+			PreparedStatement statementPeopleSearch = myConnection.prepareStatement("select * from USERS where USERNAME LIKE '%" + SearchInput + "%' or PRENOM_USER LIKE '%" + SearchInput + "%'  or NOM_USER LIKE '%" + SearchInput + "%'");
+			
+			ResultSet newPeopleSearch = statementPeopleSearch.executeQuery();
+			System.out.println("i am in do GET FriendsProfileServlet, preparing friends list");
+			while(newPeopleSearch.next())
+			{
+				int idFriend = newPeopleSearch.getInt("ID_USER");
+				String nomFriend = newPeopleSearch.getString("NOM_USER");
+				String prenomFriend = newPeopleSearch.getString("PRENOM_USER");
+				String sexeFriend = newPeopleSearch.getString("SEXE");
+				String usernameFriend = newPeopleSearch.getString("USERNAME");
+				String passwordFriend = newPeopleSearch.getString("PASSWORD_USER");
+				String emailFriend =  newPeopleSearch.getString("EMAIL_USER");
+				String BdayFriend =  newPeopleSearch.getString("DATE_OF_BIRTH");
+				String creationDateFriend =  newPeopleSearch.getString("USER_CREATION_DATE");
+				String modificationDateFriend =  newPeopleSearch.getString("USER_MODIFICATION_DATE");
+				String addressFriend =  newPeopleSearch.getString("ADDRESS_USER");
+				String imageFriend =  newPeopleSearch.getString("IMAGE_USER");
+				
+				User newUser = new User(idFriend,prenomFriend,nomFriend,usernameFriend,passwordFriend,emailFriend,BdayFriend, sexeFriend, addressFriend, imageFriend, modificationDateFriend, creationDateFriend);			
+				PeopleSearchList.add(newUser);										
+			}
+			request.setAttribute("SearchList", PeopleSearchList);
+			doGet(request, response);
+		}
+		catch (SQLException e) 
+		{
+			System.out.println("i am in catch SQL Exception POST FriendsServlet, Got Connection!");			
+			doGet(request, response);
+			
+		}
+		catch (Exception e) 
+		{
+			System.out.println("i am in catch ALL Exception POST FriendsServlet, Got Connection!");
+			request.setAttribute("loginMessage", "* Error in connection");
+			request.getRequestDispatcher("/LoginPage.jsp").forward(request, response);
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+		}
+		
 	}
 }

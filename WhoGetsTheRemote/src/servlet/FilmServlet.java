@@ -18,6 +18,7 @@ import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
 import models.Film;
+import models.User;
 
 /**
  * Servlet implementation class MoviesServlet
@@ -82,10 +83,13 @@ public class FilmServlet extends HttpServlet {
 			request.getRequestDispatcher("/MoviesPage.jsp").forward(request, response);
 			
 			System.out.println("redirected to Movies Page");			
-		} 
-		catch (SQLException e) 
+		} 		
+		catch (Exception e) 
 		{
-			// TODO Auto-generated catch block
+			System.out.println("i am in catch ALL Exception POST FriendsServlet, Got Connection!");
+			request.setAttribute("loginMessage", "* Error in connection");
+			request.getRequestDispatcher("/LoginPage.jsp").forward(request, response);
+			System.out.println(e.getMessage());
 			e.printStackTrace();
 		}					
 	}
@@ -95,8 +99,77 @@ public class FilmServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		System.out.println("in film servlet post");
-		// TODO Auto-generated method stub
-		doGet(request, response);	
+		try
+		{
+			String btnSearch = request.getParameter("btnSearch");
+		 	
+			if (btnSearch!=null)
+			{
+				System.out.println("i am in do POST");
+				response.getWriter().append("Served at: ").append(request.getContextPath());
+				System.out.println("i am out of do POST");	
+				
+					String SearchInput = request.getParameter("SearchInput");
+					Connection myConnection = myDataSource.getConnection("APP","APP");				
+					
+					List<Film> MovieSearchList = new ArrayList<Film>();
+					
+					PreparedStatement statementMovieSearch = myConnection.prepareStatement("select * from FILM "
+							+ "INNER JOIN FILM_CATEGORIE ON ID_CATEGORIE_FILM = ID_FILM_CATEGORIE "
+							+ "WHERE FILM_DISABLE_DATE IS NULL and (NOM_FILM LIKE '%" + SearchInput + "%' "
+									+ "or FILM_LANGUAGE LIKE '%" + SearchInput + "%'  "
+											+ "or FILM_CAST LIKE '%" + SearchInput + "%'   "
+													+ "or FILM_DIRECTOR LIKE '%" + SearchInput + "%' "															
+																+ "or LIBELLE_CATEGORIE LIKE '%" + SearchInput + "%'  "
+																		+ "or DESCRIPTION_FILM LIKE '%" + SearchInput + "%')");
+				
+					ResultSet newMovieSearch = statementMovieSearch.executeQuery();
+					System.out.println("i am in do GET FriendsProfileServlet, preparing friends list");
+					while(newMovieSearch.next())
+					{
+						int filmId = newMovieSearch.getInt("ID_FILM");
+						String Title = newMovieSearch.getString("NOM_FILM");
+						String Director = newMovieSearch.getString("FILM_DIRECTOR");
+						String Language = newMovieSearch.getString("FILM_LANGUAGE");
+						String Cast = newMovieSearch.getString("FILM_CAST");
+						String ReleaseDate = newMovieSearch.getString("DATE_RELEASED");
+						int Categorie = newMovieSearch.getInt("ID_CATEGORIE_FILM");
+						String Duration = newMovieSearch.getString("FILM_DURATION");
+					    int PG = newMovieSearch.getInt("FILM_PG_LEVEL");
+					    String Description = newMovieSearch.getString("DESCRIPTION_FILM");
+					    int Rating = newMovieSearch.getInt("NOTATION_FILM");
+					    String PictureBrowse = newMovieSearch.getString("FILM_IMAGE");
+					    String Trailer = newMovieSearch.getString("TRAILER_FILM_LINK");
+					    String Movie= newMovieSearch.getString("FILM_LINK");
+					    String creationDate = newMovieSearch.getString("FILM_CREATION_DATE");
+					    String modificationDate = newMovieSearch.getString("FILM_MODIFICATION_DATE");					   
+						
+					    Film selectedMovie = new Film(filmId, Title, Description, ReleaseDate, Rating, Trailer, Movie, Categorie, PictureBrowse, creationDate, modificationDate, Duration, PG, Director, Cast, Language);
+					    System.out.println("Adding film");
+					    MovieSearchList.add(selectedMovie);								
+					}
+					request.setAttribute("SearchMovieList", MovieSearchList);
+					doGet(request, response);						
+			}
+			else
+			{
+				System.out.println("in film servlet post");
+				doGet(request, response);			
+			}
+		}
+		catch (SQLException e) 
+		{
+			System.out.println("i am in catch SQL Exception POST FriendsServlet, Got Connection! " + e.getMessage());			
+			doGet(request, response);
+			
+		}
+		catch (Exception e) 
+		{
+			System.out.println("i am in catch ALL Exception POST FriendsServlet, Got Connection!");
+			request.setAttribute("loginMessage", "* Error in connection");
+			request.getRequestDispatcher("/LoginPage.jsp").forward(request, response);
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+		}
 	}
 }
