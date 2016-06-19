@@ -49,6 +49,8 @@ public class User
 	private String modificationDate;
 	@Column
 	private String creationDate;
+	@Column
+	private String userMessage;
 	
 	private List<Friend> friendsInCommon= new ArrayList<Friend>();
 	
@@ -173,5 +175,30 @@ public class User
 	}
 	public void setFriendsInCommon(List<Friend> friendsInCommon) {
 		this.friendsInCommon = friendsInCommon;
+	}
+	public String getUserMessage() {
+		return userMessage;
+	}
+	public void setUserMessage(String userMessage) {
+		this.userMessage = userMessage;
+	}
+
+	public User(int id, String firstName, String lastName, String username, String password, String email, String dob,
+			String sexe, String address, String image, String modificationDate, String creationDate,
+			String userMessage) {
+		super();
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.username = username;
+		this.password = password;
+		this.email = email;
+		this.dob = dob;
+		this.sexe = sexe;
+		this.address = address;
+		this.image = image;
+		this.modificationDate = modificationDate;
+		this.creationDate = creationDate;
+		this.userMessage = userMessage;
 	}
 }

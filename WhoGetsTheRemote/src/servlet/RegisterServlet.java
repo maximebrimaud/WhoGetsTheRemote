@@ -25,10 +25,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-/**
- * Servlet implementation class RegisterServlet
- */
-@WebServlet("/RegisterServlet")
+@WebServlet("/Register")
 public class RegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -38,9 +35,6 @@ public class RegisterServlet extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		
@@ -49,9 +43,6 @@ public class RegisterServlet extends HttpServlet {
 		System.out.println("i am out of do GET Register");
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		try 
@@ -88,7 +79,6 @@ public class RegisterServlet extends HttpServlet {
 			
 			if (myResultSet == 1) 
 			{				
-				
 				PreparedStatement myStatement2 = myConnection.prepareStatement("SELECT * from USERS WHERE USERNAME = '" + user + "' AND PASSWORD_USER = '" + pass + "' ");
 				ResultSet myResultSet2 = myStatement2.executeQuery();
 				if (myResultSet2.next())
@@ -109,7 +99,6 @@ public class RegisterServlet extends HttpServlet {
 					
 					String fullName = prenom+ " " +nom;
 				
-				
 					request.setAttribute("user", fullName);		
 					request.setAttribute("CurrentUser", currentUser);
 					request.getRequestDispatcher("/Home.jsp").forward(request, response);
@@ -118,7 +107,6 @@ public class RegisterServlet extends HttpServlet {
             } 
             else 
             {
-            	
             	request.setAttribute("loginMessage", "Invalid Username and Password combination!");
                 request.getRequestDispatcher("/LoginPage.jsp").forward(request, response);
             	System.out.println("Incorrect login credentials");

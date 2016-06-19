@@ -1,119 +1,101 @@
-//package servlet;
-//
-//import java.io.IOException;
-//import java.sql.*;
-//
-//import javax.annotation.Resource;
-//import javax.servlet.ServletException;
-//import javax.servlet.annotation.WebServlet;
-//import javax.servlet.http.HttpServlet;
-//import javax.servlet.http.HttpServletRequest;
-//import javax.servlet.http.HttpServletResponse;
-//import javax.sql.*;
-//
-///**
-// * Servlet implementation class FriendsServlet
-// */
-//@WebServlet("/FriendsServlet")
-//public class FriendsServlet extends HttpServlet {
-//	private static final long serialVersionUID = 1L;
-//    
-//	@Resource private DataSource myDataSource;
-//	
-//    public FriendsServlet() 
-//    {
-//        super();
-//    }  
-//
-//	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
-//	{		
-//		System.out.println("i am in do GET Login");
-//		response.getWriter().append("Served at: ").append(request.getContextPath());
-//		System.out.println("i am out of do GET Login");				 
-//	}
-//
-//	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
-//	{							
-//		try 
-//		{
-//			//getting Request data
-//			String idUser = request.getParameter("idUser");
-//	        System.out.println("i am in do POST Friends, IdUser: " + idUser);
-//	        
-//	        //Setting up database connection
-//	        Connection myConnection = myDataSource.getConnection("APP","APP");			
-//	        System.out.println("i am in do POST Login, Got Connection!");
-//			
-//	        //Statement myStatement =	myConnection.createStatement();
-//	        PreparedStatement myStatement = myConnection.prepareStatement("SELECT * from USERS WHERE USERNAME = '" + user + "' AND PASSWORD_USER = '" + pass + "' ");
-//			 System.out.println("i am in do POST Login, Got Statement!");
-//
-//			 //Authentication
-//			ResultSet myResultSet = myStatement.executeQuery();
-//			 System.out.println("i am in do POST Login, Executed Statement!");
-//			//ResultSet myResultSet = myStatement.executeQuery("SELECT * from Users WHERE Username = \"" + user+ "\" AND Password = \"" + pass + "\" ");
-//			
-//			if (myResultSet.next()) 
-//			{				
-//				int id = myResultSet.getInt("ID_USER");
-//				String nom = myResultSet.getString("NOM_USER");
-//				String prenom = myResultSet.getString("PRENOM_USER");
-//				String sexe = myResultSet.getString("SEXE");
-//				String username = myResultSet.getString("USERNAME");
-//				String password = myResultSet.getString("PASSWORD_USER");
-//				String email =  myResultSet.getString("EMAIL_USER");
-//				String Bday =  myResultSet.getString("DATE_OF_BIRTH");
-//				String CreationDate =  myResultSet.getString("USER_CREATION_DATE");
-//				User currentUser = new User(id,prenom,nom,username,password,email,CreationDate);
-//				String fullName = prenom+ " " +nom;
-//				request.setAttribute("user", fullName);
-//				request.setAttribute("currentUser", currentUser);	
-//				
-//				//Liste des nouveaux films
-//				PreparedStatement statementNewFilms = myConnection.prepareStatement("SELECT * FROM FILM ORDER BY FILM_CREATION_DATE FETCH FIRST 8 ROWS ONLY");
-//				ResultSet newMoviesResult = statementNewFilms.executeQuery();
-//				List<Film> listF = new ArrayList<Film>();
-//				while (newMoviesResult.next()) 
-//				{
-//					int idFilm = newMoviesResult.getInt("ID_FILM");
-//					String nomFilm = newMoviesResult.getString("NOM_FILM");
-//					String descriptionFilm = newMoviesResult.getString("DESCRIPTION_FILM");
-//					String dateReleased = newMoviesResult.getString("DATE_RELEASED");
-//					int notationFilm = Integer.parseInt(newMoviesResult.getString("NOTATION_FILM"));
-//					String trailer = newMoviesResult.getString("TRAILER_FILM_LINK");
-//					String filmLink =  newMoviesResult.getString("FILM_LINK");
-//					String image =  newMoviesResult.getString("IMAGE_FILM");
-//					Film currentFilm = new Film(idFilm,nomFilm,descriptionFilm,dateReleased,notationFilm,trailer,filmLink,image) ;
-//					listF.add(currentFilm);
-//					
-//					int i = 0;
-//					i++;
-//					System.out.println("Film " + i + " : " + nomFilm);
-//				}   
-//				request.setAttribute("listHits", listF);
-//				
-//				//Liste des People you may know
-//				
-//				request.getRequestDispatcher("/Home.jsp").forward(request, response);
-//				System.out.println("Correct login credentials, with username: " + username + " and userId: " + id + " and sexe: " + sexe);
-//            } 
-//            else 
-//            {
-//            	request.setAttribute("loginMessage", "Invalid Username and Password combination!");
-//                request.getRequestDispatcher("/LoginPage.jsp").forward(request, response);
-//            	System.out.println("Incorrect login credentials");
-//            }
-//			
-//			myConnection.close();
-//			System.out.println("i am out of do POST Login");
-//		} 		
-//		catch (SQLException e) 
-//		{
-//			System.out.println(e.getMessage());
-//			e.printStackTrace();
-//		}
-//		
-//	}
-//
-//}
-//
+package servlet;
+
+import java.io.IOException;
+
+import javax.servlet.http.*;
+import javax.annotation.Resource;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.sql.DataSource;
+
+import models.Friend;
+import models.User;
+
+@WebServlet(urlPatterns={"/Friends"})
+public class FriendsServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+    
+	@Resource private DataSource myDataSource;
+	
+    public FriendsServlet() 
+    {
+        super();
+    	System.out.println("i am in constructor");
+    }  
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{		
+		try 
+		{
+	        //Setting up database connection
+	        Connection myConnection = myDataSource.getConnection("APP","APP");			
+	        System.out.println("i am in do GET FriendsServlet, Got Connection!");
+
+			HttpSession session;
+			session = request.getSession();
+	        int id = (Integer)session.getAttribute("sessionId");
+	        System.out.println("i am in do GET FriendsServlet, preparing  session");
+	        
+	        //Liste des amis
+			PreparedStatement statementFriends = 
+					myConnection.prepareStatement("(SELECT u.ID_USER, u.NOM_USER, u.PRENOM_USER, u.EMAIL_USER, u.DATE_OF_BIRTH, u.SEXE, u.USERNAME, u.PASSWORD_USER, u.ADDRESS_USER, u.IMAGE_USER, u.USER_CREATION_DATE, u.USER_MODIFICATION_DATE FROM FRIENDS f inner join USERS u on f.ID_USER_TWO = u.ID_USER WHERE f.ID_USER_ONE = " + id + ") "
+												+ "UNION "
+												+ "(SELECT u1.ID_USER, u1.NOM_USER, u1.PRENOM_USER, u1.EMAIL_USER, u1.DATE_OF_BIRTH, u1.SEXE, u1.USERNAME, u1.PASSWORD_USER, u1.ADDRESS_USER, u1.IMAGE_USER, u1.USER_CREATION_DATE, u1.USER_MODIFICATION_DATE  FROM FRIENDS f1 inner join USERS u1 on f1.ID_USER_ONE = u1.ID_USER WHERE f1.ID_USER_TWO = " + id + ")");
+			ResultSet newFriendsResult = statementFriends.executeQuery();
+			List<Friend> friendsList = new ArrayList<Friend>();
+			System.out.println("i am in do GET FriendsServlet, preparing friends list");
+			while(newFriendsResult.next())
+			{
+				System.out.println("i am in do GET FriendsServlet, executed list friends ");
+				Friend friendd = new Friend();
+				
+				int idFriend = newFriendsResult.getInt("ID_USER");
+				String nomFriend = newFriendsResult.getString("NOM_USER");
+				String prenomFriend = newFriendsResult.getString("PRENOM_USER");
+				String sexeFriend = newFriendsResult.getString("SEXE");
+				String usernameFriend = newFriendsResult.getString("USERNAME");
+				String passwordFriend = newFriendsResult.getString("PASSWORD_USER");
+				String emailFriend =  newFriendsResult.getString("EMAIL_USER");
+				String BdayFriend =  newFriendsResult.getString("DATE_OF_BIRTH");
+				String creationDateFriend =  newFriendsResult.getString("USER_CREATION_DATE");
+				String modificationDateFriend =  newFriendsResult.getString("USER_MODIFICATION_DATE");
+				String addressFriend =  newFriendsResult.getString("ADDRESS_USER");
+				String imageFriend =  newFriendsResult.getString("IMAGE_USER");
+				
+				friendd.setId(idFriend);
+				friendd.setFullName(prenomFriend + " " + nomFriend);
+				
+				//We have to retieve the liste of common friends not just the number
+				friendd.setfriendsCommonNumber(10);
+				//friendd.setListFriendsCommon();
+				
+				User currentUserFriend = new User(idFriend,prenomFriend,nomFriend,usernameFriend,passwordFriend,emailFriend,BdayFriend, sexeFriend, addressFriend, imageFriend, modificationDateFriend, creationDateFriend);
+				friendd.setUserr(currentUserFriend);
+				
+				friendsList.add(friendd);	
+			}
+			session.setAttribute("friendsList", friendsList);		
+			System.out.println("redirecting to friends page");
+			request.getRequestDispatcher("/FriendsPage.jsp").forward(request, response);
+
+			myConnection.close();
+			System.out.println("i am out of do GET FriendsServlet");
+		} 		
+		catch (SQLException e) 
+		{
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+		}	
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{			
+		System.out.println("i am in do POST");
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+		System.out.println("i am out of do POST");	
+	}
+}
