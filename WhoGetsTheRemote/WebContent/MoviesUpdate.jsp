@@ -30,8 +30,7 @@
           <ul class="nav navbar-nav navbar-left">
             <li><a href="${pageContext.request.contextPath}/Movies">Movies</a></li>
             <li><a href="${pageContext.request.contextPath}/Friends">Friends</a></li>
-            <li><a href="${pageContext.request.contextPath}/Events">Events</a></li>
-            <li id="btnAdmin" style="display: none; "><a href="${pageContext.request.contextPath}/Admin">Administrator</a></li>
+            <li><a href="${pageContext.request.contextPath}/Events">Events</a></li>         
           </ul>
 		   <ul class="nav navbar-nav navbar-right">
             <li><a href="${pageContext.request.contextPath}/Profile">${userLogged.getFullName()}</a></li>

@@ -42,9 +42,9 @@ public class FriendsServlet extends HttpServlet {
 	        
 	        //Liste des amis
 			PreparedStatement statementFriends = 
-					myConnection.prepareStatement("(SELECT u.ID_USER, u.NOM_USER, u.PRENOM_USER, u.EMAIL_USER, u.DATE_OF_BIRTH, u.SEXE, u.USERNAME, u.PASSWORD_USER, u.ADDRESS_USER, u.IMAGE_USER, u.USER_CREATION_DATE, u.USER_MODIFICATION_DATE FROM FRIENDS f inner join USERS u on f.ID_USER_TWO = u.ID_USER WHERE f.ID_USER_ONE = " + id + ") "
+					myConnection.prepareStatement("(SELECT u.ID_USER, u.NOM_USER, u.PRENOM_USER, u.EMAIL_USER, u.DATE_OF_BIRTH, u.SEXE, u.USERNAME, u.PASSWORD_USER, u.ADDRESS_USER, u.IMAGE_USER, u.USER_CREATION_DATE, u.USER_MODIFICATION_DATE FROM FRIENDS f inner join USERS u on f.ID_USER_TWO = u.ID_USER WHERE f.ID_USER_ONE = " + id + " AND f.FRIENDS_STATE='Accepted') "
 												+ "UNION "
-												+ "(SELECT u1.ID_USER, u1.NOM_USER, u1.PRENOM_USER, u1.EMAIL_USER, u1.DATE_OF_BIRTH, u1.SEXE, u1.USERNAME, u1.PASSWORD_USER, u1.ADDRESS_USER, u1.IMAGE_USER, u1.USER_CREATION_DATE, u1.USER_MODIFICATION_DATE  FROM FRIENDS f1 inner join USERS u1 on f1.ID_USER_ONE = u1.ID_USER WHERE f1.ID_USER_TWO = " + id + ")");
+												+ "(SELECT u1.ID_USER, u1.NOM_USER, u1.PRENOM_USER, u1.EMAIL_USER, u1.DATE_OF_BIRTH, u1.SEXE, u1.USERNAME, u1.PASSWORD_USER, u1.ADDRESS_USER, u1.IMAGE_USER, u1.USER_CREATION_DATE, u1.USER_MODIFICATION_DATE  FROM FRIENDS f1 inner join USERS u1 on f1.ID_USER_ONE = u1.ID_USER WHERE f1.ID_USER_TWO = " + id + " AND f1.FRIENDS_STATE='Accepted' )");
 			ResultSet newFriendsResult = statementFriends.executeQuery();
 			List<Friend> friendsList = new ArrayList<Friend>();
 			System.out.println("i am in do GET FriendsServlet, preparing friends list");
@@ -114,6 +114,66 @@ public class FriendsServlet extends HttpServlet {
 			}
 			session.setAttribute("friendsList", friendsList);		
 			System.out.println("redirecting to friends page");
+			
+			//--------------------------- MANAGING YOUR PENDING REQUESTS --------------------------------------------			
+			System.out.println("MANAGING YOUR PENDING REQUESTS");
+			List<User> friendsListPending = new ArrayList<User>();
+			
+			PreparedStatement statementFriend21 = myConnection.prepareStatement("SELECT *  FROM FRIENDS f1"    
+					+ " inner join USERS u1 on f1.ID_USER_TWO = u1.ID_USER "
+					+ " WHERE f1.ID_USER_ONE = " + id + " and f1.FRIENDS_STATE = 'Pending'" );     
+
+
+			ResultSet newFriendsResult21 = statementFriend21.executeQuery();
+						
+			while(newFriendsResult21.next())
+			{
+				int idFriend = newFriendsResult21.getInt("ID_USER");
+				String nomFriend = newFriendsResult21.getString("NOM_USER");
+				String prenomFriend = newFriendsResult21.getString("PRENOM_USER");
+				String sexeFriend = newFriendsResult21.getString("SEXE");
+				String usernameFriend = newFriendsResult21.getString("USERNAME");
+				String passwordFriend = newFriendsResult21.getString("PASSWORD_USER");
+				String emailFriend =  newFriendsResult21.getString("EMAIL_USER");
+				String BdayFriend =  newFriendsResult21.getString("DATE_OF_BIRTH");
+				String creationDateFriend =  newFriendsResult21.getString("USER_CREATION_DATE");
+				String modificationDateFriend =  newFriendsResult21.getString("USER_MODIFICATION_DATE");
+				String addressFriend =  newFriendsResult21.getString("ADDRESS_USER");
+				String imageFriend =  newFriendsResult21.getString("IMAGE_USER");
+				
+				User newUser = new User(idFriend,prenomFriend,nomFriend,usernameFriend,passwordFriend,emailFriend,BdayFriend, sexeFriend, addressFriend, imageFriend, modificationDateFriend, creationDateFriend);			
+				friendsListPending.add(newUser);
+			}
+			request.setAttribute("friendsListPending", friendsListPending );
+			//--------------------------- MANAGING FRIEND REQUESTS --------------------------------------------------
+			System.out.println("MANAGING FRIEND REQUESTS");
+			List<User> FriendRequestList = new ArrayList<User>();
+			PreparedStatement statementFriend22 = myConnection.prepareStatement("SELECT *  FROM FRIENDS f1"    
+					+ " inner join USERS u1 on f1.ID_USER_ONE = u1.ID_USER "
+					+ " WHERE f1.ID_USER_TWO = " + id + " and f1.FRIENDS_STATE = 'Pending'" );     
+
+
+			ResultSet newFriendsResult22 = statementFriend22.executeQuery();
+						
+			while(newFriendsResult22.next())
+			{
+				int idFriend = newFriendsResult22.getInt("ID_USER");
+				String nomFriend = newFriendsResult22.getString("NOM_USER");
+				String prenomFriend = newFriendsResult22.getString("PRENOM_USER");
+				String sexeFriend = newFriendsResult22.getString("SEXE");
+				String usernameFriend = newFriendsResult22.getString("USERNAME");
+				String passwordFriend = newFriendsResult22.getString("PASSWORD_USER");
+				String emailFriend =  newFriendsResult22.getString("EMAIL_USER");
+				String BdayFriend =  newFriendsResult22.getString("DATE_OF_BIRTH");
+				String creationDateFriend =  newFriendsResult22.getString("USER_CREATION_DATE");
+				String modificationDateFriend =  newFriendsResult22.getString("USER_MODIFICATION_DATE");
+				String addressFriend =  newFriendsResult22.getString("ADDRESS_USER");
+				String imageFriend =  newFriendsResult22.getString("IMAGE_USER");
+				
+				User newUser = new User(idFriend,prenomFriend,nomFriend,usernameFriend,passwordFriend,emailFriend,BdayFriend, sexeFriend, addressFriend, imageFriend, modificationDateFriend, creationDateFriend);			
+				FriendRequestList.add(newUser);
+			}
+			request.setAttribute("FriendRequestList", FriendRequestList );
 			request.getRequestDispatcher("/FriendsPage.jsp").forward(request, response);
 
 			myConnection.close();

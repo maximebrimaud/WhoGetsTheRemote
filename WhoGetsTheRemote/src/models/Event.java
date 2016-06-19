@@ -69,6 +69,14 @@ public class Event implements Serializable{
 			this.admin = admin;
 		}
 		
+		public Event(int id, String nameGroupe, String watchingDate, Film film) {
+			super();
+			this.id = id;
+			this.nameGroupe = nameGroupe;
+			this.watchingDate = watchingDate;
+			this.film = film;
+		}
+		
 		public int getId() {
 			return id;
 		}
