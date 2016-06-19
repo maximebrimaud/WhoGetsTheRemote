@@ -27,11 +27,11 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-left">
             <li><a href="${pageContext.request.contextPath}/Movies">Movies</a></li>
-            <li><a href="FriendsPage.jsp">Friends</a></li>
-            <li><a href="#">Events</a></li>
+            <li><a href="${pageContext.request.contextPath}/Friends">Friends</a></li>
+            <li><a href="${pageContext.request.contextPath}/Events">Events</a></li>
           </ul>
 		   <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">${userLogged.getFullName()} </a></li>
+            <li><a href="${pageContext.request.contextPath}/Profile">${userLogged.getFullName()}</a></li>
             <li><a href="LogoutPage.jsp">LogOut</a></li>
           </ul>
         </div>
