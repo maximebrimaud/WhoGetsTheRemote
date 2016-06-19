@@ -62,62 +62,29 @@
 		  	</c:forEach>
           </div>  
           
-          <h2 class="page-header">People you may know</h2>
+          <h2 class="page-header">People You May Know</h2>
           <div class="row placeholders">
-            <div class="col-xs-6 col-sm-3 placeholder">
+		  	<c:forEach items="${youMayKnow}" var="item">
+		  		<div class="col-xs-6 col-sm-3 placeholder">
               <div align="center">
-              	<img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="130" height="130" class="img-responsive" alt="Generic placeholder thumbnail">
+              	<img class="img-circle" src="${item.getImage()}" width="130" height="130" class="img-responsive" alt="Generic placeholder thumbnail">
               </div>
-              <h4 align="center">Label</h4>
+              <h4 align='center'><a href="${pageContext.request.contextPath}/ManageFriends?friendId=${item.getId()}" >${item.getFullName()}</a></h4>               
+              <h4 align="center"></h4>
               <div align="center">
-              	<span class="text-muted">10 friends in common</span>
-              </div>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <div align="center">
-              	<img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="130" height="130" class="img-responsive" alt="Generic placeholder thumbnail">
-              </div>
-              <h4 align="center">Label</h4>
-              <div align="center">
-              	<span class="text-muted">8 friends in common</span>
+              	<span class="text-muted">${item.getUsername()}</span>
               </div>
             </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <div align="center">
-              	<img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="130" height="130" class="img-responsive" alt="Generic placeholder thumbnail">
-              </div>
-              <h4 align="center">Label</h4>
-              <div align="center">
-              	<span class="text-muted">6 friends in common</span>
-              </div>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <div align="center">
-              	<img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="130" height="130" class="img-responsive" alt="Generic placeholder thumbnail">
-              </div>
-              <h4 align="center">Label</h4>
-              <div align="center">
-              	<span class="text-muted">4 friends in common</span>
-              </div>
-            </div>
-          </div>
+		  	</c:forEach>
+          </div> 
         </div>
       </div>
     </div>
-<%-- 	<script>			
-		console.log("doing on load script");			
-		var btnAdmin = document.getElementById("btnAdmin");                                			
-		console.log("got btnAdmin");			
-		
-		var UserType = '<%= session.getAttribute("UserType") %>';			
-		console.log("user type = " + UserType);			
-		if (UserType == "Admin"){			
-		        btnAdmin.style.display = "block";			
-		}			
-		else{			
-		        btnAdmin.style.display = "none";			
-		}				
-	</script> --%>
+    
+    <br/><br/><br/>
+    <div style="background-color:black; color:white; clear:both; text-align:center; padding:5px; padding-top:5px"> 
+    	Who Gets The Remote - The Place for movie lovers
+    </div>
   </body>
 </html>
 

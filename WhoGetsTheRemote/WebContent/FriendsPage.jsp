@@ -128,20 +128,11 @@
       </div>
     </div>
     
-	<script>			
-		console.log("doing on load script");			
-		var btnAdmin = document.getElementById("btnAdmin");                                			
-		console.log("got btnAdmin");			
-		
-		var UserType = '<%= session.getAttribute("UserType") %>';			
-		console.log("user type = " + UserType);			
-		if (UserType == "Admin"){			
-		        btnAdmin.style.display = "block";			
-		}			
-		else{			
-		        btnAdmin.style.display = "none";			
-		}				
-	</script>
+    
+    <br/><br/><br/>
+    <div style="background-color:black; color:white; clear:both; text-align:center; padding:5px; padding-top:5px"> 
+    	Who Gets The Remote - The Place for movie lovers
+    </div>
 	
   </body>
 </html>	

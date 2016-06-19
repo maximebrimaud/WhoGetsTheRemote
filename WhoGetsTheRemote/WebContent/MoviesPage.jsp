@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ page import="java.io.*,java.util.*,javax.servlet.*" %>
@@ -11,18 +10,16 @@
 
 <html lang="en">
   <head>
-    <meta charset="utf-8">
+    <meta>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <link rel="icon" href="Bootstrap/docs/favicon.ico">
-
     <title>WGTR - Movies Page</title>
-
     <!-- Bootstrap core CSS -->
     <link href="Bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">    
   </head>
-
+  
   <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
@@ -46,6 +43,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-2 col-md-2 sidebar">
+<<<<<<< HEAD
           </br>
           <h2 class="page-header">
           	
@@ -59,6 +57,10 @@
 	          </div>
          
           </h2>
+=======
+          <br/>
+          <h2 class="page-header">Search</h2>
+>>>>>>> 4b630bc76fddd1ad377aac254b29668a780cdcf4
           <ul class="nav nav-sidebar">	
           	<li id="btnCreateMovie" style="display: none;"><a href="${pageContext.request.contextPath}/CreateFilm">Create Movie</a></li> <!-- MoviesCreate.jsp    ////   CreateFilmData -->
           	<li id="btnManageCategories" style="display: none;"><a href="${pageContext.request.contextPath}/MovieCategories">Manage Categories</a></li>             
@@ -66,6 +68,7 @@
           </ul>
         </div>
         
+<<<<<<< HEAD
         <div class="col-sm-10 col-md-10 main">
           <br/>
           <h1 class="page-header">Search Movies Result</h1>
@@ -88,8 +91,10 @@
           </br>
         
         </div>
+=======
+>>>>>>> 4b630bc76fddd1ad377aac254b29668a780cdcf4
         <div class="col-sm-10 col-md-10 main">
-          </br>
+          <br/>
           <h2 class="page-header">Movies</h2>
           <div class="row placeholders">
 		  	<c:forEach items="${listFilm}" var="item">
@@ -99,7 +104,11 @@
 					</div>
 			        <h4 align='center'><a href="${pageContext.request.contextPath}/UpdateFilm?filmId=${item.getId()}" >${item.getName()}</a></h4>
 			        <div align='center'>
+<<<<<<< HEAD
 			        	<span class='text-muted'>IMDB Rating: ${item.getNotationFilm()}/10</span>
+=======
+			        	<span class='text-muted'>${item.getDirector()}</span>
+>>>>>>> 4b630bc76fddd1ad377aac254b29668a780cdcf4
 			        </div>
 		        </div>
 		  	</c:forEach>
@@ -107,7 +116,15 @@
         </div>
       </div>
     </div>
+<<<<<<< HEAD
  	</form>
+=======
+	
+    <br/><br/><br/>
+    <div style="background-color:black; color:white; clear:both; text-align:center; padding:5px; padding-top:5px"> 
+    	Who Gets The Remote - The Place for movie lovers
+    </div>
+>>>>>>> 4b630bc76fddd1ad377aac254b29668a780cdcf4
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
@@ -120,8 +137,7 @@
     <script src="Bootstrap/docs/assets/js/ie10-viewport-bug-workaround.js"></script>
    
     <script>
-	    console.log("doing on load script");
-	    var btnAdmin = document.getElementById("btnAdmin"); 
+	    console.log("doing on load script"); 
 		var btnCreateMovie = document.getElementById("btnCreateMovie"); 
 		var btnManageCategories = document.getElementById("btnManageCategories");    		    	
     		
@@ -131,21 +147,15 @@
 		
 		if (UserType == "Admin")
 		{
-			btnAdmin.style.display = "block";
 			btnCreateMovie.style.display = "block";
 			btnManageCategories.style.display = "block";
 		}
 		else
 		{
-			btnAdmin.style.display = "none";
 			btnManageCategories.style.display = "none";
 			btnCreateMovie.style.display = "none";
 		}
-	
-</script>
-
-	
-	
+	</script>
   </body>
 </html>
 
