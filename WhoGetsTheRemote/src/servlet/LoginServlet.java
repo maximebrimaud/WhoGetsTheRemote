@@ -1,16 +1,9 @@
 package servlet;
 
 import java.io.IOException;
-/*import java.io.PrintWriter;
-import java.sql.Connection;*/
 
-import java.io.*;
 import javax.servlet.http.*;
 import javax.annotation.Resource;
-import javax.enterprise.context.SessionScoped;
-import javax.inject.Inject;
-import javax.inject.Named;
-import javax.servlet.*;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,18 +15,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
-import javafx.scene.control.Alert;
 import models.Film;
-import models.FilmHits;
-import models.Friend;
-import models.GlobalFunctions;
 import models.User;
 
-@WebServlet("/LoginServlet")
+@WebServlet("/Login")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
-	@Resource private DataSource myDataSource; 
+	@Resource private DataSource myDataSource;
 	
     public LoginServlet() 
     {
@@ -67,8 +56,7 @@ public class LoginServlet extends HttpServlet {
 			 //Authentication
 			ResultSet myResultSet = myStatement.executeQuery();
 			 System.out.println("i am in do POST Login, Executed Statement!");
-			//ResultSet myResultSet = myStatement.executeQuery("SELECT * from Users WHERE Username = \"" + user+ "\" AND Password = \"" + pass + "\" ");
-			
+			 
 			if (myResultSet.next()) 
 			{				
 				System.out.println("i am in do POST Login, in the Result set");
@@ -84,97 +72,26 @@ public class LoginServlet extends HttpServlet {
 				String modificationDatee =  myResultSet.getString("USER_MODIFICATION_DATE");
 				String addresss =  myResultSet.getString("ADDRESS_USER");
 				String imagee =  myResultSet.getString("IMAGE_USER");
-				
-				//Liste des amis en commun
-				PreparedStatement statementFriends = 
-						myConnection.prepareStatement("(SELECT u.ID_USER, u.NOM_USER, u.PRENOM_USER, u.EMAIL_USER, u.DATE_OF_BIRTH, u.SEXE, u.USERNAME, u.PASSWORD_USER, u.ADDRESS_USER, u.IMAGE_USER, u.USER_CREATION_DATE, u.USER_MODIFICATION_DATE FROM FRIENDS f inner join USERS u on f.ID_USER_TWO = u.ID_USER WHERE f.ID_USER_ONE = " + id + ") "
-													+ "UNION "
-													+ "(SELECT u1.ID_USER, u1.NOM_USER, u1.PRENOM_USER, u1.EMAIL_USER, u1.DATE_OF_BIRTH, u1.SEXE, u1.USERNAME, u1.PASSWORD_USER, u1.ADDRESS_USER, u1.IMAGE_USER, u1.USER_CREATION_DATE, u1.USER_MODIFICATION_DATE  FROM FRIENDS f1 inner join USERS u1 on f1.ID_USER_ONE = u1.ID_USER WHERE f1.ID_USER_TWO = " + id + ")");
-				ResultSet newFriendsResult = statementFriends.executeQuery();
-				List<Friend> friendsInCommon = new ArrayList<Friend>();
-				System.out.println("i am in do POST Login, preparing friends in commun");
-				while(newFriendsResult.next())
-				{
-					System.out.println("i am in do POST Login, executed friends in commun");
-					Friend friendd = new Friend();
-					//Getting all the rows
-					int idFriend = newFriendsResult.getInt("ID_USER");
-					String nomFriend = newFriendsResult.getString("NOM_USER");
-					String prenomFriend = newFriendsResult.getString("PRENOM_USER");
-					String sexeFriend = newFriendsResult.getString("SEXE");
-					String usernameFriend = newFriendsResult.getString("USERNAME");
-					String passwordFriend = newFriendsResult.getString("PASSWORD_USER");
-					String emailFriend =  newFriendsResult.getString("EMAIL_USER");
-					String BdayFriend =  newFriendsResult.getString("DATE_OF_BIRTH");
-					String creationDateFriend =  newFriendsResult.getString("USER_CREATION_DATE");
-					String modificationDateFriend =  newFriendsResult.getString("USER_MODIFICATION_DATE");
-					String addressFriend =  newFriendsResult.getString("ADDRESS_USER");
-					String imageFriend =  newFriendsResult.getString("IMAGE_USER");
-					
-					friendd.setId(idFriend);
-					friendd.setFullName(prenomFriend + " " + nomFriend);
-					
-					//We have to retieve the liste of common friends not just the number
-					friendd.setfriendsCommonNumber(10);
-					//friendd.setListFriendsCommon();
-					
-					User currentUserFriend = new User(idFriend,prenomFriend,nomFriend,usernameFriend,passwordFriend,emailFriend,BdayFriend, sexeFriend, addressFriend, imageFriend, modificationDateFriend, creationDateFriend);
-					friendd.setUserr(currentUserFriend);
-					
-					friendsInCommon.add(friendd);	
-				}
-
-				User currentUser = new User(id,prenom,nom,usernamee,passwordd,emaill,Bday, sexee, addresss, imagee, modificationDatee, creationDatee,friendsInCommon);
-				                            
-				
-				//Liste des nouveaux films
-				PreparedStatement statementNewFilms = myConnection.prepareStatement("SELECT * FROM FILM ORDER BY FILM_CREATION_DATE FETCH FIRST 8 ROWS ONLY");
-				ResultSet newMoviesResult = statementNewFilms.executeQuery();
-				List<Film> listF = new ArrayList<Film>();
-				while (newMoviesResult.next()) 
-				{
-					int idFilm = newMoviesResult.getInt("ID_FILM");
-					String nomFilm = newMoviesResult.getString("NOM_FILM");
-					String descriptionFilm = newMoviesResult.getString("DESCRIPTION_FILM");
-					String dateReleased = newMoviesResult.getString("DATE_RELEASED");
-					int notationFilm = Integer.parseInt(newMoviesResult.getString("NOTATION_FILM"));
-					String trailer = newMoviesResult.getString("TRAILER_FILM_LINK");
-					String filmLink =  newMoviesResult.getString("FILM_LINK");
-					String image =  newMoviesResult.getString("FILM_IMAGE");
-					String creationDate =  newMoviesResult.getString("FILM_CREATION_DATE");
-					String modificationDate =  newMoviesResult.getString("FILM_MODIFICATION_DATE");
-					Film currentFilm = new Film(idFilm,nomFilm,descriptionFilm,dateReleased,notationFilm,trailer,filmLink,image,creationDate,modificationDate) ;
-
-					listF.add(currentFilm);
-					
-					int i = 0;
-					i++;
-					System.out.println("Film " + i + " : " + nomFilm);
-				}   
-				
-				//Liste des People you may know
-				
+				User currentUser = new User(id,prenom,nom,usernamee,passwordd,emaill,Bday, sexee, addresss, imagee, modificationDatee, creationDatee);
+				                    
 				//Creer un httpsession pour mettre l'objet user
 				HttpSession session;
 				session = request.getSession();
 				session.setAttribute("sessionId", currentUser.getId());
-				session.setAttribute("userLogged", currentUser);
-				System.out.println("username is: " + usernamee);
-				if (usernamee == "Admin" || usernamee.equals("Admin"))
-				{
-					System.out.println("setting value for servlet");
-					session.setAttribute("UserType", "Admin");
-				}
-				else
-				{
-					session.setAttribute("UserType", "User");
-				}
-				System.out.println("value set.. redirecting to home");
-				session.setAttribute("listHits", listF);		
-				System.out.println("redirecting to home");
-				request.getRequestDispatcher("/Home.jsp").forward(request, response);
+				session.setAttribute("userLogged", currentUser);		
 				
-				System.out.println("redirected to home");
+				System.out.println("username is: " + usernamee);	
+				if (usernamee == "Admin" || usernamee.equals("Admin")){			
+					System.out.println("setting value for servlet");			
+					session.setAttribute("UserType", "Admin");			
+				}			
+				else{			
+					session.setAttribute("UserType", "User");			
+				}			
+				System.out.println("value set.. redirecting to home");
+				
+				System.out.println("redirecting to home servlet");
+				request.getRequestDispatcher("/Home").forward(request, response);
 			} 
             else 
             {
@@ -187,13 +104,12 @@ public class LoginServlet extends HttpServlet {
 			System.out.println("i am out of do POST Login");
 		} 		
 		catch (SQLException e) 
-		{
-			request.setAttribute("loginMessage", "Error in connection!");
-            request.getRequestDispatcher("/LoginPage.jsp").forward(request, response);
-        	System.out.println("Error in connection!");
+		{ 
+			request.setAttribute("loginMessage", "Error in connection!");	
+			request.getRequestDispatcher("/LoginPage.jsp").forward(request, response);			
+			System.out.println("Error in connection!");
 			System.out.println(e.getMessage());
 			e.printStackTrace();
-		}		
+		}	
 	}
-
 }

@@ -17,10 +17,11 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <link rel="icon" href="Bootstrap/favicon.ico">
 
-    <title>WGTR - Home Page</title>
+    <title>WGTR - Events Page</title>
 
     <!-- Bootstrap core CSS -->
     <link href="Bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
   </head>
 
   <body>
@@ -48,64 +49,39 @@
       <div class="row">
         <div class="col-sm-10 col-sm-offset-3 col-md-10 col-md-offset-1 main">
           <br/>
-          <h1 class="page-header">New Movies</h1>
+          <h1 class="page-header">Upcoming Events</h1>
           <div class="row placeholders">
-		  	<c:forEach items="${listHits}" var="item">
+		  	<c:forEach items="${userUpcomingEvents}" var="item">
 		  		<div class='col-xs-6 col-sm-3 placeholder'>
 			        <div align='center'>
-			        	<img src='${item.imageFilm}' width='190' height='190' class='img-responsive' alt='Generic placeholder thumbnail'>
+			        	<img src="${item.film.imageFilm}" width='190' height='190' class='img-responsive' alt='Generic placeholder thumbnail'>
 					</div>
-			        <h4 align='center'>${item.name}</h4>
+			        <h4 align='center'><a href="${pageContext.request.contextPath}/Event?idEvent=${item.id}">${item.nameGroupe}</a></h4>
 			        <div align='center'>
-			        	<span class='text-muted'>${item.name}</span>
+			        	<span class='text-muted'><a href="FilmServlet.java?idMovie=${item.film.id}">${item.film.name}</a></span>
 			        </div>
 		        </div>
 		  	</c:forEach>
           </div>  
           
-          <h2 class="page-header">People you may know</h2>
+          <h2 class="page-header">Past Events</h2>
           <div class="row placeholders">
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <div align="center">
-              	<img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="130" height="130" class="img-responsive" alt="Generic placeholder thumbnail">
-              </div>
-              <h4 align="center">Label</h4>
-              <div align="center">
-              	<span class="text-muted">10 friends in common</span>
-              </div>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <div align="center">
-              	<img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="130" height="130" class="img-responsive" alt="Generic placeholder thumbnail">
-              </div>
-              <h4 align="center">Label</h4>
-              <div align="center">
-              	<span class="text-muted">8 friends in common</span>
-              </div>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <div align="center">
-              	<img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="130" height="130" class="img-responsive" alt="Generic placeholder thumbnail">
-              </div>
-              <h4 align="center">Label</h4>
-              <div align="center">
-              	<span class="text-muted">6 friends in common</span>
-              </div>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <div align="center">
-              	<img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="130" height="130" class="img-responsive" alt="Generic placeholder thumbnail">
-              </div>
-              <h4 align="center">Label</h4>
-              <div align="center">
-              	<span class="text-muted">4 friends in common</span>
-              </div>
-            </div>
+            <c:forEach items="${userPastEvents}" var="item">
+		  		<div class='col-xs-6 col-sm-3 placeholder'>
+			        <div align='center'>
+			        	<img src="${item.film.imageFilm}" width='190' height='190' class='img-responsive' alt='Generic placeholder thumbnail'>
+					</div>
+			        <h4 align='center'><a href="${pageContext.request.contextPath}/Event?idEvent=${item.id}">${item.nameGroupe}</a></h4>
+			        <div align='center'>
+			        	<span class='text-muted'><a href="FilmServlet.java?idMovie=${item.film.id}">${item.film.name}</a></span>
+			        </div>
+		        </div>
+		  	</c:forEach>
           </div>
         </div>
       </div>
     </div>
-	<script>			
+    <script>			
 		console.log("doing on load script");			
 		var btnAdmin = document.getElementById("btnAdmin");                                			
 		console.log("got btnAdmin");			
@@ -121,7 +97,3 @@
 	</script>
   </body>
 </html>
-
-
-	
-	
