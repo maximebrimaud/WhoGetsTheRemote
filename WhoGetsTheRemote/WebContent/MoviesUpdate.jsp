@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ page import="java.io.*,java.util.*,javax.servlet.*" %>
@@ -11,17 +10,14 @@
 
 <html lang="en">
   <head>
-    <meta charset="utf-8">
+    <meta>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <link rel="icon" href="Bootstrap/favicon.ico">
-
     <title>WGTR - Create Movie</title>
-
     <!-- Bootstrap core CSS -->
     <link href="Bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-
   </head>
 
   <body>
@@ -44,239 +40,249 @@
         </div>
       </div>
     </nav>
-
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-sm-2 col-md-2 sidebar">
-          </br>
-          <h2 class="page-header">Search</h2>
-          <ul class="nav nav-sidebar">
-            <li id="btnCreateMovie"  style="display: none;"><a href="${pageContext.request.contextPath}/CreateFilm" style="text-decoration: underline;">Create Movie<!-- <span class="sr-only">(current)</span> --></a></li>
-            <li><a href="MoviesPage.jsp">Overview</a></li>
-            <li><a href="#">Reports</a></li>
-            <li><a href="#">Analytics</a></li>
-            <li><a href="#">Export</a></li>
-          </ul>
-        </div>
-        <div class="col-sm-10 col-md-10 main">
-          </br>
-          <h2 class="page-header"><%-- ${Movie.getName()} <span style="font-size:large; color: gray;">(${Movie.getDateReleased()})</span> --%>Create Movie</h2>
-          <div class="row placeholders">		  			  	
-		  	<div class="container-fluid">
-      			<div class="row">
-        			<div class="col-sm-10 col-sm-offset-3 col-md-10 col-md-offset-1 main">		       
-	        			<div class="row placeholders">				  						  		
-					  		<div class='col-xs-6 col-sm-3 col-md-3 placeholder'>
-						        <div align='center'>						        	
-						        	<img src='${movie.getImageFilm()}' width='190' height='190' class='img-responsive' alt='Unable to load image!'>	
-								</div>
-						        <h1 align='center'>${movie.getName()} <span style="font-size: large; color:gray; font-style: italic;">(${movie.getDateReleased()})</span></h1>   
-					        </div>
-					       <form role="form" action="UpdateFilm" method="post">
-					      		 <input name="movieId" id="movieId" style="display: none;" value="${movie.getId()}"/>
-						        <div class='col-xs-6 col-sm-9 col-md-9 placeholder' style="padding-top: 45px;">
-						        					 	       
-									<div class="row" style="padding-top: 5px; padding-bottom: 5px;">
-										  <div class="col-xs-12 col-sm-3 col-md-3" style="text-decoration: underline; text-align: right;  font-size: large;  font-weight: bold;  ">Title:</div> <!--  padding-right: 0px; -->										  
-									  		<div id="ViewModeTitle" class="col-xs-6 " style="text-align: left;  font-size: large; ">
-										  		${movie.getName()}
-									  		</div>
-									  		<div id="EditModeTitle" class="col-xs-6" style="text-align: left; display:none; font-size: large; ">
-										  		<input id="Title" type="text" name="Title" placeholder="Title" />		
-										  		<label id="TitleValidator" style="color: red; font-weight:normal;"></label>
-								  		   </div>
-									</div>
-										<!-- <br/> -->
-									<div class="row"  style="padding-top: 5px; padding-bottom: 5px;">
-										  <div class="col-xs-12 col-sm-3 col-md-3" style="text-decoration: underline; text-align: right;  font-size: large;  font-weight: bold;  ">Director:</div> <!--  padding-right: 0px; -->										  
-									  		<div id="ViewModeDirector" class="col-xs-6 " style="text-align: left;  font-size: large; ">
-										  		${movie.getDirector()}
-									  		</div>
-									  		<div id="EditModeDirector" class="col-xs-6" style="text-align: left; display:none;  font-size: large; ">
-										  		<input id="Director" type="text" name="Director" placeholder="Director" />		
-										  		<label id="DirectorValidator" style="color: red; font-weight:normal;"></label>
-								  		   </div>
-									</div>	<!-- <br/> -->
-									<div class="row"  style="padding-top: 5px; padding-bottom: 5px;">
-										  <div class="col-xs-12 col-sm-3 col-md-3" style="text-decoration: underline; text-align: right;  font-size: large;  font-weight: bold;  ">Language:</div> <!--  padding-right: 0px; -->										  
-									  		<div id="ViewModeLanguage" class="col-xs-6 " style="text-align: left;  font-size: large; ">
-										  		${movie.getLanguage()}
-									  		</div>
-									  		<div id="EditModeLanguage" class="col-xs-6" style="text-align: left; display:none;  font-size: large; ">
-										  		<input id="Language" type="text" name="Language" placeholder="Language" />		
-										  		<label id="LanguageValidator" style="color: red; font-weight:normal;"></label>
-								  		   </div>
-									</div>	<!-- <br/> -->
-									<div class="row"  style="padding-top: 5px; padding-bottom: 5px;">
-										  <div class="col-xs-12 col-sm-3 col-md-3" style="text-decoration: underline; text-align: right;  font-size: large;  font-weight: bold;  ">Cast:</div> <!--  padding-right: 0px; -->										  
-									  		<div id="ViewModeCast" class="col-xs-6 " style="text-align: left;  font-size: large; ">
-										  		${movie.getCast()}
-									  		</div>
-									  		<div id="EditModeCast" class="col-xs-6" style="text-align: left; display:none;  font-size: large; ">
-										  		<input id="Cast" type="text" name="Cast" placeholder="Cast" />		
-										  		<label id="CastValidator" style="color: red; font-weight:normal;"></label>
-								  		   </div>
-									</div>	<!-- <br/> -->
-									<div class="row"  style="padding-top: 5px; padding-bottom: 5px;">
-										  <div class="col-xs-12 col-sm-5 col-md-3" style="text-decoration: underline;  font-weight: bold; font-size: large; text-align: right;">Release Date:</div><!--  padding-right: 0px; -->
-										  <div id="ViewModeReleaseDate" class="col-xs-6 " style="text-align: left;  font-size: large; ">
-										  		${movie.getDateReleased()}
-									  	  </div>
-										  <div id="EditModeReleaseDate" class="col-xs-6" style="text-align: left; display:none; font-size: large; ">
-										  		<input id="ReleaseDate" type="text" name="ReleaseDate" placeholder="yyyy-mm-dd"/>	
-										  		<label id="ReleaseDateValidator" style="color: red; font-weight:normal;"></label>
-								  		   </div>										
-									</div>	<!-- <br/> -->
-									<div class="row"  style="padding-top: 5px; padding-bottom: 5px;">
-										  <div class="col-xs-12 col-sm-5 col-md-3" style="text-decoration: underline;  font-weight: bold; font-size: large; text-align: right;">Category:</div><!--  padding-right: 0px; -->
-										  <div id="ViewModeCategorie" class="col-xs-6 " style="text-align: left;  font-size: large; ">
-										  		 ${movieCategorie.getLibelleFilmCategorie()}
-									  	  </div> 
-										  <div id="EditModeCategorie" class="col-xs-6" style="text-align: left; display:none; font-size: large; ">
-										  		<select id="Categorie" name="Categorie">
-										  			<option value="-1">Select Category</option>
-													<c:forEach items="${CategorieList}" var="item">
-													    <option value="${item.getId()}">${item.getLibelleFilmCategorie()}</option>
-													</c:forEach>
-												</select>
-										  		<label id="CategorieValidator" style="color: red; font-weight:normal;"></label>
-								  		   </div>										
-									</div>								
-									<div class="row"  style="padding-top: 5px; padding-bottom: 5px;">
-										  <div class="col-xs-12 col-sm-3 col-md-3" style="text-decoration: underline;  font-size: large; font-weight: bold;  text-align: right;">Duration:</div>	<!--  padding-right: 0px; -->								 										  
-										  <div id="ViewModeDuration" class="col-xs-6 " style="text-align: left;  font-size: large; ">
-										  		${movie.getDuration()} 
-									  	  </div>
-										  <div  id="EditModeDuration"  class="col-xs-6 " style="text-align: left; display:none; font-size: large; ">
-										  		<input id="Duration" type="text" name="Duration" placeholder="hh:mm"/>
-										  		<label id="DurationValidator" style="color: red; font-weight:normal;"></label>
-										  </div>
-									</div>
-									<div class="row"  style="padding-top: 5px; padding-bottom: 5px;">
-										  <div class="col-xs-12 col-sm-5 col-md-3" style="text-decoration: underline;  font-weight: bold; font-size: large; text-align: right;">PG Level:</div><!--  padding-right: 0px; -->
-										  <div id="ViewModePG" class="col-xs-6 " style="text-align: left;  font-size: large; ">
-										  		PG-${movie.getPG()} 
-									  	  </div>
-										  <div id="EditModePG" class="col-xs-6" style="text-align: left; display:none; font-size: large; ">
-										  		<select id="PG" name="PG">													
-													    <option value="-1">Select PG</option>
-													    <option value="0">0</option>
-													    <option value="1">1</option>
-													    <option value="2">2</option>
-													    <option value="3">3</option>
-													    <option value="4">4</option>
-													    <option value="5">5</option>
-													    <option value="6">6</option>
-													    <option value="7">7</option>
-													    <option value="8">8</option>
-													    <option value="9">9</option>
-													    <option value="10">10</option>
-													    <option value="11">11</option>
-													  	<option value="12">12</option>
-													    <option value="13">13</option>
-													    <option value="14">14</option>
-													    <option value="15">15</option>
-													    <option value="16">16</option>
-													    <option value="17">17</option>
-													    <option value="18">18</option>													    										
-												</select>	
-										  		<label id="PGValidator" style="color: red; font-weight:normal;"></label>
-								  		   </div>										
-									</div>
-									<div class="row"  style="padding-top: 5px; padding-bottom: 5px;">
-										  <div class="col-xs-12 col-sm-3 col-md-3" style="text-decoration: underline; font-weight: bold; text-align: right; font-size: large; ">Description:</div>	<!--  padding-right: 0px; -->								 
-							  		   	  <div id="ViewModeDescription" class="col-xs-6 " style="text-align: left;  font-size: large; ">
-										  		${movie.getDescription()} 
-									  	  </div>
-							  		   	  <div id="EditModeDescription" class="col-xs-6" style="text-align: left; display:none; font-size: large; ">
-										  		<input id="Description" type="text" name="Description" placeholder="Description"/>	
-										  		<label id="DescriptionValidator" style="color: red; font-weight:normal;"></label>
-							  		   </div>	
-									</div>
-								
-									<div class="row"  style="padding-top: 5px; padding-bottom: 5px;">
-										  <div class="col-xs-12 col-sm-5 col-md-3" style="text-decoration: underline;  font-weight: bold; font-size: large; text-align: right;">IMDB Rating:</div><!--  padding-right: 0px; -->
-										  <div id="ViewModeRating" class="col-xs-6 " style="text-align: left;  font-size: large; ">
-										  		${movie.getNotationFilm()} / 10
-									  	  </div>
-										  <div id="EditModeRating" class="col-xs-6" style="text-align: left; display:none; font-size: large; ">
-										  		<select id="Rating" name="Rating">													
-													    <option value="-1">Select Rating</option>
-													    <option value="0">0</option>
-													    <option value="1">1</option>
-													    <option value="2">2</option>
-													    <option value="3">3</option>
-													    <option value="4">4</option>
-													    <option value="5">5</option>
-													    <option value="6">6</option>
-													    <option value="7">7</option>
-													    <option value="8">8</option>
-													    <option value="9">9</option>
-													    <option value="10">10</option>													
-												</select>	
-										  		<label id="RatingValidator" style="color: red; font-weight:normal;"></label>
-								  		   </div>										
-									</div>													
-									<div id="divChangePic" class="row" style="display:none; padding-top: 5px; padding-bottom: 5px;">
-										  <div class="col-xs-12 col-sm-3 col-md-3" style="text-align: left; font-size: large; text-align: right; " >
-												<label  style="text-decoration: underline; font-weight: bold;  font-size: large;  ">Image:</label>  
-										  </div>
-										  <div class="col-xs-12 col-sm-9"  style=" font-size: large; " >
-										  		<input name="PictureBrowse" id="PictureBrowse" type="file" name="PictureBrowse" />
-										  		<label id="PicValidator" style="color: red; font-weight:normal;"></label> 
-										  </div>								 									  
-									</div>
-									<div class="row" style="padding-top: 5px; padding-bottom: 5px;">
-										  <div class="col-xs-12 col-sm-3 col-md-3" style="text-decoration: underline; font-weight: bold; text-align: right; font-size: large; ">Trailer Link:</div>	<!--  padding-right: 0px; -->								 
-							  		   	   <div id="ViewModeTrailer" class="col-xs-6 " style="text-align: left;  font-size: large; ">										  		
-										  		<a href="${movie.getTrailerFilm()}">${movie.getTrailerFilm()}</a> 
-									  	  </div>
-							  		   	  <div id="EditModeTrailer" class="col-xs-6" style="text-align: left; display:none; font-size: large; ">
-										  		<input id="Trailer" type="text" name="Trailer" placeholder="Trailer"/>	
-										  		<label id="TrailerValidator" style="color: red; font-weight:normal;"></label>
-							  		   </div>	
-									</div>
-									<div class="row" style="padding-top: 5px; padding-bottom: 5px;">
-										  <div class="col-xs-12 col-sm-3 col-md-3" style="text-decoration: underline; font-weight: bold; text-align: right; font-size: large; ">Movie Link:</div>	<!--  padding-right: 0px; -->								 
-							  		   	  <div id="ViewModeMovie" class="col-xs-6 " style="text-align: left;  font-size: large; ">										  		
-										  		<a href="${movie.getFilmLink()}">${movie.getFilmLink()}</a>
-									  	  </div>
-							  		   	  <div id="EditModeMovie" class="col-xs-6" style="text-align: left; display:none; font-size: large; ">
-										  		<input id="Movie" type="text" name="Movie" placeholder="Movie"/>	
-										  		<label id="MovieValidator" style="color: red; font-weight:normal;"></label>
-							  		   </div>	
-									</div>
-									
-									<div class="row" style="padding-top: 5px; padding-bottom: 5px;">									 
-										 <div class="col-xs-12 col-sm-3 col-md-4" style=" font-size: large; text-align: right; " id="divCreateEvent" >
-<!-- 										  		<input id="btnCreateEvent" type="submit"  name="btnCreateEvent" value="Create Event" />	 -->
-										  		<label id="btnCreateEvent"><a href="${pageContext.request.contextPath}/CreateEvent?idMovie=${movie.getId()}">Create Event</a></label>									  												  														  											  
-										  </div>	
-										 
-										  <div class="col-xs-12 col-sm-3 col-md-4" style=" font-size: large; text-align: right; " id="divEditCancelFilm" >										  		
-										  		<input id="btnEditFilm" type="button" onclick="ChangeToEditMode()" name="btnEditUser" value="Edit" />
-										  		<input id="btnCancelEdit" type="button" onclick="ChangeToViewMode()" name="btnCancelEdit" style="display: none;" value="Cancel" /> <!-- style="display: none;" -->										  														  											  	
-										  </div>								 							  
-										  <div class="col-xs-12 col-sm-3 col-md-4" style=" font-size: large; text-align: left; " id="divSaveDeleteFilm"  >
-										  		<input id="btnUpdateFilm" type="submit" name="btnUpdateFilm" onclick="return ValidateInputs()" value="Save" style="display: none;" />
-										  		  <input id="btnDeleteMovie" type="submit" onclick="return confirm('Are you sure you want to delete this Movie? Data will be permanently lost!')"  name="btnDeleteMovie" value="Delete" />
-										  		     <!-- <input id="btnSavePicture" type="button" name="btnSavePicture" onclick="return ValidateInputs()"  value="Save Changes" style="display: none;" /> -->
-										  </div>
-									</div>	
-									<div class="row" style="padding-top: 5px; padding-bottom: 5px;">									 
-										  <div class="col-xs-12 col-sm-3 col-md-4" style=" font-size: large; text-align: right; color: red; " >
-										  					${UpdateMessage}							  														  											  	
-										  </div>								 									  									
-									</div>				        
-						        </div>
-				       		</form>		  
-			          	</div>
-		          	</div>
-		      	</div>
+	
+	<div class="container-fluid">
+		<div class="row">
+        	<div class="col-sm-10 col-sm-offset-3 col-md-10 col-md-offset-1 main">
+          	<br/>
+          	<h1 class="page-header">Movie Details</h1>
+    			<div class="col-sm-4 col-md-4">
+			        <div align='center'>						        	
+			        	<img src='${movie.getImageFilm()}' width='190' height='190' class='img-responsive' alt='Unable to load image!'>	
+					</div>
+					<div align='center'>						        	
+			        	<h3 align='center'>${movie.getName()}</h3>
+			        </div>
+					<div align='center'>						        	
+			        	<span style="font-size: large; color:gray; font-style: italic;">
+			        		(${movie.getDateReleased()})
+			        	</span>
+					</div>
+		        </div>
+		        <div class="col-sm-6 col-md-6">
+					<form role="form" action="UpdateFilm" method="post">
+						<input name="movieId" id="movieId" style="display: none;" value="${movie.getId()}" />
+						<div class="row" style="padding-top: 5px; padding-bottom: 5px;">
+							<div class="col-sm-4 col-md-4" style="text-align: right; font-size: large;">
+								Title :
+							</div>
+							<div id="ViewModeTitle" class="col-sm-8 col-md-8" style="text-align: left; font-size: large;">
+								${movie.getName()}
+							</div>
+							<div id="EditModeTitle" class="col-sm-8 col-md-8" style="text-align: left; display: none; font-size: large;">
+								<input id="Title" type="text" name="Title" placeholder="Title" /> 
+								<label id="TitleValidator" style="color: red; font-weight: normal;"></label>
+							</div>
+						</div>
+						<div class="row" style="padding-top: 5px; padding-bottom: 5px;">
+							<div class="col-sm-4 col-md-4" style="text-align: right; font-size: large;">
+								Director :
+							</div>
+							<div id="ViewModeDirector" class="col-sm-8 col-md-8" style="text-align: left; font-size: large;">
+								${movie.getDirector()}
+							</div>
+							<div id="EditModeDirector" class="col-sm-8 col-md-8"
+								style="text-align: left; display: none; font-size: large;">
+								<input id="Director" type="text" name="Director" placeholder="Director" /> 
+								<label id="DirectorValidator" style="color: red; font-weight: normal;"></label>
+							</div>
+						</div>
+						<div class="row" style="padding-top: 5px; padding-bottom: 5px;">
+							<div class="col-sm-4 col-md-4" style="text-align: right; font-size: large;">
+								Language :
+							</div>
+							<div id="ViewModeLanguage" class="col-sm-8 col-md-8" style="text-align: left; font-size: large;">
+								${movie.getLanguage()}
+							</div>
+							<div id="EditModeLanguage" class="col-sm-8 col-md-8" style="text-align: left; display: none; font-size: large;">
+								<input id="Language" type="text" name="Language" placeholder="Language" /> 
+								<label id="LanguageValidator" style="color: red; font-weight: normal;"></label>
+							</div>
+						</div>
+						<div class="row" style="padding-top: 5px; padding-bottom: 5px;">
+							<div class="col-sm-4 col-md-4" style="text-align: right; font-size: large;">
+								Cast :
+							</div>
+							<div id="ViewModeCast" class="col-sm-8 col-md-8" style="text-align: left; font-size: large;">
+								${movie.getCast()}
+							</div>
+							<div id="EditModeCast" class="col-sm-8 col-md-8" style="text-align: left; display: none; font-size: large;">
+								<input id="Cast" type="text" name="Cast" placeholder="Cast" />
+								<label id="CastValidator" style="color: red; font-weight: normal;"></label>
+							</div>
+						</div>
+						<div class="row" style="padding-top: 5px; padding-bottom: 5px;">
+							<div class="col-sm-4 col-md-4" style="font-size: large; text-align: right;">
+								Release Date :
+							</div>
+							<div id="ViewModeReleaseDate" class="col-sm-8 col-md-8" style="text-align: left; font-size: large;">
+								${movie.getDateReleased()}
+							</div>
+							<div id="EditModeReleaseDate" class="col-sm-8 col-md-8" style="text-align: left; display: none; font-size: large;">
+								<input id="ReleaseDate" type="text" name="ReleaseDate" placeholder="yyyy-mm-dd" />
+							    <label id="ReleaseDateValidator" style="color: red; font-weight: normal;"></label>
+							</div>
+						</div>
+						<div class="row" style="padding-top: 5px; padding-bottom: 5px;">
+							<div class="col-sm-4 col-md-4" style="font-size: large; text-align: right;">
+								Category :
+							</div>
+							<div id="ViewModeCategorie" class="col-sm-8 col-md-8" style="text-align: left; font-size: large;">
+								${movieCategorie.getLibelleFilmCategorie()}
+							</div>
+							<div id="EditModeCategorie" class="col-sm-8 col-md-8" style="text-align: left; display: none; font-size: large;">
+								<select id="Categorie" name="Categorie">
+									<option value="-1">Select Category</option>
+									<c:forEach items="${CategorieList}" var="item">
+										<option value="${item.getId()}">${item.getLibelleFilmCategorie()}</option>
+									</c:forEach>
+								</select> 
+								<label id="CategorieValidator" style="color: red; font-weight: normal;"></label>
+							</div>
+						</div>
+						<div class="row" style="padding-top: 5px; padding-bottom: 5px;">
+							<div class="col-sm-4 col-md-4" style="font-size: large; text-align: right;">
+								Duration :
+							</div>
+							<div id="ViewModeDuration" class="col-sm-8 col-md-8"style="text-align: left; font-size: large;">
+								${movie.getDuration()}
+							</div>
+							<div id="EditModeDuration" class="col-sm-8 col-md-8" style="text-align: left; display: none; font-size: large;">
+								<input id="Duration" type="text" name="Duration" placeholder="hh:mm" /> 
+								<label id="DurationValidator" style="color: red; font-weight: normal;"></label>
+							</div>
+						</div>
+						<div class="row" style="padding-top: 5px; padding-bottom: 5px;">
+							<div class="col-sm-4 col-md-4" style="font-size: large; text-align: right;">
+								PG Level :
+							</div>
+							<div id="ViewModePG" class="col-sm-8 col-md-8" style="text-align: left; font-size: large;">
+								PG-${movie.getPG()}
+							</div>
+							<div id="EditModePG" class="col-sm-8 col-md-8" style="text-align: left; display: none; font-size: large;">
+								<select id="PG" name="PG">
+									<option value="-1">Select PG</option>
+									<option value="0">0</option>
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5</option>
+									<option value="6">6</option>
+									<option value="7">7</option>
+									<option value="8">8</option>
+									<option value="9">9</option>
+									<option value="10">10</option>
+									<option value="11">11</option>
+									<option value="12">12</option>
+									<option value="13">13</option>
+									<option value="14">14</option>
+									<option value="15">15</option>
+									<option value="16">16</option>
+									<option value="17">17</option>
+									<option value="18">18</option>
+								</select> 
+								<label id="PGValidator" style="color: red; font-weight: normal;"></label>
+							</div>
+						</div>
+						<div class="row" style="padding-top: 5px; padding-bottom: 5px;">
+							<div class="col-sm-4 col-md-4" style="text-align: right; font-size: large;">
+								Description :
+							</div>
+							<div id="ViewModeDescription" class="col-sm-8 col-md-8" style="text-align: left; font-size: large;">
+								${movie.getDescription()}
+							</div>
+							<div id="EditModeDescription" class="col-sm-8 col-md-8" style="text-align: left; display: none; font-size: large;">
+								<input id="Description" type="text" name="Description" placeholder="Description" /> 
+								<label id="DescriptionValidator" style="color: red; font-weight: normal;"></label>
+							</div>
+						</div>
+						<div class="row" style="padding-top: 5px; padding-bottom: 5px;">
+							<div class="col-sm-4 col-md-4" style="font-size: large; text-align: right;">
+								IMDB Rating :
+							</div>
+							<div id="ViewModeRating" class="col-sm-8 col-md-8" style="text-align: left; font-size: large;">
+								${movie.getNotationFilm()} / 10
+							</div>
+							<div id="EditModeRating" class="col-sm-8 col-md-8" style="text-align: left; display: none; font-size: large;">
+								<select id="Rating" name="Rating">
+									<option value="-1">Select Rating</option>
+									<option value="0">0</option>
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5</option>
+									<option value="6">6</option>
+									<option value="7">7</option>
+									<option value="8">8</option>
+									<option value="9">9</option>
+									<option value="10">10</option>
+								</select> 
+								<label id="RatingValidator" style="color: red; font-weight: normal;"></label>
+							</div>
+						</div>
+						<div id="divChangePic" class="row" style="display: none; padding-top: 5px; padding-bottom: 5px;">
+							<div class="col-sm-4 col-md-4" style="text-align: left; font-size: large; text-align: right;">
+								<label style="font-size: large;">Image :</label>
+							</div>
+							<div class="col-xs-12 col-sm-9" style="font-size: large;">
+								<input name="PictureBrowse" id="PictureBrowse" type="file" name="PictureBrowse" /> 
+								<label id="PicValidator" style="color: red; font-weight: normal;"></label>
+							</div>
+						</div>
+						<div class="row"
+							style="padding-top: 5px; padding-bottom: 5px;">
+							<div class="col-sm-4 col-md-4" style="text-align: right; font-size: large;">
+								Trailer Link :
+							</div>
+							<div id="ViewModeTrailer" class="col-sm-8 col-md-8" style="text-align: left; font-size: large;">
+								<a href="${movie.getTrailerFilm()}">${movie.getTrailerFilm()}</a>
+							</div>
+							<div id="EditModeTrailer" class="col-sm-8 col-md-8" style="text-align: left; display: none; font-size: large;">
+								<input id="Trailer" type="text" name="Trailer" placeholder="Trailer" /> 
+								<label id="TrailerValidator" style="color: red; font-weight: normal;"></label>
+							</div>
+						</div>
+						<div class="row" style="padding-top: 5px; padding-bottom: 5px;">
+							<div class="col-sm-4 col-md-4" style="text-align: right; font-size: large;">
+								Movie Link :
+							</div>
+							<div id="ViewModeMovie" class="col-sm-8 col-md-8" style="text-align: left; font-size: large;">
+								<a href="${movie.getFilmLink()}">${movie.getFilmLink()}</a>
+							</div>
+							<div id="EditModeMovie" class="col-sm-8 col-md-8" style="text-align: left; display: none; font-size: large;">
+								<input id="Movie" type="text" name="Movie" placeholder="Movie" /> 
+								<label id="MovieValidator" style="color: red; font-weight: normal;"></label>
+							</div>
+						</div>
+						
+						<div class="row" style="padding-top: 5px; padding-bottom: 5px;">
+							<div class="col-sm-4 col-md-4" align="right" style="font-size: large" id="divEditCancelFilm">
+								<input id="btnEditFilm" type="button" onclick="ChangeToEditMode()" name="btnEditUser" value="Edit" /> 
+								<input id="btnCancelEdit" type="button" onclick="ChangeToViewMode()" name="btnCancelEdit" style="display: none;" value="Cancel" />
+							</div>
+							<div class="col-sm-8 col-md-8"  align="left" style="font-size: large;" id="divSaveDeleteFilm">
+								<input id="btnUpdateFilm" type="submit" name="btnUpdateFilm" onclick="return ValidateInputs()" value="Save" style="display: none;" /> 
+								<input id="btnDeleteMovie" type="submit" onclick="return confirm('Are you sure you want to delete this Movie? Data will be permanently lost!')" name="btnDeleteMovie" value="Delete" />
+							</div>
+							<div style="text-align: left; color: red;">
+								${UpdateMessage}
+							</div>
+						</div>
+					</form>
+				</div>
+		        <div class="col-sm-2 col-md-2">
+		        	<div class="row" style="padding-top: 5px;">
+						<div align="right" style="font-size: large; text-align: right;" id="divCreateEvent">
+							<label id="btnCreateEvent">
+								<a href="${pageContext.request.contextPath}/CreateEvent?idMovie=${movie.getId()}">Create Event</a>
+							</label>
+						</div>
+					</div>
+		        </div>
 	    	</div>
-          </div>  
-        </div>
-      </div>
+        </div>  
     </div>
 
     <!-- Bootstrap core JavaScript
@@ -291,54 +297,33 @@
     <script src="Bootstrap/docs/assets/js/ie10-viewport-bug-workaround.js"></script>
   
    	<script > 		
-	    console.log("doing on load script");
-	    var btnAdmin = document.getElementById('btnAdmin'); 
-		var btnCreateMovie = document.getElementById('btnCreateMovie');    			
-		
-		/* var btnEditFilm = document.getElementById("btnEditFilm");    		    	    		
-   		var btnDeleteMovie = document.getElementById("btnDeleteMovie");    		    	
-   		var btnCreateEvent = document.getElementById("btnCreateEvent"); */
+	    console.log("doing on load script");   			
 		
 		var divSaveDeleteFilm = document.getElementById('divSaveDeleteFilm'); 
 		var divEditCancelFilm = document.getElementById('divEditCancelFilm');
-		var divCreateEvent = document.getElementById('divCreateEvent'); 
-		 console.log("divCreateEvent is " + divCreateEvent);
-		//divSaveDeleteFilm divEditCancelFilm divCreateEvent
+		var divCreateEvent = document.getElementById('btnCreateEvent'); 
+		console.log("divCreateEvent is " + divCreateEvent);
 		
 		console.log("got btnAdmin");
 		var UserType = '<%= session.getAttribute("UserType") %>';
 		console.log("user type = " + UserType);
 		
-		if (UserType == "Admin")
-		{
-			btnAdmin.style.display = "block";
-			btnCreateMovie.style.display = "block";
-		
+		if (UserType == "Admin"){
 			divSaveDeleteFilm.style.display = "block";
 			divEditCancelFilm.style.display = "block";
 			divCreateEvent.style.display = "none"; 
-						
 			console.log("done setting Admin page");
 		}
-		else
-		{
-			btnAdmin.style.display = "none";
-			btnCreateMovie.style.display = "none";
-			
+		else{
 			divSaveDeleteFilm.style.display = "none";
 			divEditCancelFilm.style.display = "none";
 			divCreateEvent.style.display = "block";
-			
 			console.log("done setting User page");
 		}
-	
 	</script>
   
-
-    <script type="text/javascript">
-                
-    	function ValidateInputs()
-    	{
+    <script type="text/javascript">       
+    	function ValidateInputs(){
     		console.log("Validating input .....");
     		var valide = true;
     		// Getting input values
@@ -482,7 +467,6 @@
     			MovieValidator.innerHTML = "";
     		}
     		
-    		
     		var resultDOB = validateDOB();
     		if (resultDOB == false)
     		{
@@ -492,9 +476,7 @@
     		return valide;
     	}
         
-    
-    	function validateDOB()
-    	{
+    	function validateDOB(){
 	   		console.log("starting validating ....." );
 	   		var UserDOB = document.getElementById("ReleaseDate");     		
 		    var value = UserDOB.value;
@@ -542,11 +524,8 @@
 		}
     </script>
   
-  
-    
-  <script type="text/javascript">
-		function ChangeToEditMode()
-    	{
+  	<script type="text/javascript">
+		function ChangeToEditMode(){
     		console.log("i'm in function");
     		var ViewModeTitle = document.getElementById("ViewModeTitle");    		    	
     		ViewModeTitle.style.display = "none";
@@ -572,8 +551,7 @@
     		ViewModeTrailer.style.display = "none";
     		var ViewModeMovie = document.getElementById("ViewModeMovie");    		    	
     		ViewModeMovie.style.display = "none";    		    	    		    	
-    		    		    	
-    		
+    		 
     		var EditModeTitle = document.getElementById("EditModeTitle");    		    	
     		EditModeTitle.style.display = "block";
    			var Title = document.getElementById("Title");    	
@@ -670,8 +648,7 @@
     		btnDeleteMovie.style.display = "none";    		    		    		      		   
     	}    	    
     	
-    	function ChangeToViewMode()
-    	{
+    	function ChangeToViewMode(){
     		var ViewModeTitle = document.getElementById("ViewModeTitle");    		    	
     		ViewModeTitle.style.display = "block";
     		var ViewModeDirector = document.getElementById("ViewModeDirector");    		    	
@@ -696,8 +673,7 @@
     		ViewModeTrailer.style.display = "block";
     		var ViewModeMovie = document.getElementById("ViewModeMovie");    		    	
     		ViewModeMovie.style.display = "block";    		    	    		    	
-    		    		    	
-    		
+    		  
     		var EditModeTitle = document.getElementById("EditModeTitle");    		    	
     		EditModeTitle.style.display = "none";
    			var Title = document.getElementById("Title");    	
@@ -785,8 +761,7 @@
     		var btnEditFilm = document.getElementById("btnEditFilm");    		    	
     		btnEditFilm.style.display = "block"; 
     		var btnDeleteMovie = document.getElementById("btnDeleteMovie");    		    	
-    		btnDeleteMovie.style.display = "block"; 
-    		   
+    		btnDeleteMovie.style.display = "block"; 	   
     	}    
 	</script>
   </body>
