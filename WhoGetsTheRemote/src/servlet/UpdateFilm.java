@@ -122,7 +122,7 @@ public class UpdateFilm extends HttpServlet
 						String categorieLibelle = movieResultSet1.getString("LIBELLE_CATEGORIE");					
 						movieCategorie = new FilmCategorie(categorieId, categorieLibelle);	
 					}
-				
+					
 				request.setAttribute("movie" , selectedMovie);	
 				request.setAttribute("movieCategorie" , movieCategorie);
 				request.setAttribute("CategorieList" , CategorieList);	
@@ -164,21 +164,42 @@ public class UpdateFilm extends HttpServlet
 		        String strDate = dateFormat.format(date);
 		        System.out.println("Creation time is : " + strDate);
 		        
-		        String StatementStr = "UPDATE FILM SET FILM_DISABLE_DATE = '" + strDate+ "' WHERE ID_FILM = " + movieId;
-														
-				System.out.println("Film update statement is : " + StatementStr);
+		        System.out.println("query to check on delete = select * from GROUPE inner join FILM_CONTIENT_GROUPE on ID_GROUPE = ID_GROUPE_CONTIENT where ID_FILM_CONTIENT = " + movieId + " and WATCHING_DATE > '" + strDate + "'");
+				String StatementStr1 = "select * from GROUPE inner join FILM_CONTIENT_GROUPE on ID_GROUPE = ID_GROUPE_CONTIENT where ID_FILM_CONTIENT = " + movieId + " and WATCHING_DATE > '" + strDate + "'";
 				
-				PreparedStatement statement = myConnection.prepareStatement(StatementStr);
-				System.out.println("prepared update statement object!");
-				int result = statement.executeUpdate();
-				System.out.println("update executed");
-				if (result == 1)
-				{				
-					System.out.println("ANA BEL btnDeleteMovie - RESULT = 1");											
-					RequestDispatcher rd = getServletContext().getRequestDispatcher("/Movies");
-					System.out.println("ABEL EL FORWARD ");														
+				PreparedStatement myStatement1 = myConnection.prepareStatement(StatementStr1);
+				ResultSet ResultSet1 = myStatement1.executeQuery();			
 				
-					rd.forward(request, response); 
+				
+				if(ResultSet1.next()) 
+				{
+					System.out.println("ANA BEL btnDeleteMovie - RESULT = 1");	
+					request.setAttribute("UpdateMessage" , "Can't delete Movie because of upcoming event!");
+															
+					HttpSession session;
+					session = request.getSession();
+					session.setAttribute("filmId", movieId);
+					System.out.println("ABEL EL FORWARD ");										
+					doGet(request, response);
+				}
+				else
+				{					
+			        String StatementStr = "UPDATE FILM SET FILM_DISABLE_DATE = '" + strDate+ "' WHERE ID_FILM = " + movieId;
+															
+					System.out.println("Film update statement is : " + StatementStr);
+					
+					PreparedStatement statement = myConnection.prepareStatement(StatementStr);
+					System.out.println("prepared update statement object!");
+					int result = statement.executeUpdate();
+					System.out.println("update executed");
+					if (result == 1)
+					{				
+						System.out.println("ANA BEL btnDeleteMovie - RESULT = 1");											
+						RequestDispatcher rd = getServletContext().getRequestDispatcher("/Movies");
+						System.out.println("ABEL EL FORWARD ");														
+					
+						rd.forward(request, response); 
+					}
 				}
 			}
 			else if (btnCreateEvent!=null)
