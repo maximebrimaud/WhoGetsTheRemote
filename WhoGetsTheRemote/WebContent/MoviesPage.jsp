@@ -57,10 +57,10 @@
 	          </div>
          
           </h2>
-          <ul class="nav nav-sidebar">	
+           <ul class="nav nav-sidebar">	
           	<li id="btnCreateMovie" style="display: none;"><a href="${pageContext.request.contextPath}/CreateFilm">Create Movie</a></li> <!-- MoviesCreate.jsp    ////   CreateFilmData -->
-          	<li id="btnManageCategories" style="display: none;"><a href="${pageContext.request.contextPath}/MovieCategories">Manage Categories</a></li>             
-            <li class="active"><a href="#" style="text-decoration: underline;">Overview<!-- <span class="sr-only">(current)</span> --></a></li>                        
+          	<li id="btnManageCategories" style=" display: none;"><a href="${pageContext.request.contextPath}/MovieCategories">Manage Categories</a></li>             
+            <li ><a  style="text-decoration: underline;" href="${pageContext.request.contextPath}/Movies" >Overview<!-- <span class="sr-only">(current)</span> --></a></li>                        
           </ul>
         </div>
         

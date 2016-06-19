@@ -50,13 +50,11 @@
         <div class="col-sm-2 col-md-2 sidebar">
           </br>
           <h2 class="page-header">Search</h2>
-          <ul class="nav nav-sidebar">
-            <li class="active"><a href="#" style="text-decoration: underline;">Create Movie<!-- <span class="sr-only">(current)</span> --></a></li>
-            <li><a href="MoviesPage.jsp">Overview</a></li>
-            <li><a href="#">Reports</a></li>
-            <li><a href="#">Analytics</a></li>
-            <li><a href="#">Export</a></li>
-          </ul>
+          <ul class="nav nav-sidebar">	
+          	<li id="btnCreateMovie" style="display: none;"><a style="text-decoration: underline;" href="${pageContext.request.contextPath}/CreateFilm">Create Movie</a></li> <!-- MoviesCreate.jsp    ////   CreateFilmData -->
+          	<li id="btnManageCategories" style=" display: none;"><a href="${pageContext.request.contextPath}/MovieCategories">Manage Categories</a></li>             
+            <li ><a href="${pageContext.request.contextPath}/Movies" >Overview<!-- <span class="sr-only">(current)</span> --></a></li>                        
+          </ul>         
         </div>
         <div class="col-sm-10 col-md-10 main">
           </br>
