@@ -146,6 +146,9 @@ public class UpdateFilm extends HttpServlet
 		String movieId = null ;
 		try 
 		{
+
+        	System.out.println("Any haaan");
+        	
 			String btnDeleteMovie = request.getParameter("btnDeleteMovie");
 			String btnCreateEvent = request.getParameter("btnCreateEvent");
 			
@@ -183,7 +186,7 @@ public class UpdateFilm extends HttpServlet
 				movieId = request.getParameter("movieId");
 								
 				System.out.println("ANA BEL btnCreateEvent");											
-				RequestDispatcher rd = getServletContext().getRequestDispatcher("/CreateEventServlet?idMovie=" + movieId);
+				RequestDispatcher rd = getServletContext().getRequestDispatcher("/CreateEvent?idMovie=" + movieId);
 				System.out.println("ABEL EL FORWARD ");														
 			
 				rd.forward(request, response); 

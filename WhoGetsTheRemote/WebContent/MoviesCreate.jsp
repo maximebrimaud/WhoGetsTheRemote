@@ -26,20 +26,20 @@
   </head>
 
   <body>
-
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
         <div class="navbar-header">
-          <a class="navbar-brand" href="Home.jsp">Who Gets The Remote</a>
+          <a class="navbar-brand" href="${pageContext.request.contextPath}/Home">Who Gets The Remote</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-left">
             <li><a href="${pageContext.request.contextPath}/Movies">Movies</a></li>
-            <li><a href="FriendsPage.jsp">Friends</a></li>
-            <li><a href="#">Events</a></li>
+            <li><a href="${pageContext.request.contextPath}/Friends">Friends</a></li>
+            <li><a href="${pageContext.request.contextPath}/Events">Events</a></li>
+            <li id="btnAdmin" style="display: none; "><a href="${pageContext.request.contextPath}/Admin">Administrator</a></li>
           </ul>
 		   <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">${Movie.getFullName()}</a></li>
+            <li><a href="${pageContext.request.contextPath}/Profile">${userLogged.getFullName()}</a></li>
             <li><a href="LogoutPage.jsp">LogOut</a></li>
           </ul>
         </div>

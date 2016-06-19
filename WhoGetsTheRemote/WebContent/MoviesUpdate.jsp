@@ -25,21 +25,20 @@
   </head>
 
   <body>
-
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+	<nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
         <div class="navbar-header">
-          <a class="navbar-brand" href="Home.jsp">Who Gets The Remote</a>
+          <a class="navbar-brand" href="${pageContext.request.contextPath}/Home">Who Gets The Remote</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-left">
             <li><a href="${pageContext.request.contextPath}/Movies">Movies</a></li>
-            <li><a href="FriendsPage.jsp">Friends</a></li>
-            <li><a href="#">Events</a></li>
-            <li id="btnAdmin" style="display: none; "><a href="#">Administrator</a></li>
+            <li><a href="${pageContext.request.contextPath}/Friends">Friends</a></li>
+            <li><a href="${pageContext.request.contextPath}/Events">Events</a></li>
+            <li id="btnAdmin" style="display: none; "><a href="${pageContext.request.contextPath}/Admin">Administrator</a></li>
           </ul>
 		   <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">${userLogged.getFullName()}</a></li>
+            <li><a href="${pageContext.request.contextPath}/Profile">${userLogged.getFullName()}</a></li>
             <li><a href="LogoutPage.jsp">LogOut</a></li>
           </ul>
         </div>
@@ -73,7 +72,7 @@
 								</div>
 						        <h1 align='center'>${movie.getName()} <span style="font-size: large; color:gray; font-style: italic;">(${movie.getDateReleased()})</span></h1>   
 					        </div>
-					       <form role="form" action="UpdateFilm" method="post"> <!--  onsubmit="return ValidateInputs()"  -->
+					       <form role="form" action="UpdateFilm" method="post">
 					      		 <input name="movieId" id="movieId" style="display: none;" value="${movie.getId()}"/>
 						        <div class='col-xs-6 col-sm-9 col-md-9 placeholder' style="padding-top: 45px;">
 						        					 	       
@@ -250,7 +249,8 @@
 									
 									<div class="row" style="padding-top: 5px; padding-bottom: 5px;">									 
 										 <div class="col-xs-12 col-sm-3 col-md-4" style=" font-size: large; text-align: right; " id="divCreateEvent" >
-										  		<input id="btnCreateEvent" type="button"  name="btnCreateEvent" value="Create Event" />										  												  														  											  
+<!-- 										  		<input id="btnCreateEvent" type="submit"  name="btnCreateEvent" value="Create Event" />	 -->
+										  		<label id="btnCreateEvent"><a href="${pageContext.request.contextPath}/CreateEvent?idMovie=${movie.getId()}">Create Event</a></label>									  												  														  											  
 										  </div>	
 										 
 										  <div class="col-xs-12 col-sm-3 col-md-4" style=" font-size: large; text-align: right; " id="divEditCancelFilm" >										  		
@@ -545,9 +545,6 @@
   
     
   <script type="text/javascript">
-
-
-
 		function ChangeToEditMode()
     	{
     		console.log("i'm in function");
