@@ -14,11 +14,8 @@ import javax.sql.DataSource;
 
 //import models.Counter;
 import models.Film;
-<<<<<<< HEAD
-=======
 import models.Friend;
 import models.User;
->>>>>>> 4b630bc76fddd1ad377aac254b29668a780cdcf4
 
 @WebServlet("/Home")
 public class HomeServlet extends HttpServlet {
@@ -74,10 +71,7 @@ public class HomeServlet extends HttpServlet {
 			
 			HttpSession session;
 			session = request.getSession();
-<<<<<<< HEAD
-	        
-			//String idNotIn = String.valueOf(session.getAttribute("sessionId"));
-=======
+
 			String idNotIn = String.valueOf(session.getAttribute("sessionId"));
 			
 			String query = "select uu.* from USERS uu "
@@ -119,8 +113,7 @@ public class HomeServlet extends HttpServlet {
 				youMayKnowList.add(currentUserSomeone);
 			}
 			
-			
->>>>>>> 4b630bc76fddd1ad377aac254b29668a780cdcf4
+
 			//List<Counter> userCounter = new ArrayList<Counter>();
 			//userCounter = PeopleYouMayKnow(myConnection,idNotIn);
 			
@@ -129,12 +122,10 @@ public class HomeServlet extends HttpServlet {
 			//}
 			
 			//Creer un httpsession pour mettre la liste de fiilms hits
-<<<<<<< HEAD
-			session.setAttribute("listHits", listF);		
-=======
+
 			session.setAttribute("listHits", listF);	
 			session.setAttribute("youMayKnow", youMayKnowList);	
->>>>>>> 4b630bc76fddd1ad377aac254b29668a780cdcf4
+
 						
 			System.out.println("redirecting to home");
 			request.getRequestDispatcher("/Home.jsp").forward(request, response);

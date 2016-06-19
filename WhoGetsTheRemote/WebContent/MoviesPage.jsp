@@ -43,7 +43,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-2 col-md-2 sidebar">
-<<<<<<< HEAD
+
           </br>
           <h2 class="page-header">
           	
@@ -57,10 +57,6 @@
 	          </div>
          
           </h2>
-=======
-          <br/>
-          <h2 class="page-header">Search</h2>
->>>>>>> 4b630bc76fddd1ad377aac254b29668a780cdcf4
           <ul class="nav nav-sidebar">	
           	<li id="btnCreateMovie" style="display: none;"><a href="${pageContext.request.contextPath}/CreateFilm">Create Movie</a></li> <!-- MoviesCreate.jsp    ////   CreateFilmData -->
           	<li id="btnManageCategories" style="display: none;"><a href="${pageContext.request.contextPath}/MovieCategories">Manage Categories</a></li>             
@@ -68,7 +64,6 @@
           </ul>
         </div>
         
-<<<<<<< HEAD
         <div class="col-sm-10 col-md-10 main">
           <br/>
           <h1 class="page-header">Search Movies Result</h1>
@@ -91,8 +86,6 @@
           </br>
         
         </div>
-=======
->>>>>>> 4b630bc76fddd1ad377aac254b29668a780cdcf4
         <div class="col-sm-10 col-md-10 main">
           <br/>
           <h2 class="page-header">Movies</h2>
@@ -104,11 +97,9 @@
 					</div>
 			        <h4 align='center'><a href="${pageContext.request.contextPath}/UpdateFilm?filmId=${item.getId()}" >${item.getName()}</a></h4>
 			        <div align='center'>
-<<<<<<< HEAD
+
 			        	<span class='text-muted'>IMDB Rating: ${item.getNotationFilm()}/10</span>
-=======
-			        	<span class='text-muted'>${item.getDirector()}</span>
->>>>>>> 4b630bc76fddd1ad377aac254b29668a780cdcf4
+
 			        </div>
 		        </div>
 		  	</c:forEach>
@@ -116,15 +107,12 @@
         </div>
       </div>
     </div>
-<<<<<<< HEAD
  	</form>
-=======
 	
     <br/><br/><br/>
     <div style="background-color:black; color:white; clear:both; text-align:center; padding:5px; padding-top:5px"> 
     	Who Gets The Remote - The Place for movie lovers
     </div>
->>>>>>> 4b630bc76fddd1ad377aac254b29668a780cdcf4
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
