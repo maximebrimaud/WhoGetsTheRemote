@@ -250,7 +250,26 @@
     <script src="Bootstrap/assets/js/vendor/holder.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="Bootstrap/assets/js/ie10-viewport-bug-workaround.js"></script>
-    
+    <script>
+	    console.log("doing on load script"); 
+		var btnCreateMovie = document.getElementById("btnCreateMovie"); 
+		var btnManageCategories = document.getElementById("btnManageCategories");    		    	
+    		
+		console.log("got btnAdmin");
+		var UserType = '<%= session.getAttribute("UserType") %>';
+		console.log("user type = " + UserType);
+		
+		if (UserType == "Admin")
+		{
+			btnCreateMovie.style.display = "block";
+			btnManageCategories.style.display = "block";
+		}
+		else
+		{
+			btnManageCategories.style.display = "none";
+			btnCreateMovie.style.display = "none";
+		}
+	</script>
     <script>
     	function ValidateInputs()
     	{
