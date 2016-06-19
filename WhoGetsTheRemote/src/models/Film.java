@@ -91,6 +91,24 @@ public class Film implements Serializable
 	{
 		super();
 	}
+	
+	public Film(int id, String name, String imageFilm) 
+	{
+		super();
+		this.id = id;
+		this.name = name;		
+		this.imageFilm = imageFilm;		
+	}
+	
+	
+	public Film(int id, String name, String imageFilm, int rating) 
+	{
+		super();
+		this.id = id;
+		this.name = name;		
+		this.imageFilm = imageFilm;		
+		this.notationFilm = rating;
+	}
 
 	public Film(int id, String name, String description, String dateReleased, int notationFilm, String trailerFilm, String filmLink, int categorieId, String imageFilm, String creationDate, String modificationDate,String duration,int pgLevel,String director,String cast,String language) 
 	{

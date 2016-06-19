@@ -49,21 +49,22 @@
 	          <div class="row placeholders">
 	          	<div align='center' class='col-xs-6 col-sm-3 col-md-12  placeholder'>
 			        <div align='center'>
-			        	<img src='${friend.getImage()}' width='190' height='190' class='img-responsive' alt='Generic placeholder thumbnail'>
+			        	<img src='${friend.getUserr().getImage()}' width='190' height='190' class='img-responsive' alt='Generic placeholder thumbnail'>
 					</div>
 			        <h2 align='center'>${friend.getFullName()}</h2>		       
-			        <h3 align='center'><span class='text-muted'>${friend.getUsername()}</span></h3>		        
+			        <h3 align='center'><span class='text-muted'>${friend.getUserr().getUsername()}</span></h3>		        
 	          	</div>
 	          	<div align='center' class='col-xs-6 col-sm-3 col-md-12  placeholder'>
 	          		<input style="background-color:activecaption;" id="btnAddFriend" type="submit" value="Add Friend">	          		
 	          		<input style="background-color:activecaption;" id="btnRemoveFriend" type="submit" value="Remove Friend">
+	          		<input style="background-color:activecaption;" id="btnRequestPending" onclick="return false;" type="button" value="Request Pending">	  
 	          	</div>
 	          	<div align='center' class='col-xs-6 col-sm-3 col-md-12  placeholder'>			        
-	        	 	<h4 align='center'>Email: ${friend.getUsername()}</h4> 
-	        	 	<h4 id="lblDOB" align='center'>Date of Birth: ${friend.getDob()}</h4> 
-	        	 	<h4 id="lblAddress" align='center'>Address: ${friend.getAddress()}</h4>  
-	        	 	<h4 id="lblGender" align='center'>Gender: ${friend.getSexe()}</h4>           	 	
-			        <h4 align='center'><span style="font-style: italic;" class='text-muted'>Member since ${friend.getCreationDate()}</span></h4>		        
+	        	 	<h4 align='center'>Email: ${friend.getUserr().getEmail()}</h4> 
+	        	 	<h4 id="lblDOB" align='center'>Date of Birth: ${friend.getUserr().getDob()}</h4> 
+	        	 	<h4 id="lblAddress" align='center'>Address: ${friend.getUserr().getAddress()}</h4>  
+	        	 	<h4 id="lblGender" align='center'>Gender: ${friend.getUserr().getSexe()}</h4>           	 	
+			        <h4 align='center'><span style="font-style: italic;" class='text-muted'>Member since ${friend.getUserr().getCreationDate()}</span></h4>		        
 	        	 	<%-- <h4 align='center'>Member since: ${friend.getCreationDate()}</h4>      --%>        	 	  	 				        			        
 	          	</div>
 	          </div>  
@@ -71,7 +72,7 @@
 	        <div class="col-sm-10 col-sm-offset-3 col-md-10 col-md-offset-1 main">         
 	          <h1 class="page-header">Friends In Common</h1>
 	          <div class="row placeholders">
-			  	<c:forEach items="${friend.getFriendsInCommon()}" var="item">
+			  	<c:forEach items="${friend.getListFriendsCommon()}" var="item">
 			  		<div class="col-xs-6 col-sm-3 placeholder">
 		              <div align="center">
 		              	<img class="img-circle" src='${item.getImage()}' width="150" height="150" class="img-responsive" alt="Generic placeholder thumbnail">
@@ -90,20 +91,23 @@
 	          <div class="row placeholders">
 			  	<c:forEach items="${friend.getListEventsCommon()}" var="item">
 			  		<div class="col-xs-6 col-sm-3 placeholder">
-	              <div align="center">
-	              	<img src="${item.getFilm().getImageFilm()}" width="130" height="130" class="img-responsive" alt="Generic placeholder thumbnail">	              	
-	              </div>
-	              <h4 align="center">${item.getNameGroupe()}</h4>
-	              <div align="center">
-	              	<span class="text-muted">${item.getNbrOfPeopleComing()} People going</span>
-	              </div>
-	            </div>
+		              <div align="center">
+		              	<img src="${item.getFilm().getImageFilm()}" width="130" height="130" class="img-responsive" alt="Generic placeholder thumbnail">	              	
+		              </div>
+		              <h4 align="center">${item.getNameGroupe()}</h4>
+		              <div align="center">
+		              	<span class="text-muted" style="font-size: small;">${item.getFilm().getName()} </span>
+		              </div>
+		              <div align="center">
+		              	<span class="text-muted" style="font-style: italic;">${item.getWatchingDate()}</span>
+		              </div>
+		            </div>
 			  	</c:forEach>
 	          </div>  
 	        </div>
 	        <div id="divFriendMovies" class="col-sm-10 col-sm-offset-3 col-md-10 col-md-offset-1 main">
 	          </br>
-	          <h1 class="page-header">Movies ${friend.getFirstName()} Has Seen</h1>
+	          <h1 class="page-header">Movies ${friend.getUserr().getFirstName()} Has Seen</h1>
 	          <div class="row placeholders">
 			  	<c:forEach items="${friend.getListMovies()}" var="item">
 			  		<div class="col-xs-6 col-sm-3 placeholder">
@@ -135,24 +139,38 @@
     
     
     <script>    	
-    	var isFriend = ${isFriend};    	
+    	var isFriend = '${isFriend}'; 
+    	console.log("doing on load scrip addFriend");	
+    	console.log("var isFriend = " + isFriend); 
+    	var btnAddFriend = document.getElementById('btnAddFriend');  	
     	var lblDOB = document.getElementById('lblDOB');
     	var lblAddress = document.getElementById('lblAddress'); 
     	var lblGender = document.getElementById('lblGender'); 
     	var btnRemoveFriend = document.getElementById('btnRemoveFriend'); 
-    	var btnAddFriend = document.getElementById('btnAddFriend');
+    	var btnRequestPending = document.getElementById('btnRequestPending');
     	var divFriendMovies = document.getElementById('divFriendMovies'); 
     	 
-	    if (isFriend == true)
+	    if (isFriend == "Accepted")
 	    {
 	    	lblDOB.style.display = "block";
 	    	lblAddress.style.display = "block";
 	    	lblGender.style.display = "block";
 	    	btnRemoveFriend.style.display = "block";
 			divFriendMovies.style.display = "block";
+			btnRequestPending.style.display = "none";
 			btnAddFriend.style.display = "none";			
 	    }
-	    else
+	    else if (isFriend == "Pending")
+	    {
+	    	lblDOB.style.display = "none";
+	    	lblAddress.style.display = "none";
+	    	lblGender.style.display = "none";
+	    	btnRemoveFriend.style.display = "none";
+	    	divFriendMovies.style.display = "none";
+			btnAddFriend.style.display = "none"; 
+			btnRequestPending.style.display = "block";
+	    }
+	    else 
 	    {
 	    	lblDOB.style.display = "none";
 	    	lblAddress.style.display = "none";
@@ -160,6 +178,7 @@
 	    	btnRemoveFriend.style.display = "none";
 	    	divFriendMovies.style.display = "none";
 			btnAddFriend.style.display = "block"; 
+			btnRequestPending.style.display = "none";
 	    }	    
     </script>
   </body>
