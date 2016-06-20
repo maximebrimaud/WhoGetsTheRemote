@@ -52,11 +52,11 @@
 		  	<c:forEach items="${listHits}" var="item">
 		  		<div class='col-xs-6 col-sm-3 placeholder'>
 			        <div align='center'>
-			        	<img src='${item.imageFilm}' width='190' height='190' class='img-responsive' alt='Generic placeholder thumbnail'>
+			        	<img src='${item.getImageFilm()}' width='190' height='190' class='img-responsive' alt='Generic placeholder thumbnail'>
 					</div>
-			        <h4 align='center'>${item.name}</h4>
+			        <h4 align='center'><a href="${pageContext.request.contextPath}/UpdateFilm?filmId=${item.getId()}" >${item.getName()}</a></h4>
 			        <div align='center'>
-			        	<span class='text-muted'>${item.name}</span>
+			        	<span class='text-muted'>${item.getDateReleased()}</span>
 			        </div>
 		        </div>
 		  	</c:forEach>

@@ -57,7 +57,7 @@
 					</div>
 			        <h4 align='center'><a href="${pageContext.request.contextPath}/Event?idEvent=${item.id}">${item.nameGroupe}</a></h4>
 			        <div align='center'>
-			        	<span class='text-muted'><a href="FilmServlet.java?idMovie=${item.film.id}">${item.film.name}</a></span>
+			        	<span class='text-muted'><a href="${pageContext.request.contextPath}/UpdateFilm?filmId=${item.getId()}">${item.film.name}</a></span>
 			        </div>
 		        </div>
 		  	</c:forEach>
@@ -72,7 +72,7 @@
 					</div>
 			        <h4 align='center'><a href="${pageContext.request.contextPath}/Event?idEvent=${item.id}">${item.nameGroupe}</a></h4>
 			        <div align='center'>
-			        	<span class='text-muted'><a href="FilmServlet.java?idMovie=${item.film.id}">${item.film.name}</a></span>
+			        	<span class='text-muted'><a href="${pageContext.request.contextPath}/UpdateFilm?filmId=${item.getId()}">${item.film.name}</a></span>
 			        </div>
 		        </div>
 		  	</c:forEach>

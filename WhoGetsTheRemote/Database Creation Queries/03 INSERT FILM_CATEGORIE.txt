@@ -1,0 +1,6 @@
+insert into APP.FILM_CATEGORIE (LIBELLE_CATEGORIE) values ('Action');
+insert into APP.FILM_CATEGORIE (LIBELLE_CATEGORIE) values ('Drama');
+insert into APP.FILM_CATEGORIE (LIBELLE_CATEGORIE) values ('Horror');
+insert into APP.FILM_CATEGORIE (LIBELLE_CATEGORIE) values ('Comedy');
+insert into APP.FILM_CATEGORIE (LIBELLE_CATEGORIE) values ('Romantic');
+insert into APP.FILM_CATEGORIE (LIBELLE_CATEGORIE) values ('Thriller');

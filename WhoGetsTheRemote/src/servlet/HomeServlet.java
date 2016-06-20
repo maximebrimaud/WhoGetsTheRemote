@@ -80,7 +80,8 @@ public class HomeServlet extends HttpServlet {
 					+ "FROM FRIENDS f inner join USERS u on f.ID_USER_TWO = u.ID_USER WHERE f.ID_USER_ONE = " + idNotIn + " ) "
 					+ "UNION "
 					+ "SELECT u1.ID_USER "
-					+ "FROM FRIENDS f1 inner join USERS u1 on f1.ID_USER_ONE = u1.ID_USER WHERE f1.ID_USER_TWO = " + idNotIn + ") "
+					+ "FROM FRIENDS f1 inner join USERS u1 on f1.ID_USER_ONE = u1.ID_USER WHERE f1.ID_USER_TWO = " + idNotIn + ")"
+					+ "AND uu.ID_USER <> " + idNotIn + " AND uu.USERNAME <> 'Admin' "
 					+ "FETCH FIRST 8 ROWS ONLY";
 			PreparedStatement statementFriends;
 			statementFriends = myConnection.prepareStatement(query);

@@ -99,17 +99,18 @@ public class FriendProfileServlet extends HttpServlet {
 				 List<User> listFriendsCommon = new ArrayList<User>();
 				
 				//We have to retieve the liste of common friends not just the number
-					PreparedStatement statementFriendsInCommon = myConnection.prepareStatement("SELECT * "
-								+ "FROM (SELECT u.ID_USER, u.NOM_USER, u.PRENOM_USER, u.EMAIL_USER, u.DATE_OF_BIRTH, u.SEXE, u.USERNAME, u.PASSWORD_USER, u.ADDRESS_USER, u.IMAGE_USER, u.USER_CREATION_DATE, u.USER_MODIFICATION_DATE  "
-								+ "FROM FRIENDS f inner join USERS u on f.ID_USER_TWO = u.ID_USER WHERE f.ID_USER_ONE = " + id + " "
-								+ "UNION "
-								+ "SELECT u1.ID_USER, u1.NOM_USER, u1.PRENOM_USER, u1.EMAIL_USER, u1.DATE_OF_BIRTH, u1.SEXE, u1.USERNAME, u1.PASSWORD_USER, u1.ADDRESS_USER, u1.IMAGE_USER, u1.USER_CREATION_DATE, u1.USER_MODIFICATION_DATE   "
-								+ "FROM FRIENDS f1 inner join USERS u1 on f1.ID_USER_ONE = u1.ID_USER WHERE f1.ID_USER_TWO = " + id + ") as friends "
-								+ "WHERE friends.ID_USER IN (SELECT uu.ID_USER "
-								+ "FROM FRIENDS ff inner join USERS uu on ff.ID_USER_TWO = uu.ID_USER WHERE ff.ID_USER_ONE = " + idFriend + " "
-								+ "UNION "
-								+ "SELECT uu1.ID_USER "
-								+ "FROM FRIENDS ff1 inner join USERS uu1 on ff1.ID_USER_ONE = uu1.ID_USER WHERE ff1.ID_USER_TWO = " + idFriend + ") ");
+					PreparedStatement statementFriendsInCommon = myConnection.prepareStatement(
+							"SELECT * "
+							+ "FROM (SELECT u.ID_USER, u.NOM_USER, u.PRENOM_USER, u.EMAIL_USER, u.DATE_OF_BIRTH, u.SEXE, u.USERNAME, u.PASSWORD_USER, u.ADDRESS_USER, u.IMAGE_USER, u.USER_CREATION_DATE, u.USER_MODIFICATION_DATE  "
+							+ "FROM FRIENDS f inner join USERS u on f.ID_USER_TWO = u.ID_USER WHERE f.ID_USER_ONE = " + id + " AND f.FRIENDS_STATE='Accepted' "
+							+ "UNION "
+							+ "SELECT u1.ID_USER, u1.NOM_USER, u1.PRENOM_USER, u1.EMAIL_USER, u1.DATE_OF_BIRTH, u1.SEXE, u1.USERNAME, u1.PASSWORD_USER, u1.ADDRESS_USER, u1.IMAGE_USER, u1.USER_CREATION_DATE, u1.USER_MODIFICATION_DATE   "
+							+ "FROM FRIENDS f1 inner join USERS u1 on f1.ID_USER_ONE = u1.ID_USER WHERE f1.ID_USER_TWO = " + id + " AND f1.FRIENDS_STATE='Accepted' ) as friends "
+							+ "WHERE friends.ID_USER IN (SELECT uu.ID_USER "
+							+ "FROM FRIENDS ff inner join USERS uu on ff.ID_USER_TWO = uu.ID_USER WHERE ff.ID_USER_ONE = " + idFriend + "  AND ff.FRIENDS_STATE='Accepted'  "
+							+ "UNION "
+							+ "SELECT uu1.ID_USER "
+							+ "FROM FRIENDS ff1 inner join USERS uu1 on ff1.ID_USER_ONE = uu1.ID_USER WHERE ff1.ID_USER_TWO = " + idFriend + " AND ff1.FRIENDS_STATE='Accepted' ) ");
 					
 					ResultSet newFriendsInCommon = statementFriendsInCommon.executeQuery();
 					int nbrFrCommon = 0;					

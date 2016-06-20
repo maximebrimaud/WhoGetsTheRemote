@@ -55,8 +55,8 @@
 				</div>
           	</div>
           	<div class="col-sm-5 col-md-5" style="font-weight: bold">
-          		<div align='left'>This event will be hosted by <a href="SomeonePage.jsp?idFriend=${currentEvent.admin.getId()}">${currentEvent.admin.getFullName()}</a></div>
-          		<div align='left'>You will be watching <a href="MoviePage.jsp?idMovie=${currentEvent.film.getName()}">${currentEvent.film.getName()}</a></div>
+          		<div align='left'>This event will be hosted by <a href="${pageContext.request.contextPath}/ManageFriends?friendId=${item.getId()}">${currentEvent.admin.getFullName()}</a></div>
+          		<div align='left'>You will be watching <a href="${pageContext.request.contextPath}/UpdateFilm?filmId=${item.getId()}">${currentEvent.film.getName()}</a></div>
           		<div align='left'>Host's message : ${currentEvent.getAdminMessage()}</div>
           		<div align='left'>Date : ${currentEvent.getWatchingDate()}</div>
           		<div align='left'>Event created in : ${currentEvent.getCreationDate()}</div>
